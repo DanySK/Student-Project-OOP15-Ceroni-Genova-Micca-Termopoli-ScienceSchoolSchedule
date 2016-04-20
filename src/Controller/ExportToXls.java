@@ -2,11 +2,10 @@ package Controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -15,10 +14,11 @@ import Model.Hours;
 
 public class ExportToXls implements ExportToXlsxInterface {
 
-    public Map<String, Set<String>> makeBlankWorkbook() {
-        Map<String, Set<String>> data = new TreeMap<>();
-        Set<String> classRoom = new TreeSet<>();
+    public Map<String, ArrayList<String>> makeBlankWorkbook() {
+        Map<String, ArrayList<String>> data = new TreeMap<>();
+        ArrayList<String> classRoom = new ArrayList<>();
         // Set<String> hours = new TreeSet<>();
+        classRoom.add("Orari");
         for (Class c : Class.values()) {
             classRoom.add(c.getValue());
         }
@@ -26,7 +26,7 @@ public class ExportToXls implements ExportToXlsxInterface {
         data.put("1", classRoom);
         int i = 2;
         for (Hours h : Hours.values()) {
-            Set<String> tmp = new HashSet<>();
+            ArrayList<String> tmp = new ArrayList<>();
             tmp.add(h.getValue());
             data.put(Integer.toString(i), tmp);
             i++;
@@ -39,11 +39,12 @@ public class ExportToXls implements ExportToXlsxInterface {
             // Write the workbook in file system
 
             FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.home")
-                    + System.getProperty("file.separator") + "SiencesSchoolSchedul.xlsx"));
+                    + System.getProperty("file.separator") + "SiencesSchoolSchedul.xls"));
             workbook.write(out);
             out.close();
             System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
         } catch (Exception e) {
+            System.out.println("chiudere il file prima di proseguire");
             e.printStackTrace();
         }
 

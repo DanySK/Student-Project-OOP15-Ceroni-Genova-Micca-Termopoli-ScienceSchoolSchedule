@@ -1,11 +1,15 @@
 package Controller;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -20,7 +24,7 @@ public class WorkWithXlsx {
         // Create a blank sheet
         XSSFSheet sheet = workbook.createSheet("Science School Schedul");
 
-        Map<String, Set<String>> data = new HashMap<>();
+        Map<String, ArrayList<String>> data = new HashMap<>();
         data.putAll(model.makeBlankWorkbook());
 
         // Iterate over data and write to sheet
@@ -32,33 +36,35 @@ public class WorkWithXlsx {
             Row row = sheet.createRow(rownum++);
 
             // get object array of prerticuler key
-            Set<String> objArr = data.get(key);
+            ArrayList<String> objArr = data.get(key);
 
             int cellnum = 0;
 
             for (String obj : objArr) {
-                Cell cell = row.createCell(cellnum++);
 
-                cell.setCellValue((String) obj);
+                Cell cell = row.createCell(cellnum);
+                XSSFCellStyle style6 = workbook.createCellStyle();
+                if (cellnum == 1) {
+                    cell.setCellValue(obj);
+                    style6.setFillBackgroundColor(HSSFColor.GOLD.index);
+                    sheet.setColumnWidth(cellnum, obj.length() * 400);
+                    cell.setCellValue(obj);
+                    cell.setCellStyle(style6);
+                } else {
+                    style6.setFillBackgroundColor(HSSFColor.AQUA.index);
+                    // style6.setFillBackgroundColor(HSSFColor.LIGHT_BLUE.index);
+                    // style6.setFillPattern(XSSFCellStyle.LESS_DOTS);
+                    // style6.setAlignment(XSSFCellStyle.ALIGN_FILL);
+                    sheet.setColumnWidth(cellnum, obj.length() * 400);
+                    cell.setCellValue(obj);
+                    cell.setCellStyle(style6);
+
+                }
+                cellnum++;
 
             }
         }
         model.save(workbook);
-        // This data needs to be written (Object[])
-        /*
-         * Map<String, Object[]> data = new TreeMap<String, Object[]>();
-         * 
-         * data.put("1", new Object[] { "Fascie Orarie", "Aula Magna", "Aula A",
-         * "Aula B", "Aula C", "Aula D", "Aula a" }); int i = 2; for (Hours h :
-         * Hours.values()) { data.put(Integer.toString(i), new Object[] {
-         * h.getValue() }); i++; }
-         */
-
-        /*
-         * data.put("3", new Object[]{2, "Lokesh", "Gupta"}); data.put("4", new
-         * Object[]{3, "John", "Adwards"}); data.put("5", new Object[]{4,
-         * "Brian", "Schultz"});
-         */
 
     }
 }
