@@ -1,6 +1,5 @@
 package Controller;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +22,11 @@ public class WorkWithXlsx {
 
         // Create a blank sheet
         XSSFSheet sheet = workbook.createSheet("Science School Schedul");
-
+       
         Map<String, ArrayList<String>> data = new HashMap<>();
         data.putAll(model.makeBlankWorkbook());
 
+        model.add(3, 5, "ciao sono massi");
         // Iterate over data and write to sheet
         Set<String> keyset = data.keySet();
 
@@ -64,6 +64,7 @@ public class WorkWithXlsx {
 
             }
         }
+       
         model.save(workbook);
 
     }

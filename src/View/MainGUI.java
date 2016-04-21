@@ -57,14 +57,6 @@ public class MainGUI {
   buttonPanel.setBorder(new TitledBorder("Panel Button"));
   buttonPanel.setBackground(Color.pink);
   
-
-
-        /*final TextArea viste = new TextArea( );
-        viste.setText("Viste");
-         buttonPanel.add(viste);
- */
-  
-  
   
  }
  
