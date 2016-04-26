@@ -6,9 +6,11 @@ import java.util.Map;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import Model.Days;
+
 public interface ExportToXlsxInterface {
 
-    public Map<Integer, ArrayList<String>> makeBlankWorkbook();
+    public Map<Integer, ArrayList<String>> makeBlankWorkbook(Days day);
 
     public void write(XSSFWorkbook workbook);
 
@@ -16,8 +18,8 @@ public interface ExportToXlsxInterface {
 
     public void add(int row, int col, String text);
 
-    public void addAll(Map<Integer, ArrayList<String>> map);
+    public void addAll(Map<Integer, ArrayList<String>> map,Days day);
 
-    public void save(Map<Integer, ArrayList<String>> mapForFirst, Map<Integer, ArrayList<String>> mapForSecond);
+    public void save(Map<Days,Map<Integer, ArrayList<String>>> mapForFirst, Map<Days,Map<Integer, ArrayList<String>>> mapForSecond);
 
 }

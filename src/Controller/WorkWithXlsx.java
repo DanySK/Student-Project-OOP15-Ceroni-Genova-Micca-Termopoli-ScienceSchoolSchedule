@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import Model.Days;
+
 public class WorkWithXlsx {
 
     private static ExportToXlsxInterface model = new ExportToXls();
@@ -16,7 +18,16 @@ public class WorkWithXlsx {
         }
         Map<Integer, ArrayList<String>> tmp = new HashMap<>();
         tmp.put(1, string);
-        model.save(tmp, tmp);
+        tmp.put(2, string);
+        tmp.put(3, string);
+        tmp.put(4, string);
+        Map<Days,Map<Integer, ArrayList<String>>> finalMap = new HashMap<>();
+        for (Days d : Days.values()) {
+            finalMap.put(d, tmp);
+        }
+       
+        model.save(finalMap,finalMap);
+        System.out.println(finalMap);
 
     }
 }
