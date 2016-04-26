@@ -48,7 +48,7 @@ public enum ListProfessor {
     RIZZI("Rizzi Stefano"),
     ROLI("Roli Andrea"),
     SALOMONI("Salomoni Paola"),
-    STRAPPAVECCIA("Strappaveccia, Francesco"),
+    STRAPPAVECCIA("Strappaveccia Francesco"),
     VIROLI("Viroli Mirko"),
     C_L_A("");
     
