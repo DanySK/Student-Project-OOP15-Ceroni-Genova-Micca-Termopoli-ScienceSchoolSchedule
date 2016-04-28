@@ -147,7 +147,7 @@ public class ExportToXls implements ExportToXlsxInterface {
         int col = 1;
         for (int row : mapIn.keySet()) {
             for (String s : mapIn.get(row)) {
-                this.add(row+day.getValue()*10, col, s);
+                this.add(row + day.getValue() * 10, col, s);
                 col++;
             }
             col = 1;
@@ -162,7 +162,7 @@ public class ExportToXls implements ExportToXlsxInterface {
         // make a first period of year
         for (Days d : mapForFirst.keySet()) {
             this.makeBlankWorkbook(d);
-            this.addAll(mapForFirst.get(d),d);
+            this.addAll(mapForFirst.get(d), d);
 
         }
         workbook = this.create(sheet, workbook);
@@ -171,7 +171,7 @@ public class ExportToXls implements ExportToXlsxInterface {
         // this.makeBlankWorkbook();
         for (Days d : mapForSecond.keySet()) {
             this.makeBlankWorkbook(d);
-            this.addAll(mapForSecond.get(d),d);
+            this.addAll(mapForSecond.get(d), d);
 
         }
 
