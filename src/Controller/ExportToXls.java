@@ -13,7 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import Model.Class;
+import Model.ListRoom;
 import Model.Days;
 import Model.Hours;
 
@@ -30,7 +30,7 @@ public class ExportToXls implements ExportToXlsxInterface {
 
         ArrayList<String> classRoom = new ArrayList<>();
         classRoom.add("" + day);
-        for (Class c : Class.values()) {
+        for (ListRoom c : ListRoom.values()) {
             classRoom.add(c.getValue());
         }
 

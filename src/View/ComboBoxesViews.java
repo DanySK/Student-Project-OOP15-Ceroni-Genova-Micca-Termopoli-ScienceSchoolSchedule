@@ -2,7 +2,7 @@ package View;
 
 import javax.swing.*;
 
-import Model.Class;
+import Model.ListRoom;
 import Model.Days;
 import Model.Hours;
 import Model.ListCourses;
@@ -31,7 +31,7 @@ public class ComboBoxesViews {
 			cDays.addItem(d.getString());
 		}
 		cRooms.addItem(" ");
-		for ( Model.Class r : Class.values()) {
+		for ( Model.ListRoom r : ListRoom.values()) {
 			cRooms.addItem(r.getValue());
 		}
 		cHours.addItem(" ");

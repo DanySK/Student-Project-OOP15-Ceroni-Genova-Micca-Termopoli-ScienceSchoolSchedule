@@ -1,6 +1,6 @@
 package Model;
 
-public enum Class {
+public enum ListRoom {
     MAGNA("Aula Magna Vicolo Carbonaro"),
     MAGNA_PSICO("Aula Magna Psicologia"),
     A("Aula A"),
@@ -16,7 +16,7 @@ public enum Class {
      
      private final String y;
      
-     private Class(String l){
+     private ListRoom(String l){
          this.y = l;
      }
      
