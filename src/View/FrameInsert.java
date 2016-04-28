@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.WindowStateListener;
 
 import javax.swing.*;
 
@@ -12,9 +13,10 @@ public class FrameInsert {
 
 	public FrameInsert() {
 		// TODO Auto-generated constructor stub
-		this.frameInsert.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frameInsert.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.frameInsert.setVisible(true);
-		this.frameInsert.setSize(400, 500);
+		this.frameInsert.setSize(400, 180);
+		this.frameInsert.setResizable(false);
 		
 		final JPanel panelInsert = new JPanel(new GridLayout(5,2));
 		//panelInsert.setLayout(new SpringLayout());
