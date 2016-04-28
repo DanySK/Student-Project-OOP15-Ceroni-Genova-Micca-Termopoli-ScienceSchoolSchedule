@@ -107,7 +107,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
                 
             }
             for (Controller controller : allList) {
-                if (controller.getCourse().getValue().equals(p.getValue())) {
+                if (controller.getCourse().getValue().equals(p.getName())) {
                     this.byProfessor.add(controller);
                 }
             }

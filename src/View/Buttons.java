@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Component;
+
 import javax.swing.*;
 
 public class Buttons {
@@ -17,6 +19,11 @@ public class Buttons {
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
 		this.save = new JButton("SALVA");
+		
+		this.insert.addActionListener(l -> {
+			JOptionPane.showMessageDialog(null, "Inserimento nuovo elemento");
+			final FrameInsert frame = new FrameInsert();
+		});
 	}
 
 	public JButton getInsert() {

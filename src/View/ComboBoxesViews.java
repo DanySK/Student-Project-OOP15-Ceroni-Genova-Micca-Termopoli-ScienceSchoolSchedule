@@ -40,7 +40,7 @@ public class ComboBoxesViews {
 		}
 		cProfessor.addItem(" ");
 		for ( Model.ListProfessor p : ListProfessor.values()){
-			cProfessor.addItem(p.getValue());
+			cProfessor.addItem(p.getName());
 		}
 		cCorses.addItem(" ");
 		for ( Model.ListCourses c : ListCourses.values()){
