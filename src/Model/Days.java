@@ -1,11 +1,11 @@
 package Model;
 
 public enum Days {
-        MONDAY(0, "LunedÃ¬"),
-        TUESDAY(1, "MartedÃ¬"), 
-        WEDNESDAY(2, "MercoledÃ¬"), 
-        THURSDAY(3, "GiovedÃ¬"), 
-        FRIDAY(4, "VenerdÃ¬");
+        MONDAY(0, "Lunedì"),
+        TUESDAY(1, "Martedì"), 
+        WEDNESDAY(2, "Mercoledì"), 
+        THURSDAY(3, "Giovedì"), 
+        FRIDAY(4, "Venerdì");
     
     private final Integer y;
     private final String s;
