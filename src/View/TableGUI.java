@@ -9,7 +9,7 @@ public class TableGUI extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = -782099090803983602L;
 
-	private static int COLUMNS = 11;
+	private static int COLUMNS = 7;
 	private static int ROWS = 67;
 	
 	public TableGUI() {

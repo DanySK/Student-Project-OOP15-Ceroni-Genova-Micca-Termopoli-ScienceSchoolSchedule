@@ -2,46 +2,74 @@ package View;
 
 import javax.swing.*;
 
+import Model.Class;
+import Model.Days;
+import Model.Hours;
+import Model.ListCourses;
+import Model.ListProfessor;
+
 public class ComboBoxesViews {
 	
-	private final JComboBox cDays;
-	private final JComboBox cRooms;
-	private final JComboBox cHours;
-	private final JComboBox cProfessor;
-	private final JComboBox cCorses;
-	private final JComboBox cExams;
+	private final JComboBox<String> cDays;
+	private final JComboBox<String> cRooms;
+	private final JComboBox<String> cHours;
+	private final JComboBox<String> cProfessor;
+	private final JComboBox<String> cCorses;
+	private final JComboBox<String> cExams;
 
 	public ComboBoxesViews() {
 		// TODO Auto-generated constructor stub
-		this.cDays = new JComboBox();
-		this.cRooms = new JComboBox();
-		this.cHours = new JComboBox();
-		this.cProfessor = new JComboBox();
-		this.cCorses = new JComboBox();
-		this.cExams = new JComboBox();
+		this.cDays = new JComboBox<String>();
+		this.cRooms = new JComboBox<String>();
+		this.cHours = new JComboBox<String>();
+		this.cProfessor = new JComboBox<String>();
+		this.cCorses = new JComboBox<String>();
+		this.cExams = new JComboBox<String>();
+		
+		cDays.addItem(" ");
+		for ( Model.Days d : Days.values()) {
+			cDays.addItem(d.getString());
+		}
+		cRooms.addItem(" ");
+		for ( Model.Class r : Class.values()) {
+			cRooms.addItem(r.getValue());
+		}
+		cHours.addItem(" ");
+		for ( Model.Hours h : Hours.values()) {
+			cHours.addItem(h.getValue());
+		}
+		cProfessor.addItem(" ");
+		for ( Model.ListProfessor p : ListProfessor.values()){
+			cProfessor.addItem(p.getValue());
+		}
+		cCorses.addItem(" ");
+		for ( Model.ListCourses c : ListCourses.values()){
+			cCorses.addItem(c.getValue());
+		}
+		
 	}
 
-	public JComboBox getcDays() {
+	public JComboBox<String> getcDays() {
 		return cDays;
 	}
 
-	public JComboBox getcRooms() {
+	public JComboBox<String> getcRooms() {
 		return cRooms;
 	}
 
-	public JComboBox getcHours() {
+	public JComboBox<String> getcHours() {
 		return cHours;
 	}
 
-	public JComboBox getcProfessor() {
+	public JComboBox<String> getcProfessor() {
 		return cProfessor;
 	}
 
-	public JComboBox getcCorses() {
+	public JComboBox<String> getcCorses() {
 		return cCorses;
 	}
 
-	public JComboBox getcExams() {
+	public JComboBox<String> getcExams() {
 		return cExams;
 	}
 

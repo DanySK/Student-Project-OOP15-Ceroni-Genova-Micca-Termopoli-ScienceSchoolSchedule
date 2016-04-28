@@ -20,9 +20,17 @@ public class PanelButton {
 		this.panelButton.setBackground(Color.pink);
 		
 		this.cnst.gridy = 1;
-		this.setCnstXZero();
 		this.cnst.fill = GridBagConstraints.BOTH;
 		
+		this.setCnstXOne();
+		this.panelButton.add(this.buttons.getInsert(),cnst);
+		this.incrementCnstY();
+		this.incrementCnstY();
+		this.incrementCnstY();
+		this.panelButton.add(this.buttons.getGeneralView(),cnst);
+		
+		this.setCnstXZero();
+		this.incrementCnstY();
 		this.panelButton.add(this.labels.getViews(), cnst);
 		
 		this.incrementCnstY();
