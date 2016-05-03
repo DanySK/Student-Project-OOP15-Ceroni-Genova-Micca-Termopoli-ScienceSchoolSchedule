@@ -67,4 +67,8 @@ public enum ListProfessor {
      public String getSurname(){
          return this.surname;
      }
+     
+     public String toString(){
+         return this.surname+" "+this.name;
+     }
 }
