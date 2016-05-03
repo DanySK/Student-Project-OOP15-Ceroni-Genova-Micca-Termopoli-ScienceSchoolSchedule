@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class FrameInsert {
 	
-	private final JFrame frameInsert = new JFrame("Dialogo di inserimento");
+	private final JFrame frameInsert = new JFrame("Inserimento nuovo elemento");
 	private ComboBoxesViews combo = new ComboBoxesViews();
 	private Labels label = new Labels();
 
@@ -15,11 +15,10 @@ public class FrameInsert {
 		// TODO Auto-generated constructor stub
 		this.frameInsert.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.frameInsert.setVisible(true);
-		this.frameInsert.setSize(400, 180);
+		this.frameInsert.setSize(550, 180);
 		this.frameInsert.setResizable(false);
 		
 		final JPanel panelInsert = new JPanel(new GridLayout(5,2));
-		//panelInsert.setLayout(new SpringLayout());
 		
 		panelInsert.add(this.label.getlProfessor());
 		panelInsert.add(this.combo.getcProfessor());

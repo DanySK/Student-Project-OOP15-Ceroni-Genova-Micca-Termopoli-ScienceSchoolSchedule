@@ -21,7 +21,7 @@ public class Buttons {
 		this.save = new JButton("SALVA");
 		
 		this.insert.addActionListener(l -> {
-			JOptionPane.showMessageDialog(null, "Inserimento nuovo elemento");
+			//JOptionPane.showMessageDialog(null, "Inserimento nuovo elemento");
 			final FrameInsert frame = new FrameInsert();
 		});
 	}
