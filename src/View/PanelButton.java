@@ -12,6 +12,7 @@ public class PanelButton {
 	private final Labels labels = new Labels();
 	private final ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	private final GridBagConstraints cnst = new GridBagConstraints();
+	private final PanelLegend panelLegend = new PanelLegend();
 	
 	public PanelButton() {
 		// TODO Auto-generated constructor stub
@@ -75,6 +76,8 @@ public class PanelButton {
 		this.panelButton.add(this.buttons.getRedo(), cnst);
 		this.incrementCnstY();
 		this.panelButton.add(this.buttons.getSave(), cnst);
+		this.incrementCnstY();
+		this.panelButton.add(panelLegend.getPanelLegend(), cnst);
 		
 		
 	}

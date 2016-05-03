@@ -10,12 +10,13 @@ public class FrameInsert {
 	private final JFrame frameInsert = new JFrame("Inserimento nuovo elemento");
 	private ComboBoxesViews combo = new ComboBoxesViews();
 	private Labels label = new Labels();
+	
 
 	public FrameInsert() {
 		// TODO Auto-generated constructor stub
 		this.frameInsert.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.frameInsert.setVisible(true);
-		this.frameInsert.setSize(550, 180);
+		this.frameInsert.setSize(400, 180);
 		this.frameInsert.setResizable(false);
 		
 		final JPanel panelInsert = new JPanel(new GridLayout(5,2));
@@ -32,9 +33,12 @@ public class FrameInsert {
 		panelInsert.add(this.label.getlHours());
 		panelInsert.add(this.combo.getcHours());
 		
-		panelInsert.add(new JButton("Applica"), BorderLayout.SOUTH);
+		final JPanel panelButton= new JPanel(new FlowLayout(FlowLayout.CENTER));
+		final JButton apply= new JButton("Applica");
+		panelButton.add(apply);
 		
 		this.frameInsert.add(panelInsert);
+		this.frameInsert.add(panelButton, BorderLayout.SOUTH);
 	}
 
 }
