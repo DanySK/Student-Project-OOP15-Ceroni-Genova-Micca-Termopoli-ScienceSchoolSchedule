@@ -7,17 +7,17 @@ import java.util.Set;
 
 public enum Type {
 
-    FIRST_YEAR("1LT : 1°anno laurea triennale", Color.BLUE), 
-    SECOND_YEAR("2° anno laurea triennale, 2LT", Color.CYAN), 
-    SECOND_YEAR_ENG("2° anno laurea ingegneria informatica, 2LTI", Color.green), 
-    SECOND_YEAR_SCI("2° anno laurea scienze e tecnologie informatiche, 2LTS", Color.magenta), 
-    THIRD_YEAR("3° anno laurea triennale, 3LT", Color.pink), 
-    THIRD_YEAR_OPT("3° anno opzionali, 3LTO", Color.ORANGE), 
-    THIRD_YEAR_ENG("3° anno laurea ingegneria informatica, ", Color.WHITE), 
-    THIRD_YEAR_SCI("3° anno scienze e tecnologie informariche", Color.RED), 
-    FOURTH_YEAR("4° anno laurea magistrale", Color.YELLOW), 
-    FIFTH_YEAR("5° anno laurea magistrale", Color.darkGray), 
-    FIFTH_YEAR_OPT("5° anno opzionali", Color.LIGHT_GRAY);
+    FIRST_YEAR("1LT : 1°Anno Laurea Triennale", Color.CYAN), 
+    SECOND_YEAR("2LT : 2°Anno Laurea Triennale", Color.YELLOW), 
+    SECOND_YEAR_ENG("2LTI : 2°Anno Laurea Triennale Ingegneria", Color.ORANGE), 
+    SECOND_YEAR_SCI("2LTS : 2°Anno Laurea Triennale Scienze", Color.ORANGE), 
+    THIRD_YEAR("3LT : 3°Anno Laurea Triennale", Color.PINK), 
+    THIRD_YEAR_OPT("3LTO : 3°Anno Laurea Triennale Opzionali", Color.RED), 
+    THIRD_YEAR_ENG("3LTI : 3°Anno Laurea Triennale Ingegneria", Color.MAGENTA), 
+    THIRD_YEAR_SCI("3LTS : 3°Anno Laurea Triennale Scienze", Color.MAGENTA), 
+    FOURTH_YEAR("1LM : 1°Anno Laurea Magistrale", Color.BLUE), 
+    FIFTH_YEAR("2LM : 2°Anno Laurea Magistrale", Color.GRAY), 
+    FIFTH_YEAR_OPT("2LMO : 2°Anno Laurea Magistrale Opzionali", Color.GREEN);
 
     private final String character;
     private final Color color;
