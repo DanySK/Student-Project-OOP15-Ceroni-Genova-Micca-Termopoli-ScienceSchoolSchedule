@@ -12,13 +12,12 @@ public class PersonImpl implements Person {
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
         return this.name;
     }
 
     @Override
     public String getSurname() {
-        // TODO Auto-generated method stub
+        
         return this.surname;
     }
 

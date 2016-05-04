@@ -1,21 +1,29 @@
 package Model;
 
-import java.util.Map;
-
 public class CoursesImpl implements Courses{
-
-    private Map<String, Type> map; 
+    private String name;
+    private Type type;
     
     public CoursesImpl(final String name, Type typology){
-        this.map.put(name, typology);
+        this.name=name;
+        this.type= typology;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     } 
     
-    public String getName(String name) {
-        String tmp = null;
-        for (String i: map.keySet()) {
-           if(i.equals(name))
-               tmp=i;
-        }
-        return tmp;
-    }
+
 }

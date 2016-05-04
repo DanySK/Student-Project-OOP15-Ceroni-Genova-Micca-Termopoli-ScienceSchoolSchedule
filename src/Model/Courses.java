@@ -1,5 +1,11 @@
 package Model;
 
 public interface Courses {
-    String getName(String name);
+    public String getName();
+
+    public void setName(String name);
+
+    public Type getType();
+
+    public void setType(Type type);
 }

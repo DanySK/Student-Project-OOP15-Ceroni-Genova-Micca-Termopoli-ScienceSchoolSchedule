@@ -2,8 +2,9 @@ package Model;
 
 public interface Person {
         
-    String getName();
+    public String getName();
     
-    String getSurname();
-
+    public String getSurname();
+    public void setName(String name);
+    public void setSurname(String surname);
 }

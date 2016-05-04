@@ -8,10 +8,8 @@ public class RoomImpl implements Room {
         this.nameRoom = name;
     }
 
-
-    @Override
     public String getNameRoom() {
-        // TODO Auto-generated method stub
+        
         return this.nameRoom;
     }
 

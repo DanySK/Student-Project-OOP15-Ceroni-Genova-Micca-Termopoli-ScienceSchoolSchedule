@@ -9,7 +9,7 @@ public enum ListCourses {
     ALGEBRA_E_GEOMETRIA(Type.FIRST_YEAR, "Algebra e Geometria"),
     ALGORITMI_E_STRUTTURE_DATI(Type.FIRST_YEAR, "Algoritmi e Strutture Dati"),
     ARCHITETTURA_DEGLI_ELABORATORI(Type.FIRST_YEAR, "Architettura degli  Elaboratori"),
-    
+   
     //Second Year 
     PROGRAMMAZIONE_AD_OGGETTI(Type.SECOND_YEAR, "Programmazione ad Oggetti"),
     SISTEMI_OPERATIVI(Type.SECOND_YEAR, "Sistemi Operativi"),
