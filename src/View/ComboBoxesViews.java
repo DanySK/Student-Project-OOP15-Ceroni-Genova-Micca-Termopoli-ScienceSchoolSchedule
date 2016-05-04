@@ -40,11 +40,13 @@ public class ComboBoxesViews {
 		}
 		cProfessor.addItem(" ");
 		for ( Model.ListProfessor p : ListProfessor.values()){
-			cProfessor.addItem(p.getName()+p.getSurname());
+			cProfessor.addItem(p.toString());
 		}
 		cCorses.addItem(" ");
 		for ( Model.ListCourses c : ListCourses.values()){
-			cCorses.addItem(c.getValue());
+			//if(cProfessor.getSelectedItem()){
+			    cCorses.addItem(c.getValue());
+			//}
 		}
 		
 	}
