@@ -3,12 +3,12 @@ package Model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Professor implements ProfessorInterface {
+public class ProfessorImpl implements Professor {
 
     private Person prof;
     private Set<ListCourses> courses = new HashSet<>();
 
-    public Professor(Person prof, Set<ListCourses> courses) {
+    public ProfessorImpl(Person prof, Set<ListCourses> courses) {
         this.prof = prof;
         this.courses = courses;
 
