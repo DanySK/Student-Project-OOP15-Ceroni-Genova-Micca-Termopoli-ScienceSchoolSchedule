@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ProfessorImpl extends PersonImpl implements Professor {
-
   
     /**
      * 
@@ -19,7 +18,6 @@ public class ProfessorImpl extends PersonImpl implements Professor {
         super(name , surname);
         this.prof = prof;
         this.courses = courses;
-
     }
 
     public Person getPerson() {
@@ -41,5 +39,4 @@ public class ProfessorImpl extends PersonImpl implements Professor {
     public void addCourse(ListCourses c) {
         this.courses.add(c);
     }
-
 }

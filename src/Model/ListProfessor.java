@@ -106,7 +106,6 @@ public enum ListProfessor {
              list.add(this.courses1);
          if(this.courses2!=null)
              list.add(this.courses2);
-
          return list;
      }
      
