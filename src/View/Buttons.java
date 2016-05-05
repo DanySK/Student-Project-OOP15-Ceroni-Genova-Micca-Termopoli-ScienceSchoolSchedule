@@ -1,7 +1,5 @@
 package View;
 
-import java.awt.Component;
-
 import javax.swing.*;
 
 public class Buttons {
@@ -11,6 +9,8 @@ public class Buttons {
 	private final JButton undo;
 	private final JButton redo;
 	private final JButton save;
+	private FrameInsert frame;
+	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	
 	public Buttons() {
 		// TODO Auto-generated constructor stub
@@ -21,8 +21,11 @@ public class Buttons {
 		this.save = new JButton("SALVA");
 		
 		this.insert.addActionListener(l -> {
-			//JOptionPane.showMessageDialog(null, "Inserimento nuovo elemento");
-			final FrameInsert frame = new FrameInsert();
+			frame = new FrameInsert();
+		});
+		
+		this.generalView.addActionListener(l -> {
+			
 		});
 	}
 
