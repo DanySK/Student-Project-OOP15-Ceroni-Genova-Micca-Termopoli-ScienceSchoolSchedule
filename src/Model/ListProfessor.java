@@ -1,7 +1,7 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public enum ListProfessor {
     
@@ -98,15 +98,15 @@ public enum ListProfessor {
                  :this.courses.getValue()+" "+this.courses1.getValue()+" "+this.courses2.getValue();
      }
      
-     public List<ListCourses> getCourses() {
-         List<ListCourses> list = new ArrayList<>();
+     public Set<ListCourses> getCourses() {
+         Set<ListCourses> set = new HashSet<>();
          
-         list.add(this.courses);
+         set.add(this.courses);
          if(this.courses1!=null)
-             list.add(this.courses1);
+             set.add(this.courses1);
          if(this.courses2!=null)
-             list.add(this.courses2);
-         return list;
+             set.add(this.courses2);
+         return set;
      }
      
      public String toString(){
