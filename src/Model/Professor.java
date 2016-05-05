@@ -2,11 +2,11 @@ package Model;
 
 import java.util.Set;
 
-public interface Professor {
+public interface Professor{
 
-    public Person getProf();
+    public Person getPerson();
     
-    public void setProf(Person prof);
+    public void setPerson(Person prof);
     
     public Set<ListCourses> getCourses();
 

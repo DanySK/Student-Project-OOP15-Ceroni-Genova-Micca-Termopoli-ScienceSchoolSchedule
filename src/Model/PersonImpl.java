@@ -1,7 +1,13 @@
 package Model;
 
-public class PersonImpl implements Person {
+import java.io.Serializable;
 
+public class PersonImpl implements Person,Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     protected String name;
     protected String surname;
 
