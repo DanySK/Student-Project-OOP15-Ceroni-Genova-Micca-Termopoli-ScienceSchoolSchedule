@@ -1,28 +1,26 @@
 package Controller;
 
-import java.util.Set;
-
+import Model.CoursesImpl;
 import Model.Hours;
-import Model.ListCourses;
-import Model.ListRoom;
-import Model.Professor;
+import Model.PersonImpl;
+import Model.RoomImpl;
 
 public interface ObjToSaveInterface {
 
-    public void setProf(Professor prof);
+    public void setPerson(PersonImpl prof);
 
-    public void setCourse(Set<ListCourses > course);
+    public void setCourse(CoursesImpl course);
 
     public void setHour(Hours hour);
 
-    public void setRoom(ListRoom room);
+    public void setRoom(RoomImpl room);
 
-    public Professor getProf();
+    public PersonImpl getPerson();
 
-    public Set<ListCourses> getCourses();
+    public CoursesImpl getCourse();
 
     public Hours getHour();
 
-    public ListRoom getRoom();
+    public RoomImpl getRoom();
 
 }

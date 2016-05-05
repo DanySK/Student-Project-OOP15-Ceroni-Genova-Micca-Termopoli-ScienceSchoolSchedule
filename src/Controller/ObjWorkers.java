@@ -11,7 +11,6 @@ import java.util.Set;
 
 import Model.ListProfessor;
 import Model.PersonImpl;
-import Model.ProfessorImpl;
 
 public class ObjWorkers implements ObjWorkersInterface {
 
@@ -41,45 +40,44 @@ public class ObjWorkers implements ObjWorkersInterface {
 
     public Set<ObjToSave> openFile() {
         int i = 1;
-        // if (new File(this.path).exists()) {
-        try {
-            FileInputStream istream = new FileInputStream(path);
-            ObjectInputStream p = new ObjectInputStream(istream);
-            ObjToSave obj;
+        if (new File(this.path).exists()) {
             try {
-                obj = (ObjToSave) p.readObject();
-                while (i < size) {
-                    if (obj instanceof ObjToSave) {
-                        this.objList.add(obj);
-                    }
+                FileInputStream istream = new FileInputStream(path);
+                ObjectInputStream p = new ObjectInputStream(istream);
+                ObjToSave obj;
+                try {
                     obj = (ObjToSave) p.readObject();
-                    i++;
+                    while (i < size) {
+                        if (obj instanceof ObjToSave) {
+                            this.objList.add(obj);
+                        }
+                        obj = (ObjToSave) p.readObject();
+                        i++;
+                    }
+                    p.close();
+                    return this.objList;
+                } catch (ClassNotFoundException | IOException e) {
+                    e.printStackTrace();
+                    return null;
                 }
-                p.close();
-                return this.objList;
-            } catch (ClassNotFoundException | IOException e) {
+
+            } catch (IOException e) {
                 e.printStackTrace();
                 return null;
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        } else {
+            this.save(createNewEmptyList());
+            return this.objList;
+
         }
 
-        /*
-         * } else { this.save(createNewEmptyList()); 
-         * return this.objList;
-         * 
-         * }
-         */
     }
 
     public Set<ObjToSave> createNewEmptyList() {
         Set<ObjToSave> tempList = new HashSet<>();
         for (ListProfessor p : ListProfessor.values()) {
-            tempList.add(new ObjToSave(new ProfessorImpl(new PersonImpl(p.getName(), p.getSurname()), p.getCourses()),
-                    null, null));
+            tempList.add(new ObjToSave(new PersonImpl(p.getName(), p.getSurname()), null, null, null, null));
         }
         return tempList;
 

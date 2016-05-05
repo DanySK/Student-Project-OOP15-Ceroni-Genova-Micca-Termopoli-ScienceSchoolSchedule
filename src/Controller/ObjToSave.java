@@ -1,12 +1,12 @@
 package Controller;
 
 import java.io.Serializable;
-import java.util.Set;
 
+import Model.CoursesImpl;
+import Model.Days;
 import Model.Hours;
-import Model.ListCourses;
-import Model.ListRoom;
-import Model.Professor;
+import Model.PersonImpl;
+import Model.RoomImpl;
 
 public class ObjToSave implements ObjToSaveInterface, Serializable {
 
@@ -14,22 +14,26 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
      * 
      */
     private static final long serialVersionUID = 1L;
-    private Professor prof = null;
     private Hours hour = null;
-    private ListRoom room = null;
+    private Days day = null;
+    private CoursesImpl course = null;
+    private RoomImpl room = null;
+    private PersonImpl prof = null;
 
-    public ObjToSave(Professor prof, Hours hour, ListRoom room) {
-        this.prof = prof;
+    public ObjToSave(PersonImpl p, CoursesImpl c, Days d, Hours hour, RoomImpl room) {
+        this.prof = p;
+        this.course = c;
         this.hour = hour;
+        this.day = d;
         this.room = room;
     }
 
-    public void setProf(Professor prof) {
+    public void setPerson(PersonImpl prof) {
         this.prof = prof;
     }
 
-    public void setCourse(Set<ListCourses> course) {
-        this.prof.setCourses(course);
+    public void setCourse(CoursesImpl course) {
+        this.course = course;
 
     }
 
@@ -38,28 +42,37 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
 
     }
 
-    public void setRoom(ListRoom room) {
+    public void setRoom(RoomImpl room) {
         this.room = room;
     }
 
-    public Professor getProf() {
+    public PersonImpl getPerson() {
         return this.prof;
     }
 
-    public Set<ListCourses> getCourses() {
-        return this.prof.getCourses();
+    public CoursesImpl getCourse() {
+        return this.course;
     }
 
     public Hours getHour() {
         return this.hour;
     }
 
-    public ListRoom getRoom() {
+    public RoomImpl getRoom() {
         return this.room;
     }
 
     public String toString() {
-        return "prof: " + this.prof.getPerson().getName()+" "+this.prof.getPerson().getSurname() + " Corso :" + this.prof.getCourses()+ "Ora: " + this.hour + " Stanza: " + this.room;
+        return "prof: " + this.prof.getName() + " " + this.prof.getSurname() + " Corso :" + this.course + "Ora: "
+                + this.hour + " Stanza: " + this.room;
+    }
+
+    public Days getDay() {
+        return day;
+    }
+
+    public void setDay(Days day) {
+        this.day = day;
     }
 
 }
