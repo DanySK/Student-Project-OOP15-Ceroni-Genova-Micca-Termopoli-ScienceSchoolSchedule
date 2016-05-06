@@ -7,10 +7,12 @@ import java.util.Map;
 import java.util.Set;
 
 import Model.Days;
+import Model.Professor;
 
 public class WorkWithXlsx {
 
     private static ObjWorkersInterface model = new ObjWorkers();
+    private static ProfessorControllerInterface profContr = new ProfessorController();
     private static ExportToXlsxInterface modelxls;
 
     public static void main(String[] args) {
@@ -30,9 +32,24 @@ public class WorkWithXlsx {
             System.out.println(i + " " + ob1.toString());
             i++;
         }
+        //prova con prof
+        Set<Professor> objP = new HashSet<>();
+        Set<Professor> obj1P = new HashSet<>();
+        objP = profContr.createNewEmptyList();
+        profContr.save(objP);
+        obj1P = profContr.openFile();
+        System.out.println("2°" + obj1P);
+
+        int x = 1;
+        for (Professor ob1 : obj1P) {
+            System.out.println(x + " " + ob1.toString());
+            x++;
+        }
+        
+        
         
       //for export in xls type
-        ArrayList<String> string = new ArrayList<>();
+       /* ArrayList<String> string = new ArrayList<>();
         for (int y = 0; y < 10; y++) {
             string.add(Integer.toString(y));
         }
@@ -47,6 +64,7 @@ public class WorkWithXlsx {
         }
 
         modelxls.save(finalMap, finalMap);
-        System.out.println(finalMap);
+        System.out.println(finalMap);*/
+        
     }
 }

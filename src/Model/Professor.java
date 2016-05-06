@@ -13,4 +13,5 @@ public interface Professor{
     public void setCourses(Set<ListCourses> courses);
 
     public void addCourse(ListCourses c);
+    public String toString();
 }

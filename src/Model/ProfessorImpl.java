@@ -39,4 +39,9 @@ public class ProfessorImpl extends PersonImpl implements Professor {
     public void addCourse(ListCourses c) {
         this.courses.add(c);
     }
+    public String toString(){
+        
+        return "name : "+this.prof.getName()+" cognome: "+this.prof.getSurname()+" Lista cosi: "+this.courses;
+        
+    }
 }
