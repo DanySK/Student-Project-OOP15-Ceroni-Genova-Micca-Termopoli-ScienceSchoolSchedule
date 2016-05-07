@@ -1,10 +1,10 @@
 package Model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfessorImpl extends PersonImpl implements Professor {
-  
+
     /**
      * 
      */
@@ -12,10 +12,10 @@ public class ProfessorImpl extends PersonImpl implements Professor {
     private Person prof;
     private static String name;
     private static String surname;
-    private Set<ListCourses> courses = new HashSet<>();
+    private List<Courses> courses = new ArrayList<>();
 
-    public ProfessorImpl(Person prof, Set<ListCourses> courses) {
-        super(name , surname);
+    public ProfessorImpl(Person prof, List<Courses> courses) {
+        super(name, surname);
         this.prof = prof;
         this.courses = courses;
     }
@@ -28,20 +28,31 @@ public class ProfessorImpl extends PersonImpl implements Professor {
         this.prof = prof;
     }
 
-    public Set<ListCourses> getCourses() {
+    public List<Courses> getCourses() {
         return this.courses;
     }
 
-    public void setCourses(Set<ListCourses> courses) {
+    public void setCourses(List<Courses> courses) {
         this.courses = courses;
     }
 
-    public void addCourse(ListCourses c) {
+    public void addCourse(Courses c) {
         this.courses.add(c);
     }
-    public String toString(){
-        
-        return "name : "+this.prof.getName()+" cognome: "+this.prof.getSurname()+" Lista cosi: "+this.courses;
-        
+
+    private List<String> toStringCorsi() {
+        List<String> tmp = new ArrayList<>();
+        for (Courses courses2 : courses) {
+            tmp.add(courses2.getName());
+        }
+        return tmp;
+
+    }
+
+    public String toString() {
+
+        return "name : " + this.prof.getName() + " cognome: " + this.prof.getSurname() + " Lista cosi: "
+                + this.toStringCorsi();
+
     }
 }

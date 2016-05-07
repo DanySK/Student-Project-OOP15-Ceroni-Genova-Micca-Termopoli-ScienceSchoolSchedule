@@ -1,15 +1,14 @@
 package Controller;
 
-import java.util.Set;
-
-import Model.Professor;
+import java.util.List;
 
 public interface ProfessorControllerInterface {
 
-    void save(Set<Professor> obj);
+    public void save(List<Object> listObjToSave , List<Object> listProf);
 
-    Set<Professor> openFile();
+    public List<List<Object>> openFile();
 
-    Set<Professor> createNewEmptyList();
+    public List<Object> getListProfLinkedCourses();
 
+    public List<Object> getListObjToSave();
 }

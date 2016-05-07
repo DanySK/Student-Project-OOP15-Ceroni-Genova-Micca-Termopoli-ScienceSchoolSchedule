@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.Set;
+import java.util.List;
 
 public interface Professor{
 
@@ -8,10 +8,10 @@ public interface Professor{
     
     public void setPerson(Person prof);
     
-    public Set<ListCourses> getCourses();
+    public List<Courses> getCourses();
 
-    public void setCourses(Set<ListCourses> courses);
+    public void setCourses(List<Courses> courses);
 
-    public void addCourse(ListCourses c);
+    public void addCourse(Courses c);
     public String toString();
 }

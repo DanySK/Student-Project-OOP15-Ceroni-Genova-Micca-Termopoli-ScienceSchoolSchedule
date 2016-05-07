@@ -1,12 +1,18 @@
 package Model;
 
-public class CoursesImpl implements Courses{
+import java.io.Serializable;
+
+public class CoursesImpl implements Courses, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private String name;
     private Type type;
-    
-    public CoursesImpl(final String name, Type typology){
-        this.name=name;
-        this.type= typology;
+
+    public CoursesImpl(final String name, Type typology) {
+        this.name = name;
+        this.type = typology;
     }
 
     public String getName() {
@@ -23,7 +29,6 @@ public class CoursesImpl implements Courses{
 
     public void setType(Type type) {
         this.type = type;
-    } 
-    
+    }
 
 }
