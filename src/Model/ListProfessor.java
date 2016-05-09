@@ -53,7 +53,7 @@ public enum ListProfessor {
     SALOMONI("Salomoni", "Paola", ListCourses.TECNOLOGIE_WEB, ListCourses.SISTEMI_MULTIMEDIALI),
     STRAPPAVECCIA("Strappaveccia", "Francesco", ListCourses.PROGRAMMAZIONE),
     VIROLI("Viroli", "Mirko", ListCourses.PROGRAMMAZIONE_AD_OGGETTI,  ListCourses.INGEGNERIA_DEI_SISTEMI_SOFTWARE_ADATTATIVI_COMPLESSI),
-    C_L_A("", "", ListCourses.INGLESE_B1, ListCourses.INGLESE_B2);  
+    C_L_A("Cla", "Cla", ListCourses.INGLESE_B1, ListCourses.INGLESE_B2);  
     
      private final String name;
      private final String surname;

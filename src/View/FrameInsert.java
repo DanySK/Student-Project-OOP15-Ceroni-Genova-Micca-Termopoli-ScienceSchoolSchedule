@@ -5,6 +5,8 @@ import java.awt.event.WindowStateListener;
 
 import javax.swing.*;
 
+import Controller.ObjToSave;
+
 public class FrameInsert {
 	
 	private final JFrame frameInsert = new JFrame("Inserimento nuovo elemento");
