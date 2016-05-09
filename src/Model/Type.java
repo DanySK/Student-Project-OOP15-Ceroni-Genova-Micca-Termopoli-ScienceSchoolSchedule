@@ -16,7 +16,7 @@ public enum Type {
     THIRD_YEAR_ENG("3LTI : 3°Anno Laurea Triennale Ingegneria", Color.MAGENTA), 
     THIRD_YEAR_SCI("3LTS : 3°Anno Laurea Triennale Scienze", Color.MAGENTA), 
     FOURTH_YEAR("1LM : 1°Anno Laurea Magistrale", Color.LIGHT_GRAY), 
-    FIFTH_YEAR("2LM : 2°Anno Laurea Magistrale", Color.GRAY), 
+    FIFTH_YEAR("2LM : 2°Anno Laurea Magistrale", new Color(173,223,173)), 
     FIFTH_YEAR_OPT("2LMO : 2°Anno Laurea Magistrale Opzionali", Color.GREEN);
 
     private final String character;

@@ -14,7 +14,6 @@ public class ComboBoxesViews {
     private final JComboBox<String> cHours;
     private final JComboBox<String> cProfessor;
     private final JComboBox<String> cCorses;
-    private final JComboBox<String> cExams;
 
     public ComboBoxesViews() {
         // TODO Auto-generated constructor stub
@@ -23,7 +22,6 @@ public class ComboBoxesViews {
         this.cHours = new JComboBox<String>();
         this.cProfessor = new JComboBox<String>();
         this.cCorses = new JComboBox<String>();
-        this.cExams = new JComboBox<String>();
 
         cDays.addItem(" ");
         for (Model.Days d : Days.values()) {
@@ -54,15 +52,10 @@ public class ComboBoxesViews {
                         for (Model.ListCourses cors : c.getCourses()) {
                             cCorses.addItem(cors.getValue());
                         }
-
                     }
-
                 }
-
             }
-
         });
-
     }
 
     public JComboBox<String> getcDays() {
@@ -84,9 +77,4 @@ public class ComboBoxesViews {
     public JComboBox<String> getcCorses() {
         return cCorses;
     }
-
-    public JComboBox<String> getcExams() {
-        return cExams;
-    }
-
 }
