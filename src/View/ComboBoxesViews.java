@@ -1,9 +1,13 @@
 package View;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.swing.JComboBox;
 
 import Model.Days;
 import Model.Hours;
+import Model.ListCourses;
 import Model.ListProfessor;
 import Model.ListRoom;
 
@@ -14,6 +18,7 @@ public class ComboBoxesViews {
     private final JComboBox<String> cHours;
     private final JComboBox<String> cProfessor;
     private final JComboBox<String> cCorses;
+    private final Set<JComboBox<String>> setCombo;
 
     public ComboBoxesViews() {
         // TODO Auto-generated constructor stub
@@ -22,7 +27,14 @@ public class ComboBoxesViews {
         this.cHours = new JComboBox<String>();
         this.cProfessor = new JComboBox<String>();
         this.cCorses = new JComboBox<String>();
-
+        
+        this.setCombo = new HashSet<>();
+        this.setCombo.add(cDays);
+        this.setCombo.add(cRooms);
+        this.setCombo.add(cHours);
+        this.setCombo.add(cProfessor);
+        this.setCombo.add(cCorses);
+        
         cDays.addItem(" ");
         for (Model.Days d : Days.values()) {
             cDays.addItem(d.getString());
@@ -39,23 +51,39 @@ public class ComboBoxesViews {
         for (Model.ListProfessor p : ListProfessor.values()) {
             cProfessor.addItem(p.toString());
         }
-        cProfessor.addActionListener(l -> {
+        
+    }
+    
+    public void LisenerCombo(JComboBox<String> comboProf, JComboBox<String> comboCorses){
+    	comboProf.addActionListener(l -> {
 
             for (Model.ListProfessor c : ListProfessor.values()) {
-                if (cProfessor.getSelectedItem() == null) {
-                    cCorses.setEnabled(false);
+                if (comboProf.getSelectedItem() == null) {
+                	comboCorses.setEnabled(false);
                 } else {
 
-                    cCorses.setEnabled(true);
-                    if (cProfessor.getSelectedItem().equals(c.toString())) {
-                        cCorses.removeAllItems();
+                	comboCorses.setEnabled(true);
+                    if (comboProf.getSelectedItem().equals(c.toString())) {
+                    	comboCorses.removeAllItems();
                         for (Model.ListCourses cors : c.getCourses()) {
-                            cCorses.addItem(cors.getValue());
+                        	comboCorses.addItem(cors.getValue());
                         }
                     }
                 }
             }
         });
+    }
+    
+    public void FillCombobox(JComboBox<String> comboCorses) {
+    	
+    	 cCorses.addItem(" ");
+         for (Model.ListCourses c : ListCourses.values()) {
+        	 cCorses.addItem(c.getValue());
+         }
+    }
+    
+    public Set<JComboBox<String>> getSetCombo(){
+    	return this.setCombo;
     }
 
     public JComboBox<String> getcDays() {

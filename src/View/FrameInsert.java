@@ -35,6 +35,8 @@ public class FrameInsert {
 		panelInsert.add(this.label.getlHours());
 		panelInsert.add(this.combo.getcHours());
 		
+		this.combo.LisenerCombo(this.combo.getcProfessor(), this.combo.getcCorses());
+		
 		final JPanel panelButton= new JPanel(new FlowLayout(FlowLayout.CENTER));
 		final JButton apply= new JButton("Applica");
 		panelButton.add(apply);

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -67,6 +68,30 @@ public class PanelButton {
         this.panelButton.add(this.buttons.getSave(), cnst);
         this.incrementCnstY();
         this.panelButton.add(panelLegend.getPanelLegend(), cnst);
+        /*
+         *  DA CONCORDARE CON IL PROF SE METTERLO O MENO
+        this.comboBoxes.LisenerCombo(this.comboBoxes.getcProfessor(), this.comboBoxes.getcCorses());
+        */
+        
+        this.comboBoxes.FillCombobox(this.comboBoxes.getcCorses());
+        
+        this.ClearAllCombo(this.comboBoxes.getcDays());
+        this.ClearAllCombo(this.comboBoxes.getcHours());
+        this.ClearAllCombo(this.comboBoxes.getcCorses());
+        this.ClearAllCombo(this.comboBoxes.getcProfessor());
+        this.ClearAllCombo(this.comboBoxes.getcRooms());
+    }
+    
+    private void ClearAllCombo(JComboBox<String> combo){
+    	combo.addActionListener(l -> {
+    		for (JComboBox<String> jComboBox : this.comboBoxes.getSetCombo()){
+    			if(!jComboBox.equals(combo)){
+    				if(!jComboBox.getSelectedItem().equals(" ")){
+        				jComboBox.setSelectedIndex(0);
+        			}
+    			}
+			}
+    	});
     }
 
     public JPanel getPanelButton() {
