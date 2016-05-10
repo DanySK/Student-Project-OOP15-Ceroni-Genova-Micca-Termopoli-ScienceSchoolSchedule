@@ -19,31 +19,11 @@ public class TableGUI extends AbstractTableModel{
 	private static int ROWS = Days.values().length*ListRoom.values().length;
 	
 	private Map<Dimension, Object> dataTable = new HashMap<>();
+
+	private Object table;
 	
 	public TableGUI() {
-		// TODO Auto-generated constructor stub
-		/*final Set<String> setHours = new TreeSet<>();
-		for (Hours hours : Hours.values()) {
-			setHours.add(hours.getValue());
-		}
 		
-		final Set<String> setHours = new TreeSet<>();
-		for (Hours hours : Hours.values()) {
-			setHours.add(hours.getValue());
-		}
-		this.table.setValueAt(null, 0, 0);
-		int i = 1;
-		for (String s : setHours){
-			this.table.setValueAt(s, 0, i++);
-		}
-		
-		System.out.println(setHours.toString());
-		for (Days days : Days.values()) {
-			this.dataTable.put(days.getString(), setHours);
-			for (ListRoom room : ListRoom.values()) {
-				this.dataTable.put(room.getValue(), new TreeSet<>());
-			}
-		}*/
 	}
 
 	@Override
