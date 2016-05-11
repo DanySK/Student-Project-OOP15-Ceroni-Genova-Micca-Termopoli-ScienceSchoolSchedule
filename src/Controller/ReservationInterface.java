@@ -5,7 +5,7 @@ import Model.Hours;
 import Model.PersonImpl;
 import Model.RoomImpl;
 
-public interface ObjToSaveInterface {
+public interface ReservationInterface {
 
     public void setPerson(PersonImpl prof);
 

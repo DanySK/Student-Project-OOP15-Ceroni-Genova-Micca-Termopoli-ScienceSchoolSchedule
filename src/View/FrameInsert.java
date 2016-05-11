@@ -5,7 +5,7 @@ import java.awt.event.WindowStateListener;
 
 import javax.swing.*;
 
-import Controller.ObjToSave;
+import Controller.Reservation;
 
 public class FrameInsert {
 	

@@ -6,10 +6,11 @@ import java.util.List;
 import Model.CoursesImpl;
 import Model.ListProfessor;
 import Model.Professor;
+import Model.Room;
 import Model.Type;
 
 public class WorkWithXlsx {
-    private static ProfessorControllerInterface profContr = new ProfessorController();
+    private static ProfessorControllerInterface profContr = new SaveController();
     private static ExportToXlsxInterface modelxls;
 
     public static void main(String[] args) {
@@ -18,11 +19,11 @@ public class WorkWithXlsx {
         List<List<Object>> lista = new ArrayList<>();
         List<Object> objProf = new ArrayList<>();
         List<Object> objTo = new ArrayList<>();
-        
-        
+        List<Room> objRoom = new ArrayList<>();
+
         lista = profContr.openFile();
         objTo = profContr.getListObjToSave();
-        objProf= profContr.getListProfLinkedCourses();
+        objProf = profContr.getListProfLinkedCourses();
         for (Object object : objProf) {
             System.out.println("1°" + object.toString());
         }
@@ -31,17 +32,25 @@ public class WorkWithXlsx {
                 ((Professor) ob).addCourse(new CoursesImpl("questo e il mio corso", Type.FIRST_YEAR));
             }
         }
-        
+
         lista.clear();
-        profContr.save(objProf,objTo);
+       
+        // la lista degli obj deve essere inserita per prima cioè posto 0
+
+        lista.add(0,objTo);
+        // la lista dei prof deve essere inserita per seconda cioè posto 1
+        lista.add(1,objProf);
+        profContr.save(lista);
+        profContr.reset();
         lista = profContr.openFile();
         objTo = profContr.getListObjToSave();
-        objProf= profContr.getListProfLinkedCourses();
+        objProf = profContr.getListProfLinkedCourses();
+        objRoom = profContr.getListRoom();
         for (Object object : objProf) {
-            if(((Professor) object).getPerson().getSurname().equals(ListProfessor.BRAVETTI.getSurname())){
+            if (((Professor) object).getPerson().getSurname().equals(ListProfessor.BRAVETTI.getSurname())) {
                 System.out.println("1°" + object.toString());
             }
-           
+
         }
 
         /*

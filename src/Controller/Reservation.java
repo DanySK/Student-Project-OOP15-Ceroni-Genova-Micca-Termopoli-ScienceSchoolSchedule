@@ -8,7 +8,7 @@ import Model.Hours;
 import Model.PersonImpl;
 import Model.RoomImpl;
 
-public class ObjToSave implements ObjToSaveInterface, Serializable {
+public class Reservation implements ReservationInterface, Serializable {
 
     /**
      * 
@@ -20,7 +20,7 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
     private RoomImpl room = null;
     private PersonImpl prof = null;
 
-    public ObjToSave(PersonImpl p, CoursesImpl c, Days d, Hours hour, RoomImpl room) {
+    public Reservation(PersonImpl p, CoursesImpl c, Days d, Hours hour, RoomImpl room) {
         this.prof = p;
         this.course = c;
         this.hour = hour;
