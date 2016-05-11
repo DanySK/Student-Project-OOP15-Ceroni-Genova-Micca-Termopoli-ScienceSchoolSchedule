@@ -1,34 +1,32 @@
 package Controller;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import Model.ListRoom;
 import Model.Days;
 import Model.ListCourses;
-import Model.ListProfessor;
+import Model.ListRoom;
+import Model.Person;
 
 public class ControllerWorkers implements ControllerWorkersInterface {
 
-    private Set<Controller> allList;
-    private Set<Controller> byProfessor;
-    private Set<Controller> byDay;
-    private Set<Controller> byClas;
-    private Set<Controller> byCourse;
+    private SaveControllerInterface controller = new SaveController();
+    private Set<Reservation> listReservation = controller.getObjToSave().getListReservation();
 
-    public void add(Controller cont) {
+    public void add(Reservation cont) {
 
-        if (!this.allList.contains(cont) && check(cont)) {
-            this.allList.add(cont);
+        if (!this.listReservation.contains(cont) && check(cont)) {
+            this.listReservation.add(cont);
         } else {
             throw new IllegalArgumentException();
         }
 
     }
 
-    private boolean check(Controller cont) {
+    private boolean check(Reservation cont) {
         boolean check = true;
-        for (Controller controller : allList) {
-            if (cont.getDay().equals(controller.getDay()) && cont.getHours().equals(controller.getHours())) {
+        for (Reservation res : listReservation) {
+            if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())) {
                 check = false;
             }
         }
@@ -36,87 +34,84 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     }
 
-
-    public Set<Controller> getAll() {
-        return this.allList;
+    public Set<Reservation> getListReservation() {
+        return this.listReservation;
     }
 
-  
-    public Set<Controller> getByDay(Days d) {
-        if(this.allList.isEmpty()){
+    public Set<Reservation> getByDay(Days d) {
+        Set<Reservation> listByDay = new HashSet<>();
+        if (this.listReservation.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            for (Controller controller : allList) {
-                if (controller.getClas().getValue().equals(d.getValue())) {
-                    this.byDay.add(controller);
+        } else {
+            for (Reservation res : listReservation) {
+                if (res.getDay().equals(d.getValue())) {
+                    listByDay.add(res);
                 }
             }
         }
-        
-        if(this.byClas.isEmpty()){
+
+        if (listByDay.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            return this.byDay;
+        } else {
+            return listByDay;
         }
     }
 
-    public Set<Controller> getByClass(ListRoom c) {
-        
-        if(this.allList.isEmpty()){
+    public Set<Reservation> getByClass(ListRoom c) {
+        Set<Reservation> listByRoom = new HashSet<>();
+        if (this.listReservation.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            for (Controller controller : allList) {
-                if (controller.getClas().getValue().equals(c.getValue())) {
-                    this.byClas.add(controller);
+        } else {
+            for (Reservation res : listReservation) {
+                if (res.getRoom().getNameRoom().equals(c.getValue())) {
+                    listByRoom.add(res);
                 }
             }
         }
-        
-        if(this.byClas.isEmpty()){
+
+        if (listByRoom.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            return this.byClas;
+        } else {
+            return listByRoom;
         }
-       
+
     }
 
-    public Set<Controller> getByCourses(ListCourses course) {
-        
-        if(this.allList.isEmpty()){
+    public Set<Reservation> getByCourses(ListCourses course) {
+        Set<Reservation> listByCourses = new HashSet<>();
+        if (this.listReservation.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            for (Controller controller : allList) {
-                if (controller.getClas().getValue().equals(course.getValue())) {
-                    this.byCourse.add(controller);
+        } else {
+            for (Reservation res : listReservation) {
+                if (res.getCourse().getName().equals(course.name())) {
+                    listByCourses.add(res);
                 }
             }
         }
-        
-        if(this.byClas.isEmpty()){
+
+        if (listByCourses.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            return this.byCourse;
+        } else {
+            return listByCourses;
         }
     }
 
-    public Set<Controller> getByProfessor(ListProfessor p) {
-        if(this.allList.isEmpty()){
+    public Set<Reservation> getByProfessor(Person p) {
+        Set<Reservation> listByProf = new HashSet<>();
+        if (this.listReservation.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            for (ListCourses c : ListCourses.values()) {
-                
-            }
-            for (Controller controller : allList) {
-                if (controller.getCourse().getValue().equals(p.getName())) {
-                    this.byProfessor.add(controller);
+        } else {
+            for (Reservation res : listReservation) {
+                if (res.getPerson().equals(p)) {
+                    listByProf.add(res);
                 }
             }
         }
-        
-        if(this.byClas.isEmpty()){
+
+        if (listByProf.isEmpty()) {
             throw new IllegalArgumentException();
-        }else{
-            return this.byProfessor;
+        } else {
+            return listByProf;
         }
     }
 

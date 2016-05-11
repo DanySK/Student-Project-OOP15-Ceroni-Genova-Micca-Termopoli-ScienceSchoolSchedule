@@ -28,7 +28,7 @@ public class SaveController implements SaveControllerInterface {
    
     private final String path = System.getProperty("user.home") + System.getProperty("file.separator")
             + "SiencesSchoolSchedul.dat";
-    ObjToSave obj = new ObjToSave(null, null, null);
+    ObjToSave obj = new ObjToSave(new HashSet<>(), new HashSet<>(), new HashSet<>());
 
     public void save(ObjToSave obj) {
         try {

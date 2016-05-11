@@ -9,7 +9,7 @@ public class WorkWithXlsx {
 
     public static void main(String[] args) {
 
-        saveContr.createNewEmptyList();
+      //  saveContr.createNewEmptyList();
         ObjToSave obj = saveContr.getObjToSave();
         
         for (Professor prof : obj.getListProfessor()) {

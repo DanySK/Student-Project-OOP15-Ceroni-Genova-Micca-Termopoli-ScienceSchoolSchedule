@@ -27,9 +27,9 @@ public class ObjToSave implements ObjToSaveInterface,Serializable  {
     
     public boolean exist(){
         if(this.listProfessor.isEmpty()|| this.listRoom.isEmpty()){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 
