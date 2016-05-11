@@ -1,13 +1,19 @@
 package Controller;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import Model.Professor;
 import Model.Room;
 
-public class ObjToSave implements ObjToSaveInterface {
+public class ObjToSave implements ObjToSaveInterface,Serializable  {
 
+   
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private Set<Room> listRoom = new HashSet<>();
     private Set<Professor> listProfessor = new HashSet<>();
     private Set<Reservation> listReservation = new HashSet<>();
@@ -17,6 +23,14 @@ public class ObjToSave implements ObjToSaveInterface {
         this.listProfessor = listProfessor;
         this.listRoom = listRoom;
 
+    }
+    
+    public boolean exist(){
+        if(this.listProfessor.isEmpty()|| this.listRoom.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public Set<Room> getListRoom() {
@@ -42,8 +56,8 @@ public class ObjToSave implements ObjToSaveInterface {
     public void setListReservation(Set<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
-    
-    public void clear(){
+
+    public void clear() {
         this.listProfessor.clear();
         this.listReservation.clear();
         this.listRoom.clear();

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,11 +23,12 @@ import Model.ProfessorImpl;
 import Model.Room;
 import Model.RoomImpl;
 
-public class ProfessorController {
+public class SaveController implements SaveControllerInterface {
 
+   
     private final String path = System.getProperty("user.home") + System.getProperty("file.separator")
             + "SiencesSchoolSchedul.dat";
-    ObjToSave obj ;
+    ObjToSave obj = new ObjToSave(null, null, null);
 
     public void save(ObjToSave obj) {
         try {
@@ -67,15 +69,13 @@ public class ProfessorController {
     }
 
     public void reset() {
-
+        this.obj.clear();
         createNewEmptyList();
         this.save(this.obj);
 
     }
 
-    private void createNewEmptyList() {
-
-        this.obj.clear();
+    public void createNewEmptyList() {
 
         Set<Professor> tempProf = new HashSet<>();
         Set<Room> tempRoom = new HashSet<>();
@@ -86,16 +86,15 @@ public class ProfessorController {
             }
             tempProf.add(new ProfessorImpl(new PersonImpl(p.getName(), p.getSurname()), c));
         }
-
+        this.obj.setListProfessor(tempProf);
         for (ListRoom p : ListRoom.values()) {
             tempRoom.add(new RoomImpl(p.name()));
         }
-        this.obj.setListProfessor(tempProf);
         this.obj.setListRoom(tempRoom);
     }
 
     public ObjToSave getObjToSave() {
-        if (this.obj.equals(null))
+        if (this.obj.exist())
             this.openFile();
         return this.obj;
 

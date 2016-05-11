@@ -1,58 +1,24 @@
 package Controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import Model.CoursesImpl;
-import Model.ListProfessor;
 import Model.Professor;
 import Model.Room;
-import Model.Type;
 
 public class WorkWithXlsx {
-    private static ProfessorControllerInterface profContr = new SaveController();
+    private static SaveControllerInterface saveContr = new SaveController();
     private static ExportToXlsxInterface modelxls;
 
     public static void main(String[] args) {
 
-        // prova con prof
-        List<List<Object>> lista = new ArrayList<>();
-        List<Object> objProf = new ArrayList<>();
-        List<Object> objTo = new ArrayList<>();
-        List<Room> objRoom = new ArrayList<>();
-
-        lista = profContr.openFile();
-        objTo = profContr.getListObjToSave();
-        objProf = profContr.getListProfLinkedCourses();
-        for (Object object : objProf) {
-            System.out.println("1°" + object.toString());
+        saveContr.createNewEmptyList();
+        ObjToSave obj = saveContr.getObjToSave();
+        
+        for (Professor prof : obj.getListProfessor()) {
+            System.out.println(prof.toString());
         }
-        for (Object ob : objProf) {
-            if (((Professor) ob).getPerson().getSurname().equals(ListProfessor.BRAVETTI.getSurname())) {
-                ((Professor) ob).addCourse(new CoursesImpl("questo e il mio corso", Type.FIRST_YEAR));
-            }
+        for (Room room : obj.getListRoom()) {
+            System.out.println(room.getNameRoom());
         }
-
-        lista.clear();
-       
-        // la lista degli obj deve essere inserita per prima cioè posto 0
-
-        lista.add(0,objTo);
-        // la lista dei prof deve essere inserita per seconda cioè posto 1
-        lista.add(1,objProf);
-        profContr.save(lista);
-        profContr.reset();
-        lista = profContr.openFile();
-        objTo = profContr.getListObjToSave();
-        objProf = profContr.getListProfLinkedCourses();
-        objRoom = profContr.getListRoom();
-        for (Object object : objProf) {
-            if (((Professor) object).getPerson().getSurname().equals(ListProfessor.BRAVETTI.getSurname())) {
-                System.out.println("1°" + object.toString());
-            }
-
-        }
-
+      //  System.out.println(obj.getListProfessor());
         /*
          * int x = 1; for (Object ob1 : obj1P) { System.out.println(x + " " +
          * ob1.toString()); x++; }

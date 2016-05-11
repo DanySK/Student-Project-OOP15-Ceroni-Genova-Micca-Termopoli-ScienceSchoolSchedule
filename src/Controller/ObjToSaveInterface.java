@@ -20,4 +20,6 @@ public interface ObjToSaveInterface {
     public void setListReservation(Set<Reservation> listReservation);
 
     public void clear();
+
+    public boolean exist();
 }
