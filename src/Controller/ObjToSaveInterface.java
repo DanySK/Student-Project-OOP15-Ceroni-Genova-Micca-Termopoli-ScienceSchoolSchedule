@@ -3,13 +3,13 @@ package Controller;
 import java.util.Set;
 
 import Model.Professor;
-import Model.Room;
+import Model.RoomImpl;
 
 public interface ObjToSaveInterface {
 
-    public Set<Room> getListRoom();
+    public Set<RoomImpl> getListRoom();
 
-    public void setListRoom(Set<Room> listRoom);
+    public void setListRoom(Set<RoomImpl> listRoom);
 
     public Set<Professor> getListProfessor();
 

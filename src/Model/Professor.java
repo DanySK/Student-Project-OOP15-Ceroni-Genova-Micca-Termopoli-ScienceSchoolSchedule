@@ -8,10 +8,10 @@ public interface Professor{
     
     public void setPerson(Person prof);
     
-    public List<Courses> getCourses();
+    public List<CoursesImpl> getCourses();
 
-    public void setCourses(List<Courses> courses);
+    public void setCourses(List<CoursesImpl> courses);
 
-    public void addCourse(Courses c);
+    public void addCourse(CoursesImpl c);
     public String toString();
 }

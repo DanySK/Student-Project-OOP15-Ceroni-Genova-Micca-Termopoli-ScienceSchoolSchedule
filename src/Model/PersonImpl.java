@@ -34,5 +34,9 @@ public class PersonImpl implements Person,Serializable {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+    
+    public String toString(){
+        return this.surname+" "+ this.name;
+    }
 
 }

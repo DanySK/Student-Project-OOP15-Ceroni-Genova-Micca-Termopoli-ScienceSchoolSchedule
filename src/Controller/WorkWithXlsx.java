@@ -12,11 +12,11 @@ public class WorkWithXlsx {
       //  saveContr.createNewEmptyList();
         ObjToSave obj = saveContr.getObjToSave();
         
-        for (Professor prof : obj.getListProfessor()) {
+       /* for (Professor prof : obj.getListProfessor()) {
             System.out.println(prof.toString());
-        }
-        for (Room room : obj.getListRoom()) {
-            System.out.println(room.getNameRoom());
+        }*/
+        for (Reservation res : obj.getListReservation()) {
+            System.out.println(res.toString());
         }
       //  System.out.println(obj.getListProfessor());
         /*

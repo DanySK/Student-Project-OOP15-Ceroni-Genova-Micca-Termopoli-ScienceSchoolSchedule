@@ -63,8 +63,8 @@ public class Reservation implements ReservationInterface, Serializable {
     }
 
     public String toString() {
-        return "prof: " + this.prof.getName() + " " + this.prof.getSurname() + " Corso :" + this.course + "Ora: "
-                + this.hour + " Stanza: " + this.room;
+        return "prof: " + this.prof.getName() + " " + this.prof.getSurname() + " Corso: " +
+                this.course.getName() + " Ora: " + this.hour.getValue() + " Stanza: " + this.room;
     }
 
     public Days getDay() {

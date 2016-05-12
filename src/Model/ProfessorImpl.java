@@ -12,9 +12,9 @@ public class ProfessorImpl extends PersonImpl implements Professor {
     private Person prof;
     private static String name;
     private static String surname;
-    private List<Courses> courses = new ArrayList<>();
+    private List<CoursesImpl> courses = new ArrayList<>();
 
-    public ProfessorImpl(Person prof, List<Courses> courses) {
+    public ProfessorImpl(Person prof, List<CoursesImpl> courses) {
         super(name, surname);
         this.prof = prof;
         this.courses = courses;
@@ -28,15 +28,15 @@ public class ProfessorImpl extends PersonImpl implements Professor {
         this.prof = prof;
     }
 
-    public List<Courses> getCourses() {
+    public List<CoursesImpl> getCourses() {
         return this.courses;
     }
 
-    public void setCourses(List<Courses> courses) {
+    public void setCourses(List<CoursesImpl> courses) {
         this.courses = courses;
     }
 
-    public void addCourse(Courses c) {
+    public void addCourse(CoursesImpl c) {
         this.courses.add(c);
     }
 

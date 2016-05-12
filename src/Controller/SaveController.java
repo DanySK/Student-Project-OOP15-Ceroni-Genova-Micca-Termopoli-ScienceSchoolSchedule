@@ -78,9 +78,9 @@ public class SaveController implements SaveControllerInterface {
     public void createNewEmptyList() {
 
         Set<Professor> tempProf = new HashSet<>();
-        Set<Room> tempRoom = new HashSet<>();
+        Set<RoomImpl> tempRoom = new HashSet<>();
         for (ListProfessor p : ListProfessor.values()) {
-            List<Courses> c = new ArrayList<>();
+            List<CoursesImpl> c = new ArrayList<>();
             for (ListCourses courses : p.getCourses()) {
                 c.add(new CoursesImpl(courses.getValue(), courses.getType()));
             }

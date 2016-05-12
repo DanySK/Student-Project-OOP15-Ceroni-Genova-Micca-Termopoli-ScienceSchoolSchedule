@@ -5,20 +5,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 import Model.Professor;
-import Model.Room;
+import Model.RoomImpl;
 
 public class ObjToSave implements ObjToSaveInterface,Serializable  {
 
    
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
-    private Set<Room> listRoom = new HashSet<>();
+    private Set<RoomImpl> listRoom = new HashSet<>();
     private Set<Professor> listProfessor = new HashSet<>();
     private Set<Reservation> listReservation = new HashSet<>();
 
-    public ObjToSave(Set<Room> listRoom, Set<Professor> listProfessor, Set<Reservation> listReservation) {
+    public ObjToSave(Set<RoomImpl> listRoom, Set<Professor> listProfessor, Set<Reservation> listReservation) {
         this.listReservation = listReservation;
         this.listProfessor = listProfessor;
         this.listRoom = listRoom;
@@ -33,11 +30,11 @@ public class ObjToSave implements ObjToSaveInterface,Serializable  {
         }
     }
 
-    public Set<Room> getListRoom() {
+    public Set<RoomImpl> getListRoom() {
         return listRoom;
     }
 
-    public void setListRoom(Set<Room> listRoom) {
+    public void setListRoom(Set<RoomImpl> listRoom) {
         this.listRoom = listRoom;
     }
 
