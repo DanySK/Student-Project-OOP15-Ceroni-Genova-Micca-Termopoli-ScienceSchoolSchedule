@@ -20,8 +20,11 @@ public class TableRenderer extends DefaultTableCellRenderer {
 		super();
 		this.text = new JTextPane();
 		this.scroll = new JScrollPane(text);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        scroll.setBorder(null);
 	}
 	
+	@Override
 	public Component getTableCellRendererComponent(final JTable table,
 			final Object value, final boolean isSelected, final boolean hasFocus,
 			final int row, final int column) {
@@ -53,7 +56,6 @@ public class TableRenderer extends DefaultTableCellRenderer {
 		}
 		
 		return scroll;
-		
 	}
 
 }
