@@ -27,6 +27,8 @@ public class PanelTable {
 		this.fillMainCells(table);
 		this.mainTable = new JTable(table);
 		this.scroll = new JScrollPane(mainTable);
+		// table.setDefaultRenderer(Object.class, new MyRenderer());
+		//this.mainTable.setDefaultRenderer(Object.class, new TableRenderer());
 		
 		//AUTO RESIZE MODE DINAMYC
 		
