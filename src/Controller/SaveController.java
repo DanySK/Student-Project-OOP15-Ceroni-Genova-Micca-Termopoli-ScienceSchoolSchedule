@@ -6,13 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import Model.Courses;
 import Model.CoursesImpl;
 import Model.ListCourses;
 import Model.ListProfessor;
@@ -20,7 +18,6 @@ import Model.ListRoom;
 import Model.PersonImpl;
 import Model.Professor;
 import Model.ProfessorImpl;
-import Model.Room;
 import Model.RoomImpl;
 
 public class SaveController implements SaveControllerInterface {

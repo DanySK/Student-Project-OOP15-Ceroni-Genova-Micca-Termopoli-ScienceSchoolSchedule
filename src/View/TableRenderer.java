@@ -2,9 +2,13 @@ package View;
 
 import java.awt.Color;
 import java.awt.Component;
-import Model.*;
-import javax.swing.*;
-import javax.swing.table.*;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableCellRenderer;
+
+import Model.Type;
 
 public class TableRenderer extends DefaultTableCellRenderer {
 

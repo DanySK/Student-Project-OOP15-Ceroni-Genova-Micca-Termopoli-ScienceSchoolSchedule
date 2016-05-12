@@ -75,4 +75,21 @@ public class Reservation implements ReservationInterface, Serializable {
         this.day = day;
     }
 
+    public boolean isset() {
+       if(chechNull(this.day)||chechNull(this.course)||chechNull(this.hour)
+                   ||chechNull(this.room)||chechNull(this.prof)){
+           return false;
+       }
+        return true;
+    }
+    
+    private Boolean chechNull(Object a){
+        if(a.equals(null)||a.equals(" ")){
+            return false;
+        }
+        
+        return true;
+        
+    }
+
 }

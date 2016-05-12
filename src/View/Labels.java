@@ -1,6 +1,6 @@
 package View;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 public class Labels {
 	

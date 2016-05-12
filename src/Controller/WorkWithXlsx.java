@@ -1,8 +1,5 @@
 package Controller;
 
-import Model.Professor;
-import Model.Room;
-
 public class WorkWithXlsx {
     private static SaveControllerInterface saveContr = new SaveController();
     private static ExportToXlsxInterface modelxls;
@@ -16,7 +13,7 @@ public class WorkWithXlsx {
             System.out.println(prof.toString());
         }*/
         for (Reservation res : obj.getListReservation()) {
-            System.out.println(res.toString());
+            System.out.println("12"+res.toString());
         }
       //  System.out.println(obj.getListProfessor());
         /*

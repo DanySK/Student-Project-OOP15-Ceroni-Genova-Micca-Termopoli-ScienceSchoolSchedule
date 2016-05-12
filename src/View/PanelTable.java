@@ -1,16 +1,15 @@
 package View;
 
-import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.border.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
 
-import Model.Days;
-import Model.Hours;
-import Model.ListRoom;
-
-import java.awt.*;
-import java.util.Set;
-import java.util.TreeSet;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 public class PanelTable {
 

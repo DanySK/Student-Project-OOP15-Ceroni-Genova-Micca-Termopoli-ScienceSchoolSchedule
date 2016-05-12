@@ -3,6 +3,8 @@ package Controller;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import Model.Courses;
 import Model.Days;
 import Model.Hours;
@@ -19,18 +21,26 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         if (!this.listReservation.contains(cont) && check(cont)) {
             this.listReservation.add(cont);
         } else {
-            throw new IllegalArgumentException();
+            JOptionPane.showMessageDialog(null, "Non disponibile!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private boolean check(Reservation cont) {
         boolean check = true;
-        for (Reservation res : listReservation) {
-            if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())
-                    && cont.getRoom().equals(res.getRoom())) {
-                check = false;
+       // if (cont.isset()) {
+            for (Reservation res : listReservation) {
+                if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())
+                        && cont.getRoom().equals(res.getRoom())) {
+                    check = false;
+                } else {
+                   // JOptionPane.showMessageDialog(null, "errore gia presente!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        }
+      //  } else { 
+           // JOptionPane.showMessageDialog(null, "Impostare tutti i campi della form!", "Error", JOptionPane.ERROR_MESSAGE);
+      //      check = false;
+     //   }
+
         return check;
 
     }

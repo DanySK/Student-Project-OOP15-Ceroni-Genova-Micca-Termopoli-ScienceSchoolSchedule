@@ -1,19 +1,18 @@
 package Controller;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import Model.Professor;
 import Model.RoomImpl;
 
-public class ObjToSave implements ObjToSaveInterface,Serializable  {
+public class ObjToSave implements ObjToSaveInterface, Serializable {
 
-   
     private static final long serialVersionUID = 1L;
-    private Set<RoomImpl> listRoom = new HashSet<>();
-    private Set<Professor> listProfessor = new HashSet<>();
-    private Set<Reservation> listReservation = new HashSet<>();
+    private Set<RoomImpl> listRoom = new TreeSet<>();
+    private Set<Professor> listProfessor = new TreeSet<>();
+    private Set<Reservation> listReservation = new TreeSet<>();
 
     public ObjToSave(Set<RoomImpl> listRoom, Set<Professor> listProfessor, Set<Reservation> listReservation) {
         this.listReservation = listReservation;
@@ -21,11 +20,11 @@ public class ObjToSave implements ObjToSaveInterface,Serializable  {
         this.listRoom = listRoom;
 
     }
-    
-    public boolean exist(){
-        if(this.listProfessor.isEmpty()|| this.listRoom.isEmpty()){
+
+    public boolean exist() {
+        if (this.listProfessor.isEmpty() || this.listRoom.isEmpty()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

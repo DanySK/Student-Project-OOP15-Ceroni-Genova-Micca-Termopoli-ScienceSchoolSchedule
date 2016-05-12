@@ -1,6 +1,6 @@
 package View;
 
-import javax.swing.*;
+import javax.swing.JButton;
 
 public class Buttons {
 
@@ -25,7 +25,6 @@ public class Buttons {
 		});
 		
 		this.generalView.addActionListener(l -> {
-			
 		});
 	}
 

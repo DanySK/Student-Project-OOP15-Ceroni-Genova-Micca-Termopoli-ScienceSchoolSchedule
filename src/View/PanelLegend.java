@@ -1,11 +1,13 @@
 package View;
 
-import javax.swing.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import java.awt.*;
-
-import Model.*;
+import Model.Type;
 
 public class PanelLegend {
 	

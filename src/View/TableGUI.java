@@ -1,12 +1,14 @@
 package View;
 
-import javax.swing.JTable;
-import javax.swing.table.*;
-
-import Model.*;
-
 import java.awt.Dimension;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.table.AbstractTableModel;
+
+import Model.Days;
+import Model.Hours;
+import Model.ListRoom;
 
 public class TableGUI extends AbstractTableModel {
 
