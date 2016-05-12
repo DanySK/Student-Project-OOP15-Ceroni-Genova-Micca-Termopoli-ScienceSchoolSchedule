@@ -23,6 +23,9 @@ public class ComboBoxesViews {
     private final JComboBox<String> cProfessor;
     private final JComboBox<String> cCorses;
     private final Set<JComboBox<String>> setCombo;
+    
+    
+    public final static String EMPTYSTR= " ";
 
     public ComboBoxesViews() {
         // TODO Auto-generated constructor stub
@@ -39,19 +42,19 @@ public class ComboBoxesViews {
         this.setCombo.add(cProfessor);
         this.setCombo.add(cCorses);
 
-        cDays.addItem(" ");
+        cDays.addItem(EMPTYSTR);
         for (Model.Days d : Days.values()) {
             cDays.addItem(d.getString());
         }
-        cRooms.addItem(" ");
+        cRooms.addItem(EMPTYSTR);
         for (Room r : controller.getObjToSave().getListRoom()) {
             cRooms.addItem(r.getNameRoom());
         }
-        cHours.addItem(" ");
+        cHours.addItem(EMPTYSTR);
         for (Model.Hours h : Hours.values()) {
             cHours.addItem(h.getValue());
         }
-        cProfessor.addItem(" ");
+        cProfessor.addItem(EMPTYSTR);
         for (Professor p : controller.getObjToSave().getListProfessor()) {
             cProfessor.addItem(p.getPerson().toString());
         }
@@ -81,6 +84,8 @@ public class ComboBoxesViews {
     }
 
     public void FillCombobox(JComboBox<String> comboCorses) {
+    	
+    	comboCorses.addItem(EMPTYSTR);
 
         for (Professor p : controller.getObjToSave().getListProfessor()) {
             for (Courses c : p.getCourses()) {
