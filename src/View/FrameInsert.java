@@ -48,6 +48,9 @@ public class FrameInsert {
 
         panelInsert.add(this.label.getlHours());
         panelInsert.add(this.combo.getcHours());
+        
+        panelInsert.add(this.label.getlRooms());
+		panelInsert.add(this.combo.getcRooms());
 
         this.combo.LisenerCombo(this.combo.getcProfessor(), this.combo.getcCorses());
 
