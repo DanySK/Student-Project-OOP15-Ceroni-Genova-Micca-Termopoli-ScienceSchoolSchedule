@@ -16,7 +16,7 @@ public class TableGUI extends AbstractTableModel {
     private static final long serialVersionUID = -782099090803983602L;
 
     private static int COLUMNS = Hours.values().length + 1;
-    private static int ROWS = Days.values().length * ListRoom.values().length;
+    private static int ROWS = Days.values().length + (Days.values().length * ListRoom.values().length);
 
     private Map<Dimension, Object> dataTable = new HashMap<>();
 

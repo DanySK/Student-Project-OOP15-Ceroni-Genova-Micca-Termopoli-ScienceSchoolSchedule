@@ -88,7 +88,7 @@ public class SaveController implements SaveControllerInterface {
         }
         this.obj.setListProfessor(tempProf);
         for (ListRoom p : ListRoom.values()) {
-            tempRoom.add(new RoomImpl(p.name()));
+            tempRoom.add(new RoomImpl(p.getValue()));
         }
         this.obj.setListRoom(tempRoom);
     }
