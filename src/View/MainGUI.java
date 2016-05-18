@@ -20,15 +20,22 @@ public class MainGUI {
 		
 		this.frame.setSize(width, height);
 		this.frame.add(panelButton.getPanelButton(), BorderLayout.WEST);
-		this.frame.add(panelTable.getPanelTable());
+		this.frame.add(panelTable);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setVisible(true);
-		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new MainGUI();
+	}
+	
+	public JFrame getMainFrame(){
+		return this.frame;
+	}
+	
+	public PanelTable getPanelTable(){
+		return this.panelTable;
 	}
 
 }

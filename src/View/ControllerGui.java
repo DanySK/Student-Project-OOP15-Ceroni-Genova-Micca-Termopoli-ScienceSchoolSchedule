@@ -2,7 +2,7 @@ package View;
 
 import java.util.Set;
 
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.Reservation;
 import Controller.SaveController;
@@ -19,19 +19,19 @@ public class ControllerGui {
 
     private final SaveControllerInterface cont = new SaveController();
     private Set<Reservation> setReservation = cont.getObjToSave().getListReservation();
-    private TableModel table = new TableGUI();
 
-    private void drawTable() {
-        drawDefaultTable();
+    public void drawTableDynamic(DefaultTableModel table) {
+        //drawDefaultTable();
         for (Reservation res : this.setReservation) {
             for (int c = 0; c < table.getColumnCount(); c++) {
-                if (this.table.getValueAt(0, c).toString().equals(res.getHour().getValue())) {
+                if (table.getValueAt(0, c).toString().equals(res.getHour().getValue())) {
                     for (int r = 0; r < table.getRowCount(); r++) {
-                        if (this.table.getValueAt(r, 0).equals(res.getDay().getString())) {
+                        if (table.getValueAt(r, 0).equals(res.getDay().getString())) {
                             for (int a = r; a <= r + cont.getObjToSave().getListRoom().size(); a++) {
-                                if ((this.table.getValueAt(a, 0).toString()).equals(res.getRoom().getNameRoom())) {
-                                    this.table.setValueAt(res.getCourse().getName() + res.getPerson().getSurname(), a,
+                                if ((table.getValueAt(a, 0).toString()).equals(res.getRoom().getNameRoom())) {
+                                    table.setValueAt(res.getCourse().getName() + res.getPerson().getSurname(), a,
                                             c);
+                                    table.fireTableCellUpdated(a, c);
                                 }
                             }
                         }
@@ -39,36 +39,31 @@ public class ControllerGui {
                 }
             }
         }
+        
+        table.fireTableDataChanged();
+    }
+    
+    public void drawTable(DefaultTableModel table){
+    	this.drawDefaultTable(table);
+    	this.drawTableDynamic(table);
     }
 
-    private void drawDefaultTable() {
+    public void drawDefaultTable(DefaultTableModel table) {
         int i = 0;
         for (Days days : Days.values()) {
             int y = 1;
             for (Hours hours : Hours.values()) {
                 if (i == 0) {
-                    this.table.setValueAt(hours.getValue(), 0, y++);
+                    table.setValueAt(hours.getValue(), 0, y++);
                 } else {
-                    this.table.setValueAt(hours.getValue(), i, y++);
+                    table.setValueAt(hours.getValue(), i, y++);
                 }
             }
-            this.table.setValueAt(days.getString(), i++, 0);
+            table.setValueAt(days.getString(), i++, 0);
             for (Room room : this.cont.getObjToSave().getListRoom()) {
-                this.table.setValueAt(room.getNameRoom(), i++, 0);
+                table.setValueAt(room.getNameRoom(), i++, 0);
             }
         }
-    }
-
-    public TableModel getTable() {
-        if (this.setReservation.isEmpty()) {
-            drawDefaultTable();
-        } else {
-
-            drawTable();
-        }
-
-        return this.table;
-
     }
 
     public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza) {

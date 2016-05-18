@@ -9,8 +9,6 @@ public class Buttons {
 	private final JButton undo;
 	private final JButton redo;
 	private final JButton save;
-	private FrameInsert frame;
-	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	
 	public Buttons() {
 		// TODO Auto-generated constructor stub
@@ -21,7 +19,7 @@ public class Buttons {
 		this.save = new JButton("SALVA");
 		
 		this.insert.addActionListener(l -> {
-			frame = new FrameInsert();
+			new FrameInsert();
 		});
 		
 		this.generalView.addActionListener(l -> {
@@ -48,6 +46,4 @@ public class Buttons {
 		return save;
 	}
 	
-	
-
 }
