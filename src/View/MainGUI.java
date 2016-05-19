@@ -22,6 +22,7 @@ public class MainGUI {
         this.frame.add(panelButton.getPanelButton(), BorderLayout.WEST);
         this.frame.add(panelTable.getPanelTable());
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setResizable(false);
         this.frame.setVisible(true);
         this.frame.repaint();
 
