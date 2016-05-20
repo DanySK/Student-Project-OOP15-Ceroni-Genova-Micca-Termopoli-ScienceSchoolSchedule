@@ -4,13 +4,14 @@ import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
+import Controller.Reservation;
 import Model.Days;
 import Model.Hours;
 import Model.ListRoom;
 
-public class TableGUI extends AbstractTableModel {
+public class TableGUI extends DefaultTableModel {
 
     /**
      * 
@@ -24,6 +25,13 @@ public class TableGUI extends AbstractTableModel {
 
     public TableGUI() {
 
+    }
+    
+    public Reservation getObjAt(int row , int colum ){
+        
+        
+        return null;
+        
     }
 
     @Override

@@ -9,14 +9,13 @@ import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 public class PanelTable {
 
     private JPanel panelTable;
     private JTable mainTable;
     private JScrollPane scroll;
-    private TableGUI t = new TableGUI();
+    private JTable t = new JTable();
     private ControllerGui c = new ControllerGui();
 
     public PanelTable() {
@@ -24,7 +23,7 @@ public class PanelTable {
         this.panelTable = new JPanel(new BorderLayout());
         this.panelTable.setBorder(new TitledBorder("Panel Table"));
         this.t = c.getTable();
-        this.mainTable = new JTable(t);
+        this.mainTable = t;
         this.scroll = new JScrollPane(mainTable);
         this.resizeColumnWidth(mainTable);
         this.mainTable.setFillsViewportHeight(true);
@@ -52,14 +51,16 @@ public class PanelTable {
         }
     }
 
-    public void update(TableGUI p) {
+    public void update(JTable p) {
         this.t = p;
-        this.t.fireTableDataChanged();
 
     }
 
     public void Set(String i, int row, int colum) {
-        t.setValueAt(i, row, colum);
+        
+            t.setValueAt(i, row, colum);
+       
+        
     }
 
 }

@@ -27,19 +27,21 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     private boolean check(Reservation cont) {
         boolean check = true;
-       // if (cont.isset()) {
-            for (Reservation res : listReservation) {
-                if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())
-                        && cont.getRoom().equals(res.getRoom())) {
-                    check = false;
-                } else {
-                   // JOptionPane.showMessageDialog(null, "errore gia presente!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+        // if (cont.isset()) {
+        for (Reservation res : listReservation) {
+            if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())
+                    && cont.getRoom().equals(res.getRoom())) {
+                check = false;
+            } else {
+                // JOptionPane.showMessageDialog(null, "errore gia presente!",
+                // "Error", JOptionPane.ERROR_MESSAGE);
             }
-      //  } else { 
-           // JOptionPane.showMessageDialog(null, "Impostare tutti i campi della form!", "Error", JOptionPane.ERROR_MESSAGE);
-      //      check = false;
-     //   }
+        }
+        // } else {
+        // JOptionPane.showMessageDialog(null, "Impostare tutti i campi della
+        // form!", "Error", JOptionPane.ERROR_MESSAGE);
+        // check = false;
+        // }
 
         return check;
 

@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 import Controller.ControllerWorkers;
@@ -71,7 +72,7 @@ public class FrameInsert {
                 System.out.println(r.getNameRoom());
             }
             
-            mainGUI.update( res.getCourse().getName() + " \n" + res.getPerson().getSurname(),row,colum );
+            mainGUI.update( res.getCourse().getName(),row,colum );
             this.frameInsert.setVisible(false);
 
         });
@@ -79,9 +80,5 @@ public class FrameInsert {
 
         this.frameInsert.add(panelInsert);
         this.frameInsert.add(panelButton, BorderLayout.SOUTH);
-    }
-
-    public TableModel getTableUp() {
-        return new ControllerGui().getTable();
     }
 }

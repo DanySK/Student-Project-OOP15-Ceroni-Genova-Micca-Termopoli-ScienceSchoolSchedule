@@ -1,6 +1,12 @@
 package View;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.util.Set;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.Reservation;
 import Controller.SaveController;
@@ -17,15 +23,48 @@ public class ControllerGui {
 
     private final SaveControllerInterface cont = new SaveController();
     private Set<Reservation> setReservation = cont.getObjToSave().getListReservation();
-    private TableGUI table = new TableGUI();
+    private DefaultTableModel table = new TableGUI();
+    private JTable jtable = new JTable(table);
 
     private void drawTable() {
         drawDefaultTable();
+
         for (Reservation res : this.setReservation) {
 
-            this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
-                    this.getColum(res));
+            this.table.setValueAt(res.getCourse().getName(), this.getRow(res), this.getColum(res));
 
+        }
+
+    }
+
+    private class MyRenderer extends DefaultTableCellRenderer {
+
+        private static final long serialVersionUID = -2738263676362042563L;
+        private Set<Reservation> setReservation = cont.getObjToSave().getListReservation();
+
+        public Component getTableCellRendererComponent(final JTable tab, final Object value, final boolean selected,
+                final boolean focused, final int row, final int column) {
+            super.getTableCellRendererComponent(tab, value, false, focused, row, column);
+            this.setHorizontalAlignment(CENTER);
+            this.setHorizontalAlignment(CENTER);
+           /* if (value instanceof String[]) {
+                setListData((String[]) value);
+            }*/
+            if (row == 0 || column == 0 || (0 == (row % (cont.getObjToSave().getListRoom().size() + 1)))) {
+                this.setBackground(Color.GRAY);
+            } else if ((String) value == "") {
+                this.setBackground(Color.WHITE);
+            } else {
+                Color c = Color.white;
+                for (Reservation res : this.setReservation) {
+
+                    if ((String) value == res.getCourse().getName())
+                        c = res.getCourse().getType().getColor();
+                }
+                this.setBackground(c);
+            }
+
+            return this;
         }
     }
 
@@ -35,35 +74,34 @@ public class ControllerGui {
             int y = 1;
             for (Hours hours : Hours.values()) {
 
-                this.table.setValueAt(hours.getValue(), i, y++);
-
+                this.jtable.setValueAt(hours.getValue(), i, y);
+                y++;
             }
-            this.table.setValueAt(days.getString(), i++, 0);
+            this.jtable.setValueAt(days.getString(), i++, 0);
+
             for (Room room : this.cont.getObjToSave().getListRoom()) {
-                this.table.setValueAt(room.getNameRoom(), i++, 0);
+                this.jtable.setValueAt(room.getNameRoom(), i++, 0);
             }
         }
     }
 
-    public TableGUI getTable() {
-        if (this.setReservation.isEmpty()) {
-            drawDefaultTable();
-        } else {
+    public JTable getTable() {
 
-            drawTable();
-        }
+        drawDefaultTable();
+        drawTable();
+        this.jtable.setDefaultRenderer(this.jtable.getColumnClass(0), new MyRenderer());
 
-        return this.table;
+        return this.jtable;
 
     }
 
     public Integer getRow(Reservation res) {
         int row = 0;
         drawDefaultTable();
-        for (int r = 0; r < table.getRowCount(); r++) {
-            if (this.table.getValueAt(r, 0).equals(res.getDay().getString())) {
+        for (int r = 0; r < jtable.getRowCount(); r++) {
+            if (this.jtable.getValueAt(r, 0).equals(res.getDay().getString())) {
                 for (int a = r; a <= r + cont.getObjToSave().getListRoom().size(); a++) {
-                    if ((this.table.getValueAt(a, 0).toString()).equals(res.getRoom().getNameRoom())) {
+                    if ((this.jtable.getValueAt(a, 0).toString()).equals(res.getRoom().getNameRoom())) {
                         row = a;
                     }
 
@@ -77,8 +115,8 @@ public class ControllerGui {
     public Integer getColum(Reservation res) {
         int colum = 0;
         drawDefaultTable();
-        for (int c = 0; c < table.getColumnCount(); c++) {
-            if (this.table.getValueAt(0, c).toString().equals(res.getHour().getValue())) {
+        for (int c = 0; c < jtable.getColumnCount(); c++) {
+            if (this.jtable.getValueAt(0, c).toString().equals(res.getHour().getValue())) {
                 colum = c;
             }
         }
