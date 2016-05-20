@@ -1,7 +1,7 @@
 package Model;
 
 public enum ListRoom {
-    MAGNA("Aula Magna Vicolo Carbonaro"),
+    MAGNA("Aula Magna Vicolo Carbonari"),
     MAGNA_PSICO("Aula Magna Psicologia"),
     A("Aula A"),
     B("Aula B"),
