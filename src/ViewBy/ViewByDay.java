@@ -49,24 +49,6 @@ public class ViewByDay extends AbstractViewBy {
 	}
 
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object day) {
-
-		/*int i = 0;
-		int y = 0;
-		for (Days days : Days.values()) {
-			if (days.getString().equals(day.toString())) {
-				//Set<Reservation> set = this.contWork.getByDay(days);
-				table.setValueAt(days.getString(), i, y);
-
-				for (Hours hours : Hours.values()) {
-					table.setValueAt(hours.getValue().toUpperCase(), i, ++y);
-				}
-
-				for (Room room : this.cont.getObjToSave().getListRoom()) {
-					table.setValueAt(room.getNameRoom(), ++i, 0);
-					table.fireTableCellUpdated(i, y);
-				}
-			}
-		}*/
 		
 		for(int r = 0; r < contr.getTable().getRowCount(); r++){
 			if(contr.getTable().getValueAt(r, 0).toString().equals(day)){
@@ -77,13 +59,6 @@ public class ViewByDay extends AbstractViewBy {
 						System.out.println(contr.getTable().getValueAt(row, c));
 						Object obj = contr.getTable().getValueAt(row, c);
 						table.setValueAt(obj, row - r, c);
-						/*for(int c1 = c; c1 < table.getColumnCount(); c1++){
-							//System.out.println(contr.getTable().getValueAt(row, c).toString());
-							for(int r1 = 0; r1 < table.getRowCount() && (row-r) < r1; r1++){
-								System.out.println(contr.getTable().getValueAt(row, c).toString());
-								table.fireTableCellUpdated(r1, c1);
-							}
-						}*/
 					}
 				}
 				table.fireTableDataChanged();
