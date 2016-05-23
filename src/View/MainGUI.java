@@ -29,7 +29,6 @@ public class MainGUI {
         this.frame.setResizable(false);
         this.frame.setVisible(true);
         this.frame.repaint();
-        this.panelButton.ComboLisener(this.panelTable.getPanelTable());
 
     }
 

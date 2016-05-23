@@ -135,5 +135,9 @@ public class ControllerGui {
     public Set<Reservation> getSetReservation(){
     	return new HashSet<Reservation>(this.setReservation);
     }
+    
+    public ControllerGui getControllerGui(){
+    	return this;
+    }
 
 }

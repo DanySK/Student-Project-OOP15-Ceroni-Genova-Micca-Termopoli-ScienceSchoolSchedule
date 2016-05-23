@@ -34,7 +34,6 @@ public class PanelTable {
         this.mainTable.setAutoscrolls(true);
         this.mainTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         this.resizeColumnWidth(mainTable);
-        this.mainTable.setFillsViewportHeight(true);
         mainTable.setTableHeader(null);
         mainTable.setFillsViewportHeight(true);
         this.panelTable.add(scroll);

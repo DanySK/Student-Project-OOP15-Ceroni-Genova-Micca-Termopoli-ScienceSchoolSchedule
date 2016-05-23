@@ -22,11 +22,13 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ControllerGui contr = new ControllerGui();
-	private Set<Reservation> setReservation = contr.getSetReservation();
+	private ControllerGui contr;
+	private Set<Reservation> setReservation;
 	
 	public MyTableRenderer(){
 		this.setOpaque(true);
+		contr = new ControllerGui();
+		setReservation = contr.getSetReservation();
 	}
 	
 	@Override

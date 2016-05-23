@@ -9,12 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class PanelButton {
-
+	
+	private MyListenerCombo listenerCombo = new MyListenerCombo();
     private final JPanel panelButton;
     private final Labels labels = new Labels();
     private final ComboBoxesViews comboBoxes = new ComboBoxesViews();
     private final GridBagConstraints cnst = new GridBagConstraints();
     private final PanelLegend panelLegend = new PanelLegend();
+    
 
     public PanelButton(MainGUI mainGUI) {
         Buttons buttons = new Buttons(mainGUI);
@@ -83,8 +85,10 @@ public class PanelButton {
         this.ClearAllCombo(this.comboBoxes.getcCorses());
         this.ClearAllCombo(this.comboBoxes.getcProfessor());
         this.ClearAllCombo(this.comboBoxes.getcRooms());
+        
+        this.comboBoxes.getcDays().addActionListener(listenerCombo);
     }
-
+    
     private void ClearAllCombo(JComboBox<String> combo) {
         combo.addActionListener(l -> {
             for (JComboBox<String> jComboBox : this.comboBoxes.getSetCombo()) {
@@ -97,12 +101,6 @@ public class PanelButton {
         });
     }
     
-    public void ComboLisener(JPanel panel){
-    	this.comboBoxes.getcDays().addActionListener(l -> {
-    		panel.removeAll();
-    	});
-    }
-
     public JPanel getPanelButton() {
         return this.panelButton;
     }
