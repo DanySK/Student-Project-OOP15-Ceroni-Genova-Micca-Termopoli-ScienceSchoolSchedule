@@ -18,7 +18,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     public void addRes(Reservation cont) {
 
-        if (!this.listReservation.contains(cont) && check(cont)) {
+        if (check(cont)) {
             this.listReservation.add(cont);
         } else {
             JOptionPane.showMessageDialog(null, "Non disponibile!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -28,12 +28,12 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     private boolean check(Reservation cont) {
         boolean check = true;
-        // if (cont.isset()) {
         for (Reservation res : listReservation) {
-            if (cont.getDay().equals(res.getDay()) && cont.getHour().equals(res.getHour())
-                    && cont.getRoom().equals(res.getRoom())) {
-                check = false;
-            } else {
+        	if (((cont.getDay().getString()).equals(res.getDay().getString()) 
+           		 && ((cont.getHour().getValue()).equals(res.getHour().getValue())))
+           		 && ((cont.getRoom().getNameRoom()).equals(res.getRoom().getNameRoom()))) {
+               check = false;
+           }  else {
                 // JOptionPane.showMessageDialog(null, "errore gia presente!",
                 // "Error", JOptionPane.ERROR_MESSAGE);
             }

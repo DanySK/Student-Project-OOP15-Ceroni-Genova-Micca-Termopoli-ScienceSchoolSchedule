@@ -8,7 +8,7 @@ public class Buttons {
 	private final JButton generalView;
 	private final JButton undo;
 	private final JButton redo;
-	private final JButton save;
+	private final JButton insertNew;
 	private FrameInsert frame;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	
@@ -18,7 +18,7 @@ public class Buttons {
 		this.generalView = new JButton("VISTA GENERALE");
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
-		this.save = new JButton("SALVA");
+		this.insertNew = new JButton("SALVA");
 		
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
@@ -45,8 +45,8 @@ public class Buttons {
 		return redo;
 	}
 
-	public JButton getSave() {
-		return save;
+	public JButton getInsertNew() {
+		return insertNew;
 	}
 	
 	

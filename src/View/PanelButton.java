@@ -67,7 +67,7 @@ public class PanelButton {
         this.incrementCnstY();
         this.panelButton.add(buttons.getRedo(), cnst);
         this.incrementCnstY();
-        this.panelButton.add(buttons.getSave(), cnst);
+        this.panelButton.add(buttons.getInsertNew(), cnst);
         this.incrementCnstY();
         this.panelButton.add(panelLegend.getPanelLegend(), cnst);
         /*
