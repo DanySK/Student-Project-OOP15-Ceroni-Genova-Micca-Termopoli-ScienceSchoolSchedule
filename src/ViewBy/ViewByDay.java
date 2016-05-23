@@ -50,7 +50,7 @@ public class ViewByDay extends AbstractViewBy {
 
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object day) {
 
-		int i = 0;
+		/*int i = 0;
 		int y = 0;
 		for (Days days : Days.values()) {
 			if (days.getString().equals(day.toString())) {
@@ -66,9 +66,31 @@ public class ViewByDay extends AbstractViewBy {
 					table.fireTableCellUpdated(i, y);
 				}
 			}
+		}*/
+		
+		for(int r = 0; r < contr.getTable().getRowCount(); r++){
+			if(contr.getTable().getValueAt(r, 0).toString().equals(day)){
+				System.out.println(contr.getTable().getValueAt(r, 0).toString());
+				for(int c = 0; c < contr.getTable().getColumnCount(); c ++){
+					for(int row = r; row < contr.getTable().getRowCount() 
+							&& row < r + ListRoom.values().length+1; row++){
+						System.out.println(contr.getTable().getValueAt(row, c));
+						Object obj = contr.getTable().getValueAt(row, c);
+						table.setValueAt(obj, row - r, c);
+						/*for(int c1 = c; c1 < table.getColumnCount(); c1++){
+							//System.out.println(contr.getTable().getValueAt(row, c).toString());
+							for(int r1 = 0; r1 < table.getRowCount() && (row-r) < r1; r1++){
+								System.out.println(contr.getTable().getValueAt(row, c).toString());
+								table.fireTableCellUpdated(r1, c1);
+							}
+						}*/
+					}
+				}
+				table.fireTableDataChanged();
+				return table;
+			}	
 		}
-		table.fireTableDataChanged();
-		return table;
+		return null;
 	}
 
 }
