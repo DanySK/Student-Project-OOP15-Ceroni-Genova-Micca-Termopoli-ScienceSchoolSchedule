@@ -16,12 +16,13 @@ public class ControllerWorkers implements ControllerWorkersInterface {
     private SaveControllerInterface controller = new SaveController();
     private Set<Reservation> listReservation = controller.getObjToSave().getListReservation();
 
-    public void add(Reservation cont) {
+    public void addRes(Reservation cont) {
 
         if (!this.listReservation.contains(cont) && check(cont)) {
             this.listReservation.add(cont);
         } else {
             JOptionPane.showMessageDialog(null, "Non disponibile!", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 

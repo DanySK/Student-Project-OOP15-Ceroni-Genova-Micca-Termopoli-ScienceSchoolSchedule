@@ -9,7 +9,7 @@ import Model.Room;
 
 public interface ControllerWorkersInterface {
 
-    public void add(Reservation cont);
+    public void addRes(Reservation cont);
 
     public Set<Reservation> getListReservation();
 
