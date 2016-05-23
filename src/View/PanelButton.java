@@ -10,7 +10,7 @@ import javax.swing.border.TitledBorder;
 
 public class PanelButton {
 	
-	private MyListenerCombo listenerCombo = new MyListenerCombo();
+	private MyComboListeners comboListeners = new MyComboListeners();
     private final JPanel panelButton;
     private final Labels labels = new Labels();
     private final ComboBoxesViews comboBoxes = new ComboBoxesViews();
@@ -86,7 +86,11 @@ public class PanelButton {
         this.ClearAllCombo(this.comboBoxes.getcProfessor());
         this.ClearAllCombo(this.comboBoxes.getcRooms());
         
-        this.comboBoxes.getcDays().addActionListener(listenerCombo);
+        this.comboBoxes.getcDays().addActionListener(this.comboListeners.getListenerDays());
+        this.comboBoxes.getcRooms().addActionListener(this.comboListeners.getListenerRoom());
+        this.comboBoxes.getcHours().addActionListener(this.comboListeners.getListenerHour());
+        this.comboBoxes.getcProfessor().addActionListener(this.comboListeners.getListenerProf());
+        this.comboBoxes.getcCorses().addActionListener(this.comboListeners.getListenerCourse());
     }
     
     private void ClearAllCombo(JComboBox<String> combo) {

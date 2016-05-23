@@ -25,7 +25,7 @@ public class ComboBoxesViews {
     private final Set<JComboBox<String>> setCombo;
     
     
-    public final static String EMPTYSTR= " ";
+    private final static String EMPTYSTR= " ";
 
     public ComboBoxesViews() {
         // TODO Auto-generated constructor stub

@@ -1,4 +1,4 @@
-package View;
+package ViewBy;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -19,46 +19,36 @@ import Model.Days;
 import Model.Hours;
 import Model.ListRoom;
 import Model.Room;
+import View.ControllerGui;
 
-public class FrameDays extends JFrame {
+public class ViewByDay extends AbstractViewBy {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static int COLUMNS = Hours.values().length + 1;
-	private static int ROWS = ListRoom.values().length + 1;
 	private SaveControllerInterface cont = new SaveController();
 	private ControllerWorkers contWork = new ControllerWorkers();
 	private ControllerGui contr = new ControllerGui();
 
-	public FrameDays(final Object name) {
-
-		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		final int width = (int) screenSize.getWidth();
-		final int height = (int) screenSize.getHeight();
-		this.setTitle(name.toString());
-		this.setSize(width, height);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		final JPanel panel = new JPanel(new BorderLayout());
-		final DefaultTableModel defaultTable = new DefaultTableModel(ROWS, COLUMNS);
+	public ViewByDay(final Object name) {
+		
+		super(name);
+		this.columns = Hours.values().length + 1;
+		this.rows = ListRoom.values().length + 1;
+		this.defaultTable = new DefaultTableModel(rows, columns);
 		this.fillCells(defaultTable, name);
-		final JTable table = new JTable(defaultTable);
-		final JScrollPane scroll = new JScrollPane(table);
-		table.setTableHeader(null);
-		table.setFillsViewportHeight(true);
-
-		panel.add(scroll, BorderLayout.CENTER);
+		this.panel = new JPanel(new BorderLayout());
+		this.table = new JTable(defaultTable);
+		this.scroll = new JScrollPane(table);
+		this.table.setTableHeader(null);
+		this.table.setFillsViewportHeight(true);
+		this.panel.add(scroll, BorderLayout.CENTER);
 		this.add(panel, BorderLayout.CENTER);
+		
 	}
 
-	public FrameDays getFrameDays() {
-		return this;
-	}
-
-	private DefaultTableModel fillCells(DefaultTableModel table, Object day) {
+	protected DefaultTableModel fillCells(DefaultTableModel table, Object day) {
 
 		int i = 0;
 		int y = 0;
@@ -75,12 +65,6 @@ public class FrameDays extends JFrame {
 					table.setValueAt(room.getNameRoom(), ++i, 0);
 					table.fireTableCellUpdated(i, y);
 				}
-				/*for (Reservation res : set) {
-					table.setValueAt(res.getCourse().getName() + " \n" 
-							+ res.getPerson().getSurname(),this.contr.getRow(res),
-		                    this.contr.getColum(res));
-					table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
-				}*/
 			}
 		}
 		table.fireTableDataChanged();

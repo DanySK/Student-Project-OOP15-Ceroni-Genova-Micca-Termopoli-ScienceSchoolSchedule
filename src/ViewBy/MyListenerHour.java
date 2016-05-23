@@ -1,20 +1,22 @@
-package View;
+package ViewBy;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 
-public class MyListenerCombo implements ActionListener{
+public class MyListenerHour implements ActionListener{
+
+	private final static String EMPTYSTR= " ";
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
 		JComboBox<String> combo = (JComboBox<String>) e.getSource();
-		if(!combo.getSelectedItem().toString().equals(" ")){
-			new FrameDays(combo.getSelectedItem().toString());
+		if(!combo.getSelectedItem().equals(EMPTYSTR)){
+			new ViewByHour(combo.getSelectedItem().toString());
 		}
+		
 	}
+
 }
