@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Buttons {
 
@@ -10,6 +11,7 @@ public class Buttons {
 	private final JButton redo;
 	private final JButton insertNew;
 	private FrameInsert frame;
+	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	
 	public Buttons(MainGUI mainGUI) {
@@ -18,7 +20,7 @@ public class Buttons {
 		this.generalView = new JButton("VISTA GENERALE");
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
-		this.insertNew = new JButton("SALVA");
+		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
 		
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
@@ -27,8 +29,17 @@ public class Buttons {
 		
 		this.generalView.addActionListener(l -> {
 		});
+	
+	
+	
+	
+	this.insertNew.addActionListener(l -> {
+		frame1=new FrameModify();
+		
+		
+	});
+	
 	}
-
 	public JButton getInsert() {
 		return insert;
 	}

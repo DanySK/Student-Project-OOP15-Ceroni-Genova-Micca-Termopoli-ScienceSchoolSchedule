@@ -19,7 +19,7 @@ import Model.RoomImpl;
 
 public class FrameInsert {
 
-    private final JFrame frameInsert = new JFrame("Inserimento nuovo elemento");
+    private final JFrame frameInsert = new JFrame("Inserimento nuovo elemento nella tabella");
     private ComboBoxesViews combo = new ComboBoxesViews();
     private Labels label = new Labels();
     private ControllerWorkersInterface cntr = new ControllerWorkers();
