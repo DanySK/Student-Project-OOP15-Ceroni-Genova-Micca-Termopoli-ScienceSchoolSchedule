@@ -27,7 +27,6 @@ public class ViewByDay extends AbstractViewBy {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ControllerGui contr = new ControllerGui();
 
 	public ViewByDay(final Object name) {
 		

@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import View.ControllerGui;
+
 public abstract class AbstractViewBy extends JFrame{
 
 	/**
@@ -19,6 +21,7 @@ public abstract class AbstractViewBy extends JFrame{
 	protected DefaultTableModel defaultTable;
 	protected JTable table;
 	protected JScrollPane scroll;
+	protected ControllerGui contr = new ControllerGui();
 
 	public AbstractViewBy(final Object name) {
 		// TODO Auto-generated constructor stub
