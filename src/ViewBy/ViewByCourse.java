@@ -50,14 +50,20 @@ public class ViewByCourse extends AbstractViewBy {
 			}
 		}
 	
+		Courses courses = null;
+		for (Courses c : this.cntrWork.getCoursesFromFile()) {
+			if(c.getName().equals((String)course)){
+				courses = c;
+			}
+		}
 		System.out.println();
 		
-		/*for (Reservation res : this.cntrWork.getByCourses((Courses)course)){
+		for (Reservation res : this.cntrWork.getByCourses(courses)){
 			table.setValueAt(res.getCourse().getName() + " \n" 
 					+ res.getPerson().getSurname(),this.contr.getRow(res),
                     this.contr.getColum(res));
             table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
-		}*/
+		}
 		
 		table.fireTableDataChanged();
 		return table;

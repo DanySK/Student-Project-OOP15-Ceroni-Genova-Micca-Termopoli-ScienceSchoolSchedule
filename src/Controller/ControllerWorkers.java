@@ -32,8 +32,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 	private boolean check(Reservation cont) {
 		boolean check = true;
 		for (Reservation res : listReservation) {
-			if (((cont.getDay().getString()).equals(res.getDay().getString())
-					&& ((cont.getHour().getValue()).equals(res.getHour().getValue())))
+			if (((cont.getDay().getString()).equals(res.getDay().getString()) && ((cont.getHour().getValue())
+					.equals(res.getHour().getValue())))
 					&& ((cont.getRoom().getNameRoom()).equals(res.getRoom().getNameRoom()))) {
 				check = false;
 			} else {
@@ -100,17 +100,12 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 			throw new IllegalArgumentException();
 		} else {
 			for (Reservation res : listReservation) {
-				if (res.getCourse().equals(course)) {
+				if (res.getCourse().getName().equals(course.getName())) {
 					listByCourses.add(res);
 				}
 			}
 		}
-
-		if (listByCourses.isEmpty()) {
-			throw new IllegalArgumentException();
-		} else {
-			return listByCourses;
-		}
+		return listByCourses;
 	}
 
 	public Set<Reservation> getByProfessor(Person p) {
@@ -119,17 +114,13 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 			throw new IllegalArgumentException();
 		} else {
 			for (Reservation res : listReservation) {
-				if (res.getPerson().equals(p)) {
+				if (res.getPerson().toString().equals(p.toString())) {
 					listByProf.add(res);
+					System.out.print(res.getPerson().toString());
 				}
 			}
 		}
-
-		if (listByProf.isEmpty()) {
-			throw new IllegalArgumentException();
-		} else {
-			return listByProf;
-		}
+		return listByProf;
 	}
 
 	public Set<Reservation> getByHour(Hours h) {
@@ -162,25 +153,21 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 			}
 
 		}
-       return temp;
+		return temp;
 
 	}
-	
-	
-	
-	
+
 	public List<Professor> getProfessorFromFile() {
 		List<Professor> temp = new ArrayList<>();
 		for (Professor prof : controller.getObjToSave().getListProfessor()) {
-			
-				if (!temp.contains(prof)) {
-					temp.add(prof);
-				}
 
+			if (!temp.contains(prof)) {
+				temp.add(prof);
 			}
 
-		
-       return temp;
+		}
+
+		return temp;
 
 	}
 
