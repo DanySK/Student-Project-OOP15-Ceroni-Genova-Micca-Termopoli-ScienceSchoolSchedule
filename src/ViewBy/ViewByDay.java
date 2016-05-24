@@ -27,8 +27,6 @@ public class ViewByDay extends AbstractViewBy {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private SaveControllerInterface cont = new SaveController();
-	private ControllerWorkers contWork = new ControllerWorkers();
 	private ControllerGui contr = new ControllerGui();
 
 	public ViewByDay(final Object name) {
@@ -52,11 +50,11 @@ public class ViewByDay extends AbstractViewBy {
 		
 		for(int r = 0; r < contr.getTable().getRowCount(); r++){
 			if(contr.getTable().getValueAt(r, 0).toString().equals(day)){
-				System.out.println(contr.getTable().getValueAt(r, 0).toString());
+				//System.out.println(contr.getTable().getValueAt(r, 0).toString());
 				for(int c = 0; c < contr.getTable().getColumnCount(); c ++){
 					for(int row = r; row < contr.getTable().getRowCount() 
 							&& row < r + ListRoom.values().length+1; row++){
-						System.out.println(contr.getTable().getValueAt(row, c));
+						//System.out.println(contr.getTable().getValueAt(row, c));
 						Object obj = contr.getTable().getValueAt(row, c);
 						table.setValueAt(obj, row - r, c);
 					}
