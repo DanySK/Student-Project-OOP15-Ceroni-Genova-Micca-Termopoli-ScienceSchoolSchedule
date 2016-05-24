@@ -21,7 +21,7 @@ public class PanelButton {
     public PanelButton(MainGUI mainGUI) {
         Buttons buttons = new Buttons(mainGUI);
         this.panelButton = new JPanel(new GridBagLayout());
-        this.panelButton.setBorder(new TitledBorder("Panel Button"));
+        this.panelButton.setBorder(new TitledBorder("BOUN DIVERTIMENTO CON SSS :D"));
         this.panelButton.setBackground(Color.pink);
 
         this.cnst.gridy = 1;

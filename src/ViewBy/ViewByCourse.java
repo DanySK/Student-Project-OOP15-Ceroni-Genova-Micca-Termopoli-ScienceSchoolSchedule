@@ -7,6 +7,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.ControllerWorkers;
+import Controller.Reservation;
+import Model.Courses;
 import Model.Days;
 import Model.Hours;
 
@@ -16,6 +19,7 @@ public class ViewByCourse extends AbstractViewBy {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private ControllerWorkers cntrWork = new ControllerWorkers();
 
 	public ViewByCourse(final Object name) {
 		// TODO Auto-generated constructor stub
@@ -42,6 +46,17 @@ public class ViewByCourse extends AbstractViewBy {
 				}
 			}
 		}
+		
+		/*Courses c = (Courses)course;
+		System.out.println(c.getName());
+		
+		for (Reservation res : this.cntrWork.getByCourses((Courses)course)){
+			table.setValueAt(res.getCourse().getName() + " \n" 
+					+ res.getPerson().getSurname(),this.contr.getRow(res),
+                    this.contr.getColum(res));
+            table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
+		}*/
+		
 		table.fireTableDataChanged();
 		return table;
 	}
