@@ -23,7 +23,7 @@ public class ViewByHour extends AbstractViewBy{
 		// TODO Auto-generated constructor stub
 		super(name);
 		this.columns = 2;
-		this.rows = Days.values().length + (Days.values().length * ListRoom.values().length);
+		this.rows = Days.values().length + (Days.values().length * this.cont.getObjToSave().getListRoom().size());
 		this.defaultTable = new DefaultTableModel(rows, columns);
 		this.fillCells(defaultTable, name);
 		this.panel = new JPanel(new BorderLayout());

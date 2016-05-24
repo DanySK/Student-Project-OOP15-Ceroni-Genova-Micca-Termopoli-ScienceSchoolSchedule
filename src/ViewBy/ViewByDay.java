@@ -32,7 +32,7 @@ public class ViewByDay extends AbstractViewBy {
 		
 		super(name);
 		this.columns = Hours.values().length + 1;
-		this.rows = ListRoom.values().length + 1;
+		this.rows = this.cont.getObjToSave().getListRoom().size() + 1;
 		this.defaultTable = new DefaultTableModel(rows, columns);
 		this.fillCells(defaultTable, name);
 		this.panel = new JPanel(new BorderLayout());
@@ -52,7 +52,7 @@ public class ViewByDay extends AbstractViewBy {
 				//System.out.println(contr.getTable().getValueAt(r, 0).toString());
 				for(int c = 0; c < contr.getTable().getColumnCount(); c ++){
 					for(int row = r; row < contr.getTable().getRowCount() 
-							&& row < r + ListRoom.values().length+1; row++){
+							&& row < r + this.cont.getObjToSave().getListRoom().size()+1; row++){
 						//System.out.println(contr.getTable().getValueAt(row, c));
 						Object obj = contr.getTable().getValueAt(row, c);
 						table.setValueAt(obj, row - r, c);

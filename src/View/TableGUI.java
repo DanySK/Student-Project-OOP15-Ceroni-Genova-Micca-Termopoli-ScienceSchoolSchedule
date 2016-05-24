@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import Model.Days;
 import Model.Hours;
 import Model.ListRoom;
+import Controller.*;
 
 public class TableGUI extends DefaultTableModel {
 
@@ -18,8 +19,9 @@ public class TableGUI extends DefaultTableModel {
      */
     private static final long serialVersionUID = -782099090803983602L;
 
+    private SaveControllerInterface cont = new SaveController();
     private static int COLUMNS = Hours.values().length + 1;
-    private static int ROWS = Days.values().length + (Days.values().length * ListRoom.values().length);
+    private int row = Days.values().length + (Days.values().length * this.cont.getObjToSave().getListRoom().size());
 
     private Map<Dimension, Object> dataTable = new HashMap<>();
 
@@ -30,7 +32,7 @@ public class TableGUI extends DefaultTableModel {
     @Override
     public int getRowCount() {
         // TODO Auto-generated method stub
-        return ROWS;
+        return row;
     }
 
     @Override
