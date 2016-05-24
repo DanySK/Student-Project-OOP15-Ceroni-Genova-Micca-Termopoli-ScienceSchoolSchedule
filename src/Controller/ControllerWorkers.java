@@ -165,5 +165,23 @@ public class ControllerWorkers implements ControllerWorkersInterface {
        return temp;
 
 	}
+	
+	
+	
+	
+	public List<Professor> getProfessorFromFile() {
+		List<Professor> temp = new ArrayList<>();
+		for (Professor prof : controller.getObjToSave().getListProfessor()) {
+			
+				if (!temp.contains(prof)) {
+					temp.add(prof);
+				}
+
+			}
+
+		
+       return temp;
+
+	}
 
 }
