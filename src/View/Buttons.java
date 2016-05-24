@@ -13,33 +13,29 @@ public class Buttons {
 	private FrameInsert frame;
 	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
-	
+
 	public Buttons(MainGUI mainGUI) {
-		
+
 		this.insert = new JButton("INSERISCI");
 		this.generalView = new JButton("VISTA GENERALE");
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
 		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
-		
+
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
-			insert.setEnabled(false);
 		});
-		
+
 		this.generalView.addActionListener(l -> {
 		});
-	
-	
-	
-	
-	this.insertNew.addActionListener(l -> {
-		frame1=new FrameModify();
-		
-		
-	});
-	
+
+		this.insertNew.addActionListener(l -> {
+			frame1 = new FrameModify();
+
+		});
+
 	}
+
 	public JButton getInsert() {
 		return insert;
 	}
@@ -59,7 +55,5 @@ public class Buttons {
 	public JButton getInsertNew() {
 		return insertNew;
 	}
-	
-	
 
 }

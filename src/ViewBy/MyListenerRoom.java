@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 
-import View.MainGUI;
-
 public class MyListenerRoom implements ActionListener{
 
 	private final static String EMPTYSTR= " ";
