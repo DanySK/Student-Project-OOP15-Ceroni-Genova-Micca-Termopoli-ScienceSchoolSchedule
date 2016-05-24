@@ -1,6 +1,6 @@
 package ViewBy;
 
-public class ViewByProf extends AbstractViewBy{
+public class ViewByProf extends ViewByCourse{
 
 	/**
 	 * 
