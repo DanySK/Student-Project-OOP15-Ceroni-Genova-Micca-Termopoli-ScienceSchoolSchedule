@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,6 +21,7 @@ import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import Model.CoursesImpl;
 import Model.Professor;
+import Model.RoomImpl;
 
 public class FrameModify {
 
@@ -110,14 +112,12 @@ public class FrameModify {
 					}
 				}
 
-				
-				 JOptionPane.showConfirmDialog(null,
+				JOptionPane.showConfirmDialog(null,
 						"STAI SOSTITUENDO IL PROFESSORE:  " + comboProf.getSelectedItem() + (" \n")
 								+ "CON IL PROFESSORE: " + nameProf.getText() + ("  ") + surnameProf.getText()
 								+ "\nPER I CORSI:\n" + temp.toString() + "\n\nVuoi continuare?",
-						"Attenzione", JOptionPane.YES_NO_OPTION);
-				
-				
+						"Attenzione", JOptionPane.YES_NO_CANCEL_OPTION);
+
 			});
 		});
 		room.addActionListener(l -> {
@@ -137,8 +137,20 @@ public class FrameModify {
 			frameRoom.add(roomPanel);
 			frameRoom.add(panelSave, BorderLayout.SOUTH);
 			save.addActionListener(e -> {
-				JOptionPane.showMessageDialog(null, "STAI SALVANDO L'AULA:   " + insRoom.getText(), "Attenzione",
-						JOptionPane.ERROR_MESSAGE);
+
+				int n = JOptionPane.showConfirmDialog(null,
+						"STAI SALVANDO L'AULA:   " + insRoom.getText() + "\nVuoi continuare?", "Attenzione",
+						JOptionPane.YES_NO_OPTION);
+				if (n == JOptionPane.YES_OPTION) {
+
+					List<RoomImpl> temp = objToSave.getListRoom();
+					temp.add(new RoomImpl(insRoom.getText()));
+					objToSave.setListRoom(temp);
+					controller.save(objToSave);
+
+					JOptionPane.showMessageDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia", null,
+							JOptionPane.INFORMATION_MESSAGE);
+				}
 
 			});
 			roomPanel.add(roomLabel);
