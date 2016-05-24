@@ -26,9 +26,9 @@ public class FrameModify {
 	
 	private final JButton prof= new JButton("Professore");
 	private final JButton room= new JButton("Aula");
-	private final JComboBox<String> comboBox1 = new JComboBox<String>();
-	private final JComboBox<String> comboBox2 = new JComboBox<String>();
-	
+	private final JComboBox<String> comboCourse1 = new JComboBox<String>();
+	private final JComboBox<String> comboCourse2 = new JComboBox<String>();
+	private final JComboBox<String> comboCourse3 = new JComboBox<String>();
 	
 	public FrameModify() {
 		this.frameModify.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,19 +58,25 @@ public class FrameModify {
     	   final JLabel profLabel= new JLabel("Professore");
     	   final JLabel cours1Label= new JLabel("Corso 1:");
     	   final JLabel cours2Label= new JLabel("Corso 2:");
+    	   final JLabel cours3Label= new JLabel("Corso 3:");
+    	   
     	   final JTextField insProf= new JTextField(15);
    
     	   
-    	   this.comboBox1.addItem(" ");
+    	   this.comboCourse1.addItem(" ");
     	   for (Courses courses : this.controller.getCoursesFromFile()) {
-    		   this.comboBox1.addItem( courses.getName());
+    		   this.comboCourse1.addItem( courses.getName());
 		}
     	   
-    	   this.comboBox2.addItem(" ");
+    	   this.comboCourse2.addItem(" ");
     	   for (Courses courses : this.controller.getCoursesFromFile()) {
-    		   this.comboBox2.addItem( courses.getName());
+    		   this.comboCourse2.addItem( courses.getName());
 		}
     	 
+    	   this.comboCourse3.addItem(" ");
+    	   for (Courses courses : this.controller.getCoursesFromFile()) {
+    		   this.comboCourse3.addItem( courses.getName());
+		}
     	   
     	   cost.gridx = 0;
     	   cost.gridy = 1;
@@ -83,12 +89,17 @@ public class FrameModify {
     	   cost.gridx = 0;
     	   profPanel.add(cours1Label,cost);
     	   cost.gridx = 1;
-    	   profPanel.add(this.comboBox1,cost);
+    	   profPanel.add(this.comboCourse1,cost);
     	   cost.gridy++;
     	   cost.gridx = 0;
     	   profPanel.add(cours2Label,cost);
     	   cost.gridx = 1;
-    	   profPanel.add(this.comboBox2,cost);
+    	   profPanel.add(this.comboCourse2,cost);
+    	   cost.gridy++;
+    	   cost.gridx = 0;
+    	   profPanel.add(cours3Label,cost);
+    	   cost.gridx = 1;
+    	   profPanel.add(this.comboCourse3, cost);
     	   
     	   final JButton save= new JButton("Salva");
     	   final JPanel panelSave= new JPanel();
