@@ -37,7 +37,8 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer{
 		// TODO Auto-generated method stub
     	
     	this.setText((String)value);
-    	String str = (String) value;
+    	String str = this.getText();
+    	System.out.println(str);
         this.setHorizontalAlignment(CENTER);
         this.setHorizontalAlignment(CENTER);
         ListCourses list;
@@ -53,15 +54,6 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer{
         } else {
             Color c = Color.white;
             boolean isColored = false;
-            
-            for(Reservation res : this.setReservation){
-            	if((String) value == res.getCourse().getName())
-            	{
-            		isColored = true;
-            		c = res.getCourse().getType().getColor();
-            	}
-            		
-            }
             /*for(int i=0; i < ListCourses.values().length && !isColored; i++){
             	list = ListCourses.values()[i];
             	
