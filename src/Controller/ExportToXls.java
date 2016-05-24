@@ -3,6 +3,7 @@ package Controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,34 +16,39 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Model.Days;
 import Model.Hours;
-import Model.ListRoom;
+import Model.RoomImpl;
 
 public class ExportToXls implements ExportToXlsxInterface {
 
     private Map<Integer, ArrayList<String>> data = new TreeMap<>();
     // Blank workbook
     XSSFWorkbook workbook = new XSSFWorkbook();
+
+    SaveController controller = new SaveController();
     // Create a sheet
     XSSFSheet sheet = workbook.createSheet("Primo semestre");
     XSSFSheet sheetSecond = workbook.createSheet("Secondo semestre");
 
-    public Map<Integer, ArrayList<String>> makeBlankWorkbook(Days day) {
+    public Map<Integer, ArrayList<String>> makeBlankWorkbook() {
 
-        ArrayList<String> classRoom = new ArrayList<>();
-        classRoom.add("" + day);
-        for (ListRoom c : ListRoom.values()) {
-            classRoom.add(c.getValue());
-        }
+        
+        for (Days d : Days.values()) {
+            ArrayList<String> classRoom = new ArrayList<>();
+            classRoom.add("" + d);
+            for (RoomImpl c : controller.getObjToSave().getListRoom()) {
+                classRoom.add(c.getNameRoom());
+            }
 
-        this.data.put(day.getValue() * 10, classRoom);
+            this.data.put(d.getValue() * classRoom.size(), classRoom);
 
-        int i = day.getValue() * 10 + 1;
-
-        for (Hours h : Hours.values()) {
-            ArrayList<String> tmp = new ArrayList<>();
-            tmp.add(h.getValue());
-            this.data.put(i, tmp);
-            i++;
+            int i = d.getValue() * classRoom.size() + 1;
+            
+            for (Hours h : Hours.values()) {
+                ArrayList<String> tmp = new ArrayList<>();
+                tmp.add(h.getValue());
+                this.data.put(i, tmp);
+                i++;
+            }
         }
         return this.data;
     }
@@ -102,7 +108,7 @@ public class ExportToXls implements ExportToXlsxInterface {
             for (String obj : objArr) {
                 Cell cell = row.createCell(cellnum);
 
-                if (cellnum == 0 || rownum == 0 || (rownum % 10) == 0) { // per
+                if (cellnum == 0 || rownum == 0 || (rownum % this.controller.getObjToSave().getListRoom().size()) == 0) { // per
                                                                          // colorare
                                                                          // diversamente
                                                                          // le
@@ -137,7 +143,6 @@ public class ExportToXls implements ExportToXlsxInterface {
 
     }
 
-    @Override
     public void addAll(Map<Integer, ArrayList<String>> mapIn, Days day) {
         /*
          * Map<Integer, ArrayList<String>> mapOut = new HashMap<>(); mapOut =
@@ -155,29 +160,24 @@ public class ExportToXls implements ExportToXlsxInterface {
 
     }
 
-    @Override
-    public void save(Map<Days, Map<Integer, ArrayList<String>>> mapForFirst,
-            Map<Days, Map<Integer, ArrayList<String>>> mapForSecond) {
+    private Map<Days, Map<Integer, ArrayList<String>>> makeMap() {
+        Map<Days, Map<Integer, ArrayList<String>>> temp = new HashMap<>();
+        for (Reservation res : controller.getObjToSave().getListReservation()) {
+
+        }
+
+        return temp;
+    }
+
+    public void save() {
 
         // make a first period of year
         for (Days d : mapForFirst.keySet()) {
             this.makeBlankWorkbook(d);
             this.addAll(mapForFirst.get(d), d);
-
         }
         workbook = this.create(sheet, workbook);
 
-        // make a second period of year
-        // this.makeBlankWorkbook();
-        for (Days d : mapForSecond.keySet()) {
-            this.makeBlankWorkbook(d);
-            this.addAll(mapForSecond.get(d), d);
-
-        }
-
-        // workbook = this.create(sheetSecond, workbook);
-
-        workbook = this.create(sheetSecond, workbook);
 
         // make a xls file
         this.write(workbook);

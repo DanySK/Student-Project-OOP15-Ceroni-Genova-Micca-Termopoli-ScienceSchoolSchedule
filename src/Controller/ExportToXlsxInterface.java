@@ -10,7 +10,7 @@ import Model.Days;
 
 public interface ExportToXlsxInterface {
 
-    public Map<Integer, ArrayList<String>> makeBlankWorkbook(Days day);
+    public Map<Integer, ArrayList<String>> makeBlankWorkbook();
 
     public void write(XSSFWorkbook workbook);
 
@@ -20,6 +20,6 @@ public interface ExportToXlsxInterface {
 
     public void addAll(Map<Integer, ArrayList<String>> map,Days day);
 
-    public void save(Map<Days,Map<Integer, ArrayList<String>>> mapForFirst, Map<Days,Map<Integer, ArrayList<String>>> mapForSecond);
+    public void save();
 
 }
