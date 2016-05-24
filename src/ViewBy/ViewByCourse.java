@@ -10,9 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import Controller.ControllerWorkers;
 import Controller.Reservation;
 import Model.Courses;
-import Model.CoursesImpl;
 import Model.Days;
 import Model.Hours;
+import Model.Room;
+import View.MyTableRenderer;
 
 public class ViewByCourse extends AbstractViewBy {
 
@@ -22,11 +23,10 @@ public class ViewByCourse extends AbstractViewBy {
 	private static final long serialVersionUID = 1L;
 	private ControllerWorkers cntrWork = new ControllerWorkers();
 
-
 	public ViewByCourse(final Object name) {
 		// TODO Auto-generated constructor stub
 		super(name);
-		
+
 		this.columns = Hours.values().length + 1;
 		this.rows = Days.values().length + (Days.values().length * this.cont.getObjToSave().getListRoom().size());
 		this.defaultTable = new DefaultTableModel(rows, columns);
@@ -34,6 +34,7 @@ public class ViewByCourse extends AbstractViewBy {
 		this.panel = new JPanel(new BorderLayout());
 		this.table = new JTable(defaultTable);
 		this.scroll = new JScrollPane(table);
+		this.table.setDefaultRenderer(Object.class, new MyTableRenderer());
 		this.table.setTableHeader(null);
 		this.table.setFillsViewportHeight(true);
 		this.panel.add(scroll, BorderLayout.CENTER);
@@ -42,29 +43,31 @@ public class ViewByCourse extends AbstractViewBy {
 
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object course) {
 
-		for (int r = 0; r < contr.getTable().getRowCount(); r++) {
-			for (int c = 0; c < contr.getTable().getColumnCount(); c++) {
-				if(r == 0 || c == 0){
-					table.setValueAt(this.contr.getTable().getValueAt(r, c), r, c);
-				}
+		int i = 0;
+		for (Days days : Days.values()) {
+			int y = 1;
+			for (Hours hours : Hours.values()) {
+				table.setValueAt(hours.getValue().toUpperCase(), i, y++);
+			}
+			table.setValueAt(days.getString(), i++, 0);
+			for (Room room : this.cont.getObjToSave().getListRoom()) {
+				table.setValueAt(room.getNameRoom(), i++, 0);
 			}
 		}
-	
+
 		Courses courses = null;
 		for (Courses c : this.cntrWork.getCoursesFromFile()) {
-			if(c.getName().equals((String)course)){
+			if (c.getName().equals((String) course)) {
 				courses = c;
 			}
 		}
-		System.out.println();
-		
-		for (Reservation res : this.cntrWork.getByCourses(courses)){
-			table.setValueAt(res.getCourse().getName() + " \n" 
-					+ res.getPerson().getSurname(),this.contr.getRow(res),
-                    this.contr.getColum(res));
-            table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
+
+		for (Reservation res : this.cntrWork.getByCourses(courses)) {
+			table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.contr.getRow(res),
+					this.contr.getColum(res));
+			table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
 		}
-		
+
 		table.fireTableDataChanged();
 		return table;
 	}
