@@ -3,6 +3,9 @@ package View;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import Controller.ExportToXls;
+import Controller.ExportToXlsxInterface;
+
 public class Buttons {
 
 	private final JButton insert;
@@ -13,6 +16,7 @@ public class Buttons {
 	private FrameInsert frame;
 	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
+	private ExportToXls xls= new ExportToXls();
 	
 	public Buttons(MainGUI mainGUI) {
 		
@@ -28,6 +32,7 @@ public class Buttons {
 		});
 		
 		this.generalView.addActionListener(l -> {
+			this.xls.save("Primo Semestre");
 		});
 	
 	

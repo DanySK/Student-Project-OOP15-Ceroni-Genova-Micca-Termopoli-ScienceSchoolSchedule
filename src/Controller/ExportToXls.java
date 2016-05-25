@@ -20,167 +20,131 @@ import Model.RoomImpl;
 
 public class ExportToXls implements ExportToXlsxInterface {
 
-    private Map<Integer, ArrayList<String>> data = new TreeMap<>();
-    // Blank workbook
-    XSSFWorkbook workbook = new XSSFWorkbook();
+	private Map<Integer, ArrayList<String>> data = new TreeMap<>();
+	private ControllerWorkers contWork = new ControllerWorkers();
+	// Blank workbook
+	XSSFWorkbook workbook = new XSSFWorkbook();
 
-    SaveController controller = new SaveController();
-    // Create a sheet
-    XSSFSheet sheet = workbook.createSheet("Primo semestre");
-    XSSFSheet sheetSecond = workbook.createSheet("Secondo semestre");
+	SaveController controller = new SaveController();
+	// Create a sheet
+	XSSFSheet sheet;
 
-    public Map<Integer, ArrayList<String>> makeBlankWorkbook() {
+	private void write(XSSFWorkbook workbook) {
+		try {
+			// Write the workbook in file system
 
-        
-        for (Days d : Days.values()) {
-            ArrayList<String> classRoom = new ArrayList<>();
-            classRoom.add("" + d);
-            for (RoomImpl c : controller.getObjToSave().getListRoom()) {
-                classRoom.add(c.getNameRoom());
-            }
+			FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.home")
+					+ System.getProperty("file.separator") + "SiencesSchoolSchedul.xls"));
+			workbook.write(out);
+			out.close();
+			System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
+		} catch (Exception e) {
+			System.out.println("chiudere il file prima di proseguire");
+			e.printStackTrace();
+		}
 
-            this.data.put(d.getValue() * classRoom.size(), classRoom);
+	}
 
-            int i = d.getValue() * classRoom.size() + 1;
-            
-            for (Hours h : Hours.values()) {
-                ArrayList<String> tmp = new ArrayList<>();
-                tmp.add(h.getValue());
-                this.data.put(i, tmp);
-                i++;
-            }
-        }
-        return this.data;
-    }
+	private XSSFWorkbook create(XSSFSheet sheet, XSSFWorkbook workbook) {
 
-    public void write(XSSFWorkbook workbook) {
-        try {
-            // Write the workbook in file system
+		// Iterate over data and write to sheet
+		int rownum = 0;
+		XSSFCellStyle style6 = workbook.createCellStyle();
+		XSSFCellStyle style7 = workbook.createCellStyle();
+		for (Integer key : this.data.keySet()) {
+			// create a row of excelsheet
+			Row row = sheet.createRow(rownum);
 
-            FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.home")
-                    + System.getProperty("file.separator") + "SiencesSchoolSchedul.xls"));
-            workbook.write(out);
-            out.close();
-            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
-        } catch (Exception e) {
-            System.out.println("chiudere il file prima di proseguire");
-            e.printStackTrace();
-        }
+			// get object array of prerticuler key
+			ArrayList<String> objArr = this.data.get(key);
 
-    }
+			int cellnum = 0;
+			for (String str : objArr) {
+				Cell cell = row.createCell(cellnum);
 
-    /*
-     * funzione per aggiungere o modificare una cella della tabella
-     * 
-     * 
-     * 
-     * 
-     */
-    public void add(int row, int col, String text) {
-        int length = 0;
-        length = this.data.get(row).size();
-        if (length > col && row > 0 && col > 0) {
-            this.data.get(row).set(col, text); // add(col,
-                                               // text);
-        } else if (row > 0 && col > 0) {
-            for (int i = 0; i <= col - length; i++) {
-                this.data.get(row).add(" ");
-            }
-            this.data.get(row).set(col, text);
-        }
+				if (cellnum == 0 || rownum == 0
+						|| (rownum % this.controller.getObjToSave().getListRoom().size() + 1) == 0) { // per
+																										// colorare
+																										// diversamente
+																										// le
+																										// ore
+																										// e
+																										// le
+																										// aule
+					style6.setFillBackgroundColor(HSSFColor.BLUE_GREY.index);
+					style6.setFillPattern(XSSFCellStyle.VERTICAL_CENTER);
+					style6.setAlignment(XSSFCellStyle.ALIGN_FILL);
+					sheet.setColumnWidth(cellnum, str.length() * 400);
+					cell.setCellValue(str);
+					cell.setCellStyle(style6);
+				} else {
+					// style7.setFillBackgroundColor(HSSFColor.AQUA.index);
+					style7.setFillBackgroundColor(HSSFColor.LIGHT_BLUE.index);
+					style7.setFillPattern(XSSFCellStyle.LESS_DOTS); // senza non
+																	// fa lo
+																	// sfondo
+					// style7.setAlignment(XSSFCellStyle.ALIGN_FILL); // scrive
+					// tre volte
+					sheet.setColumnWidth(cellnum, str.length() * 400);
+					cell.setCellValue(str);
+					cell.setCellStyle(style7);
+				}
+				cellnum++;
+			}
+			rownum++;
+		}
+		return workbook;
 
-    }
+	}
 
-    public XSSFWorkbook create(XSSFSheet sheet, XSSFWorkbook workbook) {
+	private Map<Integer, ArrayList<String>> makeMap() {
+		Map<Integer, ArrayList<String>> temp = new HashMap<>();
 
-        // Iterate over data and write to sheet
-        int rownum = 0;
-        XSSFCellStyle style6 = workbook.createCellStyle();
-        XSSFCellStyle style7 = workbook.createCellStyle();
-        for (Integer key : this.data.keySet()) {
-            // create a row of excelsheet
-            Row row = sheet.createRow(rownum);
+		Integer i = 0;
 
-            // get object array of prerticuler key
-            ArrayList<String> objArr = this.data.get(key);
+		for (Days d : Days.values()) {
+			ArrayList<String> hoursArray = new ArrayList<String>();
 
-            int cellnum = 0;
-            for (String obj : objArr) {
-                Cell cell = row.createCell(cellnum);
+			hoursArray.add(d.getString());
+			for (Hours col : Hours.values()) {// scorro le ore e creo una lista
+												// come intestazione
+				hoursArray.add(col.getValue());
+			}
+			temp.put(i++, hoursArray); // inserisco la prima riga della tabella
 
-                if (cellnum == 0 || rownum == 0 || (rownum % this.controller.getObjToSave().getListRoom().size()) == 0) { // per
-                                                                         // colorare
-                                                                         // diversamente
-                                                                         // le
-                                                                         // ore
-                                                                         // e le
-                                                                         // aule
-                    style6.setFillBackgroundColor(HSSFColor.GOLD.index);
-                    style6.setFillPattern(XSSFCellStyle.LESS_DOTS);
-                    // style6.setAlignment(XSSFCellStyle.ALIGN_FILL);
-                    sheet.setColumnWidth(cellnum, obj.length() * 400);
-                    cell.setCellValue(obj);
-                    cell.setCellStyle(style6);
-                } else {
-                    // style7.setFillBackgroundColor(HSSFColor.AQUA.index);
-                    style7.setFillBackgroundColor(HSSFColor.LIGHT_BLUE.index);
-                    style7.setFillPattern(XSSFCellStyle.LESS_DOTS); // senza non
-                                                                    // fa lo
-                                                                    // sfondo
-                    // style7.setAlignment(XSSFCellStyle.ALIGN_FILL); // scrive
-                    // tre volte
-                    sheet.setColumnWidth(cellnum, obj.length() * 400);
-                    cell.setCellValue(obj);
-                    cell.setCellStyle(style7);
-                }
-                cellnum++;
-            }
-            rownum++;
-        }
-        Map<Integer, ArrayList<String>> data = new TreeMap<>();
-        this.data = data;
-        return workbook;
+			for (RoomImpl room : controller.getObjToSave().getListRoom()) { // scorro
+																			// la
+																			// lista
+																			// delle
+																			// stanze
 
-    }
+				ArrayList<String> array = new ArrayList<>();
+				for (Hours h : Hours.values()) {
+					array.add(" ");
+				}
+				array.add(0, room.getNameRoom());
+				for (Reservation res : contWork.getByDay(d)) {
+					if (res.getRoom().getNameRoom().equals(room.getNameRoom())) {
+						array.set(hoursArray.indexOf(res.getHour().getValue()), res.getCourse().getName());
+					}
+				}
+				temp.put(i++, array);
+			}
 
-    public void addAll(Map<Integer, ArrayList<String>> mapIn, Days day) {
-        /*
-         * Map<Integer, ArrayList<String>> mapOut = new HashMap<>(); mapOut =
-         * mapIn;
-         */
+		}
 
-        int col = 1;
-        for (int row : mapIn.keySet()) {
-            for (String s : mapIn.get(row)) {
-                this.add(row + day.getValue() * 10, col, s);
-                col++;
-            }
-            col = 1;
-        }
+		return temp;
+	}
 
-    }
+	public void save(String period) {
+		this.data = this.makeMap();
 
-    private Map<Days, Map<Integer, ArrayList<String>>> makeMap() {
-        Map<Days, Map<Integer, ArrayList<String>>> temp = new HashMap<>();
-        for (Reservation res : controller.getObjToSave().getListReservation()) {
+		this.sheet = workbook.createSheet(period);
 
-        }
+		workbook = this.create(sheet, workbook);
 
-        return temp;
-    }
+		// make a xls file
+		this.write(workbook);
 
-    public void save() {
-
-        // make a first period of year
-        for (Days d : mapForFirst.keySet()) {
-            this.makeBlankWorkbook(d);
-            this.addAll(mapForFirst.get(d), d);
-        }
-        workbook = this.create(sheet, workbook);
-
-
-        // make a xls file
-        this.write(workbook);
-
-    }
+	}
 }
