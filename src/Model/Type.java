@@ -1,8 +1,10 @@
 package Model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public enum Type {
@@ -35,6 +37,28 @@ public enum Type {
         return color;
     }
 
+    public static List<Type> getSecondYears(){
+        List<Type> second = new ArrayList<>();
+        second.add(Type.SECOND_YEAR);
+        second.add(Type.SECOND_YEAR_ENG);
+        second.add(Type.SECOND_YEAR_SCI);
+        return second;
+    }
+    public static List<Type> getThirdYears(){
+        List<Type> third = new ArrayList<>();
+        third.add(Type.THIRD_YEAR);
+        third.add(Type.THIRD_YEAR_ENG);
+        third.add(Type.THIRD_YEAR_SCI);
+        third.add(Type.THIRD_YEAR_OPT);
+        return third;
+    }
+    
+    public static List<Type> getFifthYears(){
+        List<Type> fifth = new ArrayList<>();
+        fifth.add(Type.FIFTH_YEAR);
+        fifth.add(Type.FIFTH_YEAR_OPT);
+        return fifth;
+    }
     public static Set<Type> getSubjectTypeValues() {
         return new HashSet<>(Arrays.asList(Type.values()));
     }
