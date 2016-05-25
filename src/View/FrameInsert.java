@@ -7,7 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
 import Controller.ControllerWorkers;
@@ -30,10 +32,10 @@ public class FrameInsert {
 
         this.frameInsert.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.frameInsert.setVisible(true);
-        this.frameInsert.setSize(400, 180);
+        this.frameInsert.setSize(400, 200);
         this.frameInsert.setResizable(false);
 
-        final JPanel panelInsert = new JPanel(new GridLayout(5, 2));
+        final JPanel panelInsert = new JPanel(new GridLayout(6, 2));
 
         panelInsert.add(this.label.getlProfessor());
         panelInsert.add(this.combo.getcProfessor());
@@ -49,6 +51,12 @@ public class FrameInsert {
 
         panelInsert.add(this.label.getlRooms());
         panelInsert.add(this.combo.getcRooms());
+        
+        final JTextField text = new JTextField(7);
+        final JLabel labelText = new JLabel("Descrizione: ");
+        
+        panelInsert.add(labelText);
+        panelInsert.add(text);
 
         this.combo.LisenerCombo(this.combo.getcProfessor(), this.combo.getcCorses());
 

@@ -24,12 +24,12 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer{
 	private SaveControllerInterface cont = new SaveController();
 	private static final long serialVersionUID = 1L;
 	private ControllerGui contr;
-	private Set<Reservation> setReservation  = cont.getObjToSave().getListReservation();
+	//private Set<Reservation> setReservation  = cont.getObjToSave().getListReservation();
 	
 	public MyTableRenderer(){
 		this.setOpaque(true);
 		contr = new ControllerGui();
-		setReservation = contr.getSetReservation();
+		//setReservation = contr.getSetReservation();
 	}
 	
 	@Override
@@ -38,23 +38,22 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer{
 		// TODO Auto-generated method stub
     	
     	this.setText((String)value);
-    	String str = this.getText();
+    	//String str = this.getText();
     	//System.out.println(str);
         this.setHorizontalAlignment(CENTER);
         this.setHorizontalAlignment(CENTER);
-        ListCourses list;
-        isSelected = false;
+        //ListCourses list;
        
         if (row == 0 || column == 0 || ((row % (contr.getCont().getObjToSave().getListRoom().size() + 1)==0))) {
             //this.setBackground(Color.GRAY);
             //setForeground(Color.BLACK);
-            //setFont(new Font("Helvetica",Font.BOLD,14));
+            //setFont(new Font("Helvetica",Font.BOLD,10));
             setBackground(new Color(171, 205, 239));
             setBorder(null);
             
         } else {
             Color c = Color.white;
-            boolean isColored = false;
+            //boolean isColored = false;
            
             /*for (Reservation reservation : setReservation) {
             	if((String) value == reservation.getCourse().getName()){

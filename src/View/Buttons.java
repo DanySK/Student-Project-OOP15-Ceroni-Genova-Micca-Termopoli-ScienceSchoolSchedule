@@ -23,7 +23,6 @@ public class Buttons {
 
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
-			insert.setEnabled(false);
 		});
 
 		this.generalView.addActionListener(l -> {
