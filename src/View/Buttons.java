@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ViewBy.MyListenerView;
 import Controller.ExportToXls;
 
 public class Buttons {
@@ -26,6 +27,7 @@ public class Buttons {
 	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	private ExportToXls xls = new ExportToXls();
+	private MyListenerView listenerViewGen = new MyListenerView();
 
 	public Buttons(MainGUI mainGUI) {
 
@@ -40,9 +42,8 @@ public class Buttons {
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
 		});
-
-		this.generalView.addActionListener(l -> {
-		});
+		
+		this.generalView.addActionListener(this.listenerViewGen);
 		
 		this.undo.addActionListener(l->{
 		    this.xls.save("Primo Semestre");
