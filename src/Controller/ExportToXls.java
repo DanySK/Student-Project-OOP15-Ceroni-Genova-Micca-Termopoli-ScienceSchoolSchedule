@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
@@ -25,7 +26,6 @@ public class ExportToXls implements ExportToXlsxInterface {
 
     private Map<Integer, ArrayList<String>> data = new TreeMap<>();
     private ControllerWorkers contWork = new ControllerWorkers();
-    private String title;
     // Blank workbook
     XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -38,7 +38,7 @@ public class ExportToXls implements ExportToXlsxInterface {
             // Write the workbook in file system
 
             FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.home")
-                    + System.getProperty("file.separator") + title+".xls"));
+                    + System.getProperty("file.separator") + "SiencesSchoolSchedul.xls"));
             workbook.write(out);
             out.close();
             System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
@@ -148,7 +148,6 @@ public class ExportToXls implements ExportToXlsxInterface {
     }
 
     public void save(String period) {
-        this.title = period;
         this.data = this.makeMap();
 
         this.sheet = workbook.createSheet(period);

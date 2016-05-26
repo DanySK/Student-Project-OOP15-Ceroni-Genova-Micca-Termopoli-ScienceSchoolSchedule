@@ -126,11 +126,10 @@ public class FrameModify {
 
 						controller.save(objToSave);
 					}
-					int g = JOptionPane
-							.showConfirmDialog(null,
-									"Riavvia per visualizzare il professore sull'interfaccia!"
-											+ "\n Vuoi chiudere adesso il programma?",
-									null, JOptionPane.YES_NO_OPTION);
+					int g = JOptionPane.showConfirmDialog(null,
+							"Riavvia per visualizzare il professore sull'interfaccia!"
+									+ "\n Vuoi chiudere adesso il programma?",
+							null, JOptionPane.YES_NO_OPTION);
 					if (g == JOptionPane.YES_OPTION) {
 						System.exit(0);
 					}
