@@ -34,7 +34,6 @@ public class FrameModify {
 	private final JFrame frameModify = new JFrame("Acquisizione nuovo elemento");
 	private SaveControllerInterface controller = new SaveController();
 	private ObjToSave objToSave = controller.getObjToSave();
-
 	private final JButton prof = new JButton("Professore");
 	private final JButton room = new JButton("Aula");
 	private final JComboBox<String> comboProf = new JComboBox<String>();
@@ -48,7 +47,6 @@ public class FrameModify {
 		final JPanel panelModify = new JPanel(new GridBagLayout());
 		final GridBagConstraints cnst = new GridBagConstraints();
 		cnst.gridy = 0;
-
 		cnst.fill = GridBagConstraints.HORIZONTAL;
 		panelModify.add(prof, cnst);
 		cnst.gridy++;
@@ -74,7 +72,6 @@ public class FrameModify {
 			this.comboProf.addItem(EMPTYSTR);
 			for (Professor p : objToSave.getListProfessor()) {
 				comboProf.addItem(p.getPerson().toString());
-
 			}
 
 			cost.gridx = 0;
@@ -103,16 +100,11 @@ public class FrameModify {
 
 			save.addActionListener(e -> {
 				List<String> temp = new ArrayList<>();
-
 				for (Professor prof : objToSave.getListProfessor()) {
 					if (prof.getPerson().toString().equals(comboProf.getSelectedItem())) {
-
 						for (CoursesImpl co : prof.getCourses()) {
-
 							temp.add(co.getName());
-
 						}
-
 					}
 				}
 
@@ -123,24 +115,19 @@ public class FrameModify {
 						"Attenzione", JOptionPane.YES_NO_CANCEL_OPTION);
 
 				if (f == JOptionPane.YES_OPTION) {
-
 					List<Professor> temp1 = objToSave.getListProfessor();
-
 					for (Professor p : objToSave.getListProfessor()) {
 						String prof = comboProf.getSelectedItem().toString();
 
 						if (prof.equals(p.getPerson().toString())) {
 							p.getPerson().setName(nameProf.getText());
 							p.getPerson().setSurname(surnameProf.getText());
-
 						}
 
 						controller.save(objToSave);
-
 					}
 					frameProf.setVisible(false);
 
-					
 				}
 
 			});
@@ -163,22 +150,38 @@ public class FrameModify {
 			frameRoom.add(panelSave, BorderLayout.SOUTH);
 			save.addActionListener(e -> {
 
-				int n = JOptionPane.showConfirmDialog(null,
-						"STAI SALVANDO L'AULA:   " + insRoom.getText() + "\nVuoi continuare?", "Attenzione",
-						JOptionPane.YES_NO_OPTION);
-				if (n == JOptionPane.YES_OPTION) {
+				boolean contol = true;
+				String s = insRoom.getText().toString();
+				String sMai = s.toUpperCase();
 
-					List<RoomImpl> temp = objToSave.getListRoom();
-					temp.add(new RoomImpl(insRoom.getText()));
-					objToSave.setListRoom(temp);
-					controller.save(objToSave);
-
-					frameRoom.setVisible(false);
-
-					int f = JOptionPane.showConfirmDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia!"
-							+ "\n Vuoi chiudere adesso il programma?", null, JOptionPane.YES_NO_OPTION);
-					if (f == JOptionPane.YES_OPTION) {
-						System.exit(0);
+				for (RoomImpl r : objToSave.getListRoom()) {
+					String ss = r.getNameRoom().toString();
+					String ssMai = ss.toUpperCase();
+					if (sMai.equals(ssMai)) {
+						JOptionPane.showMessageDialog(null, "Non e' possibile aggungere l'aula perchè già esiste!",
+								null, JOptionPane.ERROR_MESSAGE);
+						contol = false;
+						frameRoom.setVisible(false);
+					}
+				}
+				if (contol == true) {
+					int n = JOptionPane.showConfirmDialog(null,
+							"STAI SALVANDO L'AULA:   " + insRoom.getText() + "\nVuoi continuare?", "Attenzione",
+							JOptionPane.YES_NO_OPTION);
+					if (n == JOptionPane.YES_OPTION) {
+						List<RoomImpl> temp = objToSave.getListRoom();
+						temp.add(new RoomImpl(insRoom.getText()));
+						objToSave.setListRoom(temp);
+						controller.save(objToSave);
+						frameRoom.setVisible(false);
+						int f = JOptionPane
+								.showConfirmDialog(null,
+										"Riavvia per visualizzare l'aula sull'interfaccia!"
+												+ "\n Vuoi chiudere adesso il programma?",
+										null, JOptionPane.YES_NO_OPTION);
+						if (f == JOptionPane.YES_OPTION) {
+							System.exit(0);
+						}
 					}
 				}
 			});
@@ -192,5 +195,4 @@ public class FrameModify {
 		this.frameModify.setVisible(true);
 
 	}
-
 }
