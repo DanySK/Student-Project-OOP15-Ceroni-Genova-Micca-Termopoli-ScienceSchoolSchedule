@@ -7,32 +7,33 @@ import java.util.Set;
 
 import Model.Days;
 import Model.Type;
+import Model.WarningException;
 
 public class validateWarning {
 
     private ControllerWorkers contWorkers = new ControllerWorkers();
     private Reservation cont;
 
-    public boolean validateWARNING(Reservation cont) {
+    public boolean validateWARNING(Reservation cont) throws WarningException {
         this.cont = cont;
         Boolean check = true;
         if (!checkHoursForDayProf()) {
             check = false;
-            throw new IllegalArgumentException(); // 6 ore al giorno
+            throw new WarningException("Il prof. svolge 6 ore di lezione"+"\n"+"Aggiungere la settima ora?"); // 6 ore al giorno
 
         } else if (!check4TimeWeekProfessor()) {
             check = false;
-            throw new IllegalArgumentException(); // più di 4 giorni a settimana
+            throw new WarningException("Il prof. svolge 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?");  // più di 4 giorni a settimana
                                                   // prof
 
         } else if (!check4TimeWeekStudent()) {
             check = false;
-            throw new IllegalArgumentException(); // più di 4 giorni a settimana
+            throw new WarningException("Gli studenti di questo anno svolgono 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?"); // più di 4 giorni a settimana
                                                   // stud
         }else if (cont.getCourse().getType().equals(Type.FIRST_YEAR)) { /// corso del 1° anno
             if (!checkCDLFirstYear()) { // corso non inseribile
                 check = false;
-                throw new IllegalArgumentException(); //
+                throw new WarningException(""+"\n"+""); //
             }
 
         } else if (Type.getSecondYears().contains(cont.getCourse().getType())) { // corso del 2° anno
@@ -64,22 +65,28 @@ public class validateWarning {
 
    
     private Boolean checkCDLFirstYear() {
-        boolean check = false;
-        List<Type> listType = new ArrayList<>();
+        //boolean check = false;
+        List<Type> listType = new ArrayList<>();        
 
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
             if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
+                if(res.getCourse().getName().equals(cont.getCourse().getName())
+                        && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
+                        && !res.getPerson().toString().equals(cont.getPerson().toString())){
+                    return true;
+                }
                 listType.add(res.getCourse().getType());
 
             }
         }
-        if (listType.contains(Type.FIRST_YEAR)) {
+       /* if (listType.contains(Type.FIRST_YEAR)) {
             check = false;
         } else {
             check = true;
-        }
+        }*/
 
-        return check;
+        //return check;
+        return false;
     }
 
     private Boolean checkCDLSecondYear() {
@@ -109,6 +116,11 @@ public class validateWarning {
 
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
             if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
+                if(res.getCourse().getName().equals(cont.getCourse().getName())
+                        && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
+                        && !res.getPerson().toString().equals(cont.getPerson().toString())){
+                
+                }
                 listType.add(res.getCourse().getType());
 
             }
