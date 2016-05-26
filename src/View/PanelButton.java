@@ -72,11 +72,10 @@ public class PanelButton {
         this.panelButton.add(buttons.getInsertNew(), cnst);
         this.incrementCnstY();
         this.panelButton.add(panelLegend.getPanelLegend(), cnst);
-        /*
-         * DA CONCORDARE CON IL PROF SE METTERLO O MENO
-         * this.comboBoxes.LisenerCombo(this.comboBoxes.getcProfessor(),
-         * this.comboBoxes.getcCorses());
-         */
+        this.incrementCnstY();
+        this.panelButton.add(buttons.getSaveInExel(), cnst);
+        this.incrementCnstY();
+        this.panelButton.add(buttons.getResetTable(), cnst);
 
         this.comboBoxes.FillCombobox(this.comboBoxes.getcCorses());
 

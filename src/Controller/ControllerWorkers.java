@@ -5,27 +5,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.JOptionPane;
-
 import Model.Courses;
 import Model.Days;
 import Model.Hours;
 import Model.Person;
 import Model.Professor;
 import Model.Room;
+import Model.WarningException;
 
 public class ControllerWorkers implements ControllerWorkersInterface {
 
     private SaveControllerInterface controller = new SaveController();
     private Set<Reservation> listReservation = controller.getObjToSave().getListReservation();
 
-    public void addRes(Reservation cont) {
+    public void addRes(Reservation cont) throws WarningException {
 
         if (check(cont)) {
             this.listReservation.add(cont);
         } else {
-            JOptionPane.showMessageDialog(null, "Non disponibile!", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new WarningException("Aula e orario non disponibile!");
         }
     }
 

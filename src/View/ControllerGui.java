@@ -101,7 +101,6 @@ public class ControllerGui {
                     if (cous.getName().equals(corso)) {
                         cours = new CoursesImpl(cous.getName(), cous.getType());
                     }
-
                 }
             }
 

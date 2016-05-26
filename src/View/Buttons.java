@@ -2,6 +2,8 @@ package View;
 
 import javax.swing.JButton;
 
+import javax.swing.JOptionPane;
+
 import Controller.ExportToXls;
 
 public class Buttons {
@@ -11,6 +13,8 @@ public class Buttons {
 	private final JButton undo;
 	private final JButton redo;
 	private final JButton insertNew;
+	private final JButton saveInExel;
+	private final JButton resetTable;
 	private FrameInsert frame;
 	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
@@ -23,6 +27,8 @@ public class Buttons {
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
 		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
+		this.saveInExel = new JButton("ESPORTA IN EXEL");
+		this.resetTable = new JButton("RESETTA LA TABELLA");
 
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
@@ -30,19 +36,35 @@ public class Buttons {
 
 		this.generalView.addActionListener(l -> {
 		});
+		
 		this.undo.addActionListener(l->{
 		    this.xls.save("Primo Semestre");
 		});
 
 		this.insertNew.addActionListener(l -> {
 			frame1 = new FrameModify();
-
+		});
+		
+		this.resetTable.addActionListener(l -> {
+			
+		});
+		
+		this.saveInExel.addActionListener(l -> {
+			
 		});
 
 	}
 
 	public JButton getInsert() {
 		return insert;
+	}
+
+	public JButton getSaveInExel() {
+		return saveInExel;
+	}
+
+	public JButton getResetTable() {
+		return resetTable;
 	}
 
 	public JButton getGeneralView() {

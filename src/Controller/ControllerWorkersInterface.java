@@ -6,10 +6,11 @@ import Model.Courses;
 import Model.Days;
 import Model.Person;
 import Model.Room;
+import Model.WarningException;
 
 public interface ControllerWorkersInterface {
 
-    public void addRes(Reservation cont);
+    public void addRes(Reservation cont) throws WarningException;
 
     public Set<Reservation> getListReservation();
   /*  private boolean validate(Reservation cont) ;

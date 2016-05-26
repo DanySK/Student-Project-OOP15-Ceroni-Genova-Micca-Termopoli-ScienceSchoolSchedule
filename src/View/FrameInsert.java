@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
@@ -52,32 +53,35 @@ public class FrameInsert {
         panelInsert.add(this.label.getlRooms());
         panelInsert.add(this.combo.getcRooms());
         
-        final JTextField text = new JTextField(7);
+        /*final JTextField text = new JTextField(7);
         final JLabel labelText = new JLabel("Descrizione: ");
         
         panelInsert.add(labelText);
-        panelInsert.add(text);
+        panelInsert.add(text);*/
 
         this.combo.LisenerCombo(this.combo.getcProfessor(), this.combo.getcCorses());
 
         final JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         final JButton apply = new JButton("Applica");
         apply.addActionListener(l -> {
-        	
-            Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
-                    this.combo.getcCorses().getSelectedItem().toString(),
-                    this.combo.getcDays().getSelectedItem().toString(),
-                    this.combo.getcHours().getSelectedItem().toString(),
-                    this.combo.getcRooms().getSelectedItem().toString());
-            cntr.addRes(res);
-            controller.getObjToSave().setListReservation(cntr.getListReservation());
-            controller.save(controller.getObjToSave());
+        	try{
+        		  Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
+                          this.combo.getcCorses().getSelectedItem().toString(),
+                          this.combo.getcDays().getSelectedItem().toString(),
+                          this.combo.getcHours().getSelectedItem().toString(),
+                          this.combo.getcRooms().getSelectedItem().toString());
+                  cntr.addRes(res);
+                  controller.getObjToSave().setListReservation(cntr.getListReservation());
+                  controller.save(controller.getObjToSave());
 
-            Integer row = c.getRow(res);
-            Integer colum = c.getColum(res);
-            mainGUI.update( res.getCourse().getName() + " \n" + res.getPerson().getSurname(),row,colum );
-            this.frameInsert.setVisible(false);
-
+                  Integer row = c.getRow(res);
+                  Integer colum = c.getColum(res);
+                  mainGUI.update( res.getCourse().getName() + " \n" + res.getPerson().getSurname(),row,colum );
+                  this.frameInsert.setVisible(false);
+        	} catch (Exception e){
+        		// DA FINIRE
+        		JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.YES_NO_OPTION);
+        	}
         });
         panelButton.add(apply);
 
