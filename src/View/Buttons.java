@@ -36,7 +36,7 @@ public class Buttons {
 		this.undo = new JButton("UNDO");
 		this.redo = new JButton("REDO");
 		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
-		this.saveInExel = new JButton("ESPORTA IN EXEL");
+		this.saveInExel = new JButton("ESPORTA IN EXCEL");
 		this.resetTable = new JButton("RESETTA LA TABELLA");
 
 		this.insert.addActionListener(l -> {
@@ -46,7 +46,7 @@ public class Buttons {
 		this.generalView.addActionListener(this.listenerViewGen);
 		
 		this.undo.addActionListener(l->{
-		    this.xls.save("Primo Semestre");
+		 
 		});
 
 		this.insertNew.addActionListener(l -> {
@@ -67,7 +67,7 @@ public class Buttons {
 			final JPanel panelSave = new JPanel(new GridBagLayout());
 			final JLabel text = new JLabel("Inserisci nome file:  ");
 			final JTextField exelTitle= new JTextField(15);
-			exelTitle.setToolTipText("ESEMPIO: 1 semestre 15-16");
+			exelTitle.setToolTipText("ESEMPIO: 1° semestre 15-16");
 			JPanel panelBut = new JPanel();
 			final JButton save = new JButton("Salva");
 			

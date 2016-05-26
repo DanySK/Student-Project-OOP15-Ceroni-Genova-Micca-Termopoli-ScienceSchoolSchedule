@@ -1,10 +1,6 @@
 package Controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Model.ErrorException;
-import Model.Type;
 
 public class ValidateError {
     private ControllerWorkers contWorkers = new ControllerWorkers();

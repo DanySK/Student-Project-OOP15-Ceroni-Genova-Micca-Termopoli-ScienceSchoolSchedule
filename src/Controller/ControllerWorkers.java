@@ -7,6 +7,7 @@ import java.util.Set;
 
 import Model.Courses;
 import Model.Days;
+import Model.ErrorException;
 import Model.Hours;
 import Model.Person;
 import Model.Professor;
@@ -18,29 +19,9 @@ public class ControllerWorkers implements ControllerWorkersInterface {
     private SaveControllerInterface controller = new SaveController();
     private Set<Reservation> listReservation = controller.getObjToSave().getListReservation();
 
-    public void addRes(Reservation cont) throws WarningException {
+    public void addRes(Reservation cont) throws WarningException, ErrorException {
 
-        if (check(cont)) {
-            this.listReservation.add(cont);
-        } else {
-            throw new WarningException("Aula e orario non disponibile!");
-        }
-    }
-
-    private boolean check(Reservation cont) {
-        boolean check = true;
-        for (Reservation res : listReservation) {
-            if (((cont.getDay().getString()).equals(res.getDay().getString())
-                    && ((cont.getHour().getValue()).equals(res.getHour().getValue())))
-                    && ((cont.getRoom().getNameRoom()).equals(res.getRoom().getNameRoom()))) {
-                check = false;
-            } else {
-                // JOptionPane.showMessageDialog(null, "errore gia presente!",
-                // "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        return check;
+        this.listReservation.add(cont);
 
     }
 
@@ -50,13 +31,9 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     public Set<Reservation> getByDay(Days d) {
         Set<Reservation> listByDay = new HashSet<>();
-        if (this.listReservation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            for (Reservation res : listReservation) {
-                if (res.getDay().getString().equals(d.getString())) {
-                    listByDay.add(res);
-                }
+        for (Reservation res : listReservation) {
+            if (res.getDay().getString().equals(d.getString())) {
+                listByDay.add(res);
             }
         }
         return listByDay;
@@ -64,33 +41,20 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     public Set<Reservation> getByClass(Room c) {
         Set<Reservation> listByRoom = new HashSet<>();
-        if (this.listReservation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            for (Reservation res : listReservation) {
-                if (res.getRoom().equals(c)) {
-                    listByRoom.add(res);
-                }
+
+        for (Reservation res : listReservation) {
+            if (res.getRoom().equals(c)) {
+                listByRoom.add(res);
             }
         }
-
-        if (listByRoom.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            return listByRoom;
-        }
-
+        return listByRoom;
     }
 
     public Set<Reservation> getByCourses(Courses course) {
         Set<Reservation> listByCourses = new HashSet<>();
-        if (this.listReservation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            for (Reservation res : listReservation) {
-                if (res.getCourse().getName().equals(course.getName())) {
-                    listByCourses.add(res);
-                }
+        for (Reservation res : listReservation) {
+            if (res.getCourse().getName().equals(course.getName())) {
+                listByCourses.add(res);
             }
         }
         return listByCourses;
@@ -98,14 +62,11 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     public Set<Reservation> getByProfessor(Person p) {
         Set<Reservation> listByProf = new HashSet<>();
-        if (this.listReservation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            for (Reservation res : listReservation) {
-                if (res.getPerson().toString().equals(p.toString())) {
-                    listByProf.add(res);
-                    System.out.print(res.getPerson().toString());
-                }
+
+        for (Reservation res : listReservation) {
+            if (res.getPerson().toString().equals(p.toString())) {
+                listByProf.add(res);
+                System.out.print(res.getPerson().toString());
             }
         }
         return listByProf;
@@ -113,21 +74,13 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     public Set<Reservation> getByHour(Hours h) {
         Set<Reservation> listByHours = new HashSet<>();
-        if (this.listReservation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            for (Reservation res : listReservation) {
-                if (res.getHour().equals(h)) {
-                    listByHours.add(res);
-                }
+
+        for (Reservation res : listReservation) {
+            if (res.getHour().equals(h)) {
+                listByHours.add(res);
             }
         }
-
-        if (listByHours.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            return listByHours;
-        }
+        return listByHours;
     }
 
     public List<Courses> getCoursesFromFile() {
@@ -137,12 +90,9 @@ public class ControllerWorkers implements ControllerWorkersInterface {
                 if (!temp.contains(courses)) {
                     temp.add(courses);
                 }
-
             }
-
         }
         return temp;
-
     }
 
     public List<Professor> getProfessorFromFile() {
@@ -152,9 +102,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
             if (!temp.contains(prof)) {
                 temp.add(prof);
             }
-
         }
-
         return temp;
 
     }

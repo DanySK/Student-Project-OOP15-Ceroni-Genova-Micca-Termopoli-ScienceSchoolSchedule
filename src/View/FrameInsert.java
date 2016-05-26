@@ -18,7 +18,11 @@ import Controller.ControllerWorkersInterface;
 import Controller.Reservation;
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
+import Controller.ValidateError;
+import Controller.ValidateWarning;
+import Model.ErrorException;
 import Model.RoomImpl;
+import Model.WarningException;
 
 public class FrameInsert {
 
@@ -52,36 +56,69 @@ public class FrameInsert {
 
         panelInsert.add(this.label.getlRooms());
         panelInsert.add(this.combo.getcRooms());
-        
-        /*final JTextField text = new JTextField(7);
-        final JLabel labelText = new JLabel("Descrizione: ");
-        
-        panelInsert.add(labelText);
-        panelInsert.add(text);*/
+
+        /*
+         * final JTextField text = new JTextField(7); final JLabel labelText =
+         * new JLabel("Descrizione: ");
+         * 
+         * panelInsert.add(labelText); panelInsert.add(text);
+         */
 
         this.combo.LisenerCombo(this.combo.getcProfessor(), this.combo.getcCorses());
 
         final JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         final JButton apply = new JButton("Applica");
         apply.addActionListener(l -> {
-        	try{
-        		  Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
-                          this.combo.getcCorses().getSelectedItem().toString(),
-                          this.combo.getcDays().getSelectedItem().toString(),
-                          this.combo.getcHours().getSelectedItem().toString(),
-                          this.combo.getcRooms().getSelectedItem().toString());
-                  cntr.addRes(res);
-                  controller.getObjToSave().setListReservation(cntr.getListReservation());
-                  controller.save(controller.getObjToSave());
+            try {
+                Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
+                        this.combo.getcCorses().getSelectedItem().toString(),
+                        this.combo.getcDays().getSelectedItem().toString(),
+                        this.combo.getcHours().getSelectedItem().toString(),
+                        this.combo.getcRooms().getSelectedItem().toString());
+                ValidateError error = new ValidateError();
+                error.validateErrore(res);
+                ValidateWarning warning = new ValidateWarning();
+                warning.validateWARNING(res);
+                cntr.addRes(res);
+                controller.getObjToSave().setListReservation(cntr.getListReservation());
+                controller.save(controller.getObjToSave());
 
-                  Integer row = c.getRow(res);
-                  Integer colum = c.getColum(res);
-                  mainGUI.update( res.getCourse().getName() + " \n" + res.getPerson().getSurname(),row,colum );
-                  this.frameInsert.setVisible(false);
-        	} catch (Exception e){
-        		// DA FINIRE
-        		JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.YES_NO_OPTION);
-        	}
+                Integer row = c.getRow(res);
+                Integer colum = c.getColum(res);
+                mainGUI.update(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), row, colum);
+                this.frameInsert.setVisible(false);
+            } catch (Exception e) {
+                if (e instanceof WarningException) {
+                    int i = JOptionPane.showConfirmDialog(null, e.getMessage(), "Warning", JOptionPane.YES_NO_OPTION);
+                    if (i == JOptionPane.YES_OPTION) {
+                        Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
+                                this.combo.getcCorses().getSelectedItem().toString(),
+                                this.combo.getcDays().getSelectedItem().toString(),
+                                this.combo.getcHours().getSelectedItem().toString(),
+                                this.combo.getcRooms().getSelectedItem().toString());
+                        try {
+                            cntr.addRes(res);
+                        } catch (Exception e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                        controller.getObjToSave().setListReservation(cntr.getListReservation());
+                        controller.save(controller.getObjToSave());
+
+                        Integer row = c.getRow(res);
+                        Integer colum = c.getColum(res);
+                        mainGUI.update(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), row, colum);
+                        this.frameInsert.setVisible(false);
+                    }
+
+                } else if (e instanceof ErrorException) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.OK_OPTION);
+                } else {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error non previsto", JOptionPane.OK_OPTION);
+                }
+
+            }
         });
         panelButton.add(apply);
 

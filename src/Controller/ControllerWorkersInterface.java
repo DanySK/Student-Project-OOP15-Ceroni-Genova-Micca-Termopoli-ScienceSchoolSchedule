@@ -1,35 +1,32 @@
 package Controller;
 
+import java.util.List;
 import java.util.Set;
 
 import Model.Courses;
 import Model.Days;
+import Model.ErrorException;
+import Model.Hours;
 import Model.Person;
+import Model.Professor;
 import Model.Room;
 import Model.WarningException;
 
 public interface ControllerWorkersInterface {
 
-    public void addRes(Reservation cont) throws WarningException;
+    public void addRes(Reservation cont) throws WarningException, ErrorException;
 
     public Set<Reservation> getListReservation();
-  /*  private boolean validate(Reservation cont) ;
 
-    private boolean checkPeriod(Reservation cont);
-
-    private boolean check4TimeWeekProfessor(Reservation cont);
-
-    private boolean check4TimeWeekStudent(Reservation cont);
-
-    private Boolean checkCDLSecondYear(Reservation cont);
-    private Boolean checkCDLThirdYear(Reservation cont);
-*/
     public Set<Reservation> getByDay(Days d);
 
     public Set<Reservation> getByClass(Room c);
 
-    public Set<Reservation> getByCourses(Courses course);
-
     public Set<Reservation> getByProfessor(Person p);
 
+    public Set<Reservation> getByHour(Hours h);
+
+    public List<Courses> getCoursesFromFile();
+
+    public List<Professor> getProfessorFromFile();
 }
