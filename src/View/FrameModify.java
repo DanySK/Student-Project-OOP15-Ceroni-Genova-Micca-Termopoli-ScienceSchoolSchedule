@@ -167,7 +167,7 @@ public class FrameModify {
 						JOptionPane.showMessageDialog(null, "Non e' possibile aggungere l'aula perchè già esiste!",
 								null, JOptionPane.ERROR_MESSAGE);
 						contol = false;
-						frameRoom.setVisible(false);
+						
 					}
 				}
 				if (contol == true) {
