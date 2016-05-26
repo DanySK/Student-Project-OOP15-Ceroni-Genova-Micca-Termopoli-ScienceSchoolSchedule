@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import Model.Days;
+import Model.ErrorException;
 import Model.Type;
 import Model.WarningException;
 
@@ -14,7 +15,7 @@ public class validateWarning {
     private ControllerWorkers contWorkers = new ControllerWorkers();
     private Reservation cont;
 
-    public boolean validateWARNING(Reservation cont) throws WarningException {
+    public boolean validateWARNING(Reservation cont)  throws WarningException, ErrorException {
         this.cont = cont;
         Boolean check = true;
         if (!checkHoursForDayProf()) {
@@ -64,7 +65,7 @@ public class validateWarning {
     }
 
    
-    private Boolean checkCDLFirstYear() {
+    private Boolean checkCDLFirstYear()throws WarningException, ErrorException {
         //boolean check = false;
         List<Type> listType = new ArrayList<>();        
 
@@ -73,45 +74,21 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                    return true;
+                        throw new WarningException("");
                 }
                 listType.add(res.getCourse().getType());
 
             }
         }
-       /* if (listType.contains(Type.FIRST_YEAR)) {
-            check = false;
-        } else {
-            check = true;
-        }*/
+       if (listType.contains(Type.FIRST_YEAR)) {
+           throw new ErrorException("");
+        } 
 
-        //return check;
-        return false;
+       
+        return true;
     }
 
-    private Boolean checkCDLSecondYear() {
-        boolean check = false;
-        List<Type> listType = new ArrayList<>();
-
-        for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
-            if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
-                listType.add(res.getCourse().getType());
-
-            }
-        }
-        if (listType.contains(Type.SECOND_YEAR_ENG) && cont.getCourse().getType().equals(Type.SECOND_YEAR_SCI)) {
-            check = true;
-        } else if (listType.contains(Type.SECOND_YEAR_SCI) && cont.getCourse().getType().equals(Type.SECOND_YEAR_ENG)) {
-            check = true;
-        } else {
-            check = false;
-        }
-
-        return check;
-    }
-
-    private Boolean checkCDLThirdYear() {
-        boolean check = false;
+    private Boolean checkCDLSecondYear() throws WarningException, ErrorException{
         List<Type> listType = new ArrayList<>();
 
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
@@ -119,64 +96,90 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                
+                    throw new WarningException("");
                 }
                 listType.add(res.getCourse().getType());
 
             }
         }
-        if (listType.contains(Type.THIRD_YEAR_ENG) && cont.getCourse().getType().equals(Type.THIRD_YEAR_SCI)) {
-            check = true;
-        } else if (listType.contains(Type.THIRD_YEAR_SCI) && cont.getCourse().getType().equals(Type.THIRD_YEAR_ENG)) {
-            check = true;
-        } else if (listType.contains(Type.THIRD_YEAR_OPT) && cont.getCourse().getType().equals(Type.THIRD_YEAR_OPT)) {
-            check = true;
+        if (listType.contains(Type.SECOND_YEAR_ENG) && cont.getCourse().getType().equals(Type.SECOND_YEAR_SCI)) {
+           return true;
+        } else if (listType.contains(Type.SECOND_YEAR_SCI) && cont.getCourse().getType().equals(Type.SECOND_YEAR_ENG)) {
+            return true;
         } else {
-            check = false;
+            throw new ErrorException("");
         }
-
-        return check;
     }
 
-    private Boolean checkCDLFourthYear() {
-        boolean check = false;
+    private Boolean checkCDLThirdYear()throws WarningException, ErrorException {
+        
         List<Type> listType = new ArrayList<>();
 
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
             if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
+                if(res.getCourse().getName().equals(cont.getCourse().getName())
+                        && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
+                        && !res.getPerson().toString().equals(cont.getPerson().toString())){
+                    throw new WarningException("");
+                }
+                listType.add(res.getCourse().getType());
+            }
+        }
+        if (listType.contains(Type.THIRD_YEAR_ENG) && cont.getCourse().getType().equals(Type.THIRD_YEAR_SCI)) {
+            return true;
+        } else if (listType.contains(Type.THIRD_YEAR_SCI) && cont.getCourse().getType().equals(Type.THIRD_YEAR_ENG)) {
+            return true;
+        } else if (listType.contains(Type.THIRD_YEAR_OPT) && cont.getCourse().getType().equals(Type.THIRD_YEAR_OPT)) {
+            return true;
+        } else {
+            throw new ErrorException("");
+        }
+    }
+
+    private Boolean checkCDLFourthYear()throws WarningException, ErrorException {
+        List<Type> listType = new ArrayList<>();
+
+        for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
+            if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
+                if(res.getCourse().getName().equals(cont.getCourse().getName())
+                        && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
+                        && !res.getPerson().toString().equals(cont.getPerson().toString())){
+                    throw new WarningException("");
+                }
                 listType.add(res.getCourse().getType());
 
             }
         }
         if (listType.contains(Type.FOURTH_YEAR)) {
-            check = false;
-        } else {
-            check = true;
-        }
+            throw new ErrorException("");
+        } 
 
-        return check;
+        return true;
     }
 
-    private Boolean checkCDLFifthYear() {
-        boolean check = false;
+    private Boolean checkCDLFifthYear() throws WarningException, ErrorException{
         List<Type> listType = new ArrayList<>();
 
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
             if ((cont.getHour().getValue()).equals(res.getHour().getValue())) {
+                if(res.getCourse().getName().equals(cont.getCourse().getName())
+                        && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
+                        && !res.getPerson().toString().equals(cont.getPerson().toString())){
+                    throw new WarningException("");
+                   
+                }
                 listType.add(res.getCourse().getType());
 
             }
         }
         if (listType.contains(Type.FIFTH_YEAR) || listType.contains(Type.FIFTH_YEAR_OPT)) {
-            check = false;
-        } else {
-            check = true;
+          throw new ErrorException("");
         }
 
-        return check;
+        return true;
     }
 
-    private boolean checkHoursForDayProf() {
+    private Boolean checkHoursForDayProf()throws WarningException {
         int i = 0;
 
         for (Reservation reservation : this.contWorkers.getByDay(cont.getDay())) {
@@ -184,10 +187,10 @@ public class validateWarning {
                 i++;
             }
         }
-        return i <= 6 ? true : false;
+        return i <= 6 ? true : new WarningException(" ") != null;
     }
 
-    private boolean check4TimeWeekProfessor() {
+    private Boolean check4TimeWeekProfessor() throws WarningException{
         int i = 0;
         Set<Integer> tempCount = new HashSet<>();
         for (Reservation reservation : this.contWorkers.getByProfessor(cont.getPerson())) {
@@ -202,10 +205,10 @@ public class validateWarning {
 
             }
         }
-        return tempCount.size() <= 4 ? true : false;
+        return tempCount.size() <= 4 ? true : new WarningException(" ") != null;
     }
 
-    private boolean check4TimeWeekStudent() {
+    private boolean check4TimeWeekStudent() throws WarningException{
         int i = 0;
         Set<Integer> tempCount = new HashSet<>();
         List<Type> listType = new ArrayList<>();
@@ -225,7 +228,7 @@ public class validateWarning {
 
         }
 
-        return tempCount.size() <= 4 ? true : false;
+        return tempCount.size() <= 4 ? true : new WarningException(" ") != null;
     }
 
     
