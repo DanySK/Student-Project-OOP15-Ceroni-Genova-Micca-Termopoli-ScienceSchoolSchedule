@@ -147,11 +147,16 @@ public class FrameModify {
 					temp.add(new RoomImpl(insRoom.getText()));
 					objToSave.setListRoom(temp);
 					controller.save(objToSave);
+					
+					frameRoom.setVisible(false);
 
-					JOptionPane.showMessageDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia", null,
-							JOptionPane.INFORMATION_MESSAGE);
+					int f = JOptionPane.showConfirmDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia!"
+							+ "\n Vuoi chiudere adesso il programma?", null,
+							JOptionPane.YES_NO_OPTION);
+					if (f == JOptionPane.YES_OPTION){
+						System.exit(0);
+					}
 				}
-
 			});
 			roomPanel.add(roomLabel);
 			roomPanel.add(insRoom);
