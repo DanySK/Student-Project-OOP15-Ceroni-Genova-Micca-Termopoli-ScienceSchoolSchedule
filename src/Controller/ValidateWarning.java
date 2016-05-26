@@ -10,7 +10,7 @@ import Model.ErrorException;
 import Model.Type;
 import Model.WarningException;
 
-public class validateWarning {
+public class ValidateWarning {
 
     private ControllerWorkers contWorkers = new ControllerWorkers();
     private Reservation cont;
@@ -20,44 +20,42 @@ public class validateWarning {
         Boolean check = true;
         if (!checkHoursForDayProf()) {
             check = false;
-            throw new WarningException("Il prof. svolge 6 ore di lezione"+"\n"+"Aggiungere la settima ora?"); // 6 ore al giorno
+             // 6 ore al giorno
 
         } else if (!check4TimeWeekProfessor()) {
-            check = false;
-            throw new WarningException("Il prof. svolge 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?");  // più di 4 giorni a settimana
+            check = false;  // più di 4 giorni a settimana
                                                   // prof
 
         } else if (!check4TimeWeekStudent()) {
             check = false;
-            throw new WarningException("Gli studenti di questo anno svolgono 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?"); // più di 4 giorni a settimana
+             // più di 4 giorni a settimana
                                                   // stud
         }else if (cont.getCourse().getType().equals(Type.FIRST_YEAR)) { /// corso del 1° anno
             if (!checkCDLFirstYear()) { // corso non inseribile
                 check = false;
-                throw new WarningException(""+"\n"+""); //
             }
 
         } else if (Type.getSecondYears().contains(cont.getCourse().getType())) { // corso del 2° anno
             if (!checkCDLSecondYear()) { // corso non inseribile
                 check = false;
-                throw new IllegalArgumentException(); //
+                
             }
 
         } else if (Type.getThirdYears().contains(cont.getCourse().getType())) { // corso del 3° anno
             if (!checkCDLThirdYear()) { // corso non inseribile
                 check = false;
-                throw new IllegalArgumentException();
+                
             }
 
         } else if (cont.getCourse().getType().equals(Type.FOURTH_YEAR)) { // corso del 4° anno
             if (!checkCDLFourthYear()) { // corso non inseribile
                 check = false;
-                throw new IllegalArgumentException();
+                
             }
         } else if (Type.getFifthYears().contains(cont.getCourse().getType())) { // corso del 5° anno
             if (!checkCDLFifthYear()) { // corso non inseribile
                 check = false;
-                throw new IllegalArgumentException(); //
+                
             }
         }
 
@@ -74,14 +72,14 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                        throw new WarningException("");
+                    throw new WarningException("Un corso del primo anno è già inserito in questo periodo"+"\n"+"Inserirne un altro?"); //
                 }
                 listType.add(res.getCourse().getType());
 
             }
         }
        if (listType.contains(Type.FIRST_YEAR)) {
-           throw new ErrorException("");
+           throw new ErrorException("Nella stessa fascia oraria è già presente un corso dello stesso anno che non può essere sovrapposto");
         } 
 
        
@@ -96,7 +94,7 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                    throw new WarningException("");
+                    throw new WarningException("Un corso del secondo anno è già inserito in questo periodo"+"\n"+"Inserirne un altro?"); //
                 }
                 listType.add(res.getCourse().getType());
 
@@ -107,7 +105,7 @@ public class validateWarning {
         } else if (listType.contains(Type.SECOND_YEAR_SCI) && cont.getCourse().getType().equals(Type.SECOND_YEAR_ENG)) {
             return true;
         } else {
-            throw new ErrorException("");
+            throw new ErrorException("Nella stessa fascia oraria è già presente un corso dello stesso anno che non può essere sovrapposto");
         }
     }
 
@@ -120,7 +118,7 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                    throw new WarningException("");
+                    throw new WarningException("Un corso del terzo anno è già inserito in questo periodo"+"\n"+"Inserirne un altro?"); //
                 }
                 listType.add(res.getCourse().getType());
             }
@@ -132,7 +130,7 @@ public class validateWarning {
         } else if (listType.contains(Type.THIRD_YEAR_OPT) && cont.getCourse().getType().equals(Type.THIRD_YEAR_OPT)) {
             return true;
         } else {
-            throw new ErrorException("");
+            throw new ErrorException("Nella stessa fascia oraria è già presente un corso dello stesso anno che non può essere sovrapposto");
         }
     }
 
@@ -144,14 +142,14 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                    throw new WarningException("");
+                    throw new WarningException("Un corso del quarto anno è già inserito in questo periodo"+"\n"+"Inserirne un altro?"); //
                 }
                 listType.add(res.getCourse().getType());
 
             }
         }
         if (listType.contains(Type.FOURTH_YEAR)) {
-            throw new ErrorException("");
+            throw new ErrorException("Nella stessa fascia oraria è già presente un corso dello stesso anno che non può essere sovrapposto");
         } 
 
         return true;
@@ -165,7 +163,7 @@ public class validateWarning {
                 if(res.getCourse().getName().equals(cont.getCourse().getName())
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())){
-                    throw new WarningException("");
+                    throw new WarningException("Un corso del quinto anno è già inserito in questo periodo"+"\n"+"Inserirne un altro?"); //
                    
                 }
                 listType.add(res.getCourse().getType());
@@ -173,7 +171,7 @@ public class validateWarning {
             }
         }
         if (listType.contains(Type.FIFTH_YEAR) || listType.contains(Type.FIFTH_YEAR_OPT)) {
-          throw new ErrorException("");
+            throw new ErrorException("Nella stessa fascia oraria è già presente un corso dello stesso anno che non può essere sovrapposto");
         }
 
         return true;
@@ -187,7 +185,7 @@ public class validateWarning {
                 i++;
             }
         }
-        return i <= 6 ? true : new WarningException(" ") != null;
+        return i <= 6 ? true : new WarningException("Il prof. svolge 6 ore di lezione"+"\n"+"Aggiungere la settima ora?") != null;
     }
 
     private Boolean check4TimeWeekProfessor() throws WarningException{
@@ -205,10 +203,10 @@ public class validateWarning {
 
             }
         }
-        return tempCount.size() <= 4 ? true : new WarningException(" ") != null;
+        return tempCount.size() <= 4 ? true : new WarningException("Il prof. svolge 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?") != null;
     }
 
-    private boolean check4TimeWeekStudent() throws WarningException{
+    private Boolean check4TimeWeekStudent() throws WarningException{
         int i = 0;
         Set<Integer> tempCount = new HashSet<>();
         List<Type> listType = new ArrayList<>();
@@ -228,7 +226,7 @@ public class validateWarning {
 
         }
 
-        return tempCount.size() <= 4 ? true : new WarningException(" ") != null;
+        return tempCount.size() <= 4 ? true : new WarningException("Gli studenti di questo anno svolgono 4 giorni di lezione"+"\n"+"Aggiungerlo anche nel quinto?") != null;
     }
 
     
