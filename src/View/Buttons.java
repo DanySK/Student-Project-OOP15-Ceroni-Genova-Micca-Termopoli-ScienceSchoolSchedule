@@ -82,6 +82,9 @@ public class Buttons {
 		    
 			save.addActionListener(e->{
 				String s= exelTitle.getText();
+				 JOptionPane.showMessageDialog(null,"Il percorso del file e' :"+(System.getProperty("user.home")
+                    + System.getProperty("file.separator") + s+".xls"),null, JOptionPane.INFORMATION_MESSAGE);
+				
 				xls.save(s);
 				
 				
