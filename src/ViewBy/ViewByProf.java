@@ -44,16 +44,16 @@ public class ViewByProf extends AbstractViewBy {
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object professor) {
 
 		int i = 0;
-        for (Days days : Days.values()) {
-            int y = 1;
-            for (Hours hours : Hours.values()) {
-                table.setValueAt(hours.getValue().toUpperCase(), i, y++);
-            }
-            table.setValueAt(days.getString(), i++, 0);
-            for (Room room : this.cont.getObjToSave().getListRoom()) {
-                table.setValueAt(room.getNameRoom(), i++, 0);
-            }
-        }
+		for (Days days : Days.values()) {
+			int y = 1;
+			for (Hours hours : Hours.values()) {
+				table.setValueAt(hours.getValue().toUpperCase(), i, y++);
+			}
+			table.setValueAt(days.getString(), i++, 0);
+			for (Room room : this.cont.getObjToSave().getListRoom()) {
+				table.setValueAt(room.getNameRoom(), i++, 0);
+			}
+		}
 
 		Professor prof = null;
 		for (Professor p : this.cont.getObjToSave().getListProfessor()) {

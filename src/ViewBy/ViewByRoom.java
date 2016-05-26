@@ -9,10 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Model.Days;
 import Model.Hours;
-import Model.ListRoom;
-import View.ControllerGui;
-
-
+import View.MyTableRenderer;
 
 public class ViewByRoom extends AbstractViewBy {
 
@@ -30,32 +27,34 @@ public class ViewByRoom extends AbstractViewBy {
 		this.panel = new JPanel(new BorderLayout());
 		this.table = new JTable(defaultTable);
 		this.scroll = new JScrollPane(table);
+		this.table.setDefaultRenderer(Object.class, new MyTableRenderer());
 		this.table.setTableHeader(null);
 		this.table.setFillsViewportHeight(true);
 		this.panel.add(scroll, BorderLayout.CENTER);
 		this.add(panel, BorderLayout.CENTER);
 	}
-	
+
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object room) {
 		int row = 1;
 		for (Days day : Days.values()) {
 			table.setValueAt(day.getString(), row, 0);
 			row++;
 		}
-		
+
 		int column = 1;
 		for (Hours hour : Hours.values()) {
 			table.setValueAt(hour.getValue(), 0, column);
 			column++;
 		}
-		
+
 		row = 1;
-		
-		for(int r = 0; r < contr.getTable().getRowCount(); r++){
-			if(contr.getTable().getValueAt(r, 0).toString().equals(room)){
-				for(int c = 0; c < contr.getTable().getColumnCount(); c ++){
-					if(r!=0 && c!=0){
-						//System.out.println(contr.getTable().getValueAt(r, c));
+
+		for (int r = 0; r < contr.getTable().getRowCount(); r++) {
+			if (contr.getTable().getValueAt(r, 0).toString().equals(room)) {
+				for (int c = 0; c < contr.getTable().getColumnCount(); c++) {
+					if (r != 0 && c != 0) {
+						// System.out.println(contr.getTable().getValueAt(r,
+						// c));
 						Object obj = contr.getTable().getValueAt(r, c);
 						table.setValueAt(obj, row, c);
 					}

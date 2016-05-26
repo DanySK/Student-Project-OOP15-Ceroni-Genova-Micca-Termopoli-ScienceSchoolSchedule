@@ -1,31 +1,26 @@
-package View;
+package ViewBy;
 
 import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.TableCellRenderer;
 
-import Controller.SaveController;
-import Controller.SaveControllerInterface;
+import Controller.ControllerWorkers;
+import Model.Courses;
+import View.MyTableRenderer;
 
-public class MyTableRenderer extends JLabel implements TableCellRenderer {
+public class MyViewsRenderer extends MyTableRenderer {
 
-	/**
-	 * 
-	 */
-	
 	private static final long serialVersionUID = 1L;
-	protected ControllerGui contr;
-	protected SaveControllerInterface cont = new SaveController();
 
-	public MyTableRenderer() {
-		this.setOpaque(true);
-		contr = new ControllerGui();
+	private ControllerWorkers cntr = new ControllerWorkers();
+	private Object name;
+	public MyViewsRenderer(final Object name) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.name = name;
 	}
-
-	@Override
+	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
 		// TODO Auto-generated method stub
@@ -34,11 +29,18 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer {
 		this.setHorizontalAlignment(CENTER);
 		this.setHorizontalAlignment(CENTER);
 
-		if (row == 0 || column == 0 || ((row % (contr.getCont().getObjToSave().getListRoom().size() + 1) == 0))) {
+		if (row == 0 || column == 0 || ((row % (this.contr.getCont().getObjToSave().getListRoom().size() + 1) == 0))) {
 			setBackground(new Color(171, 205, 239));
+			setBorder(null);
 
 		} else if (value != null) {
-			this.setBackground(Color.lightGray);
+			Color color = Color.white;
+			for (Courses c : this.cntr.getCoursesFromFile()) {
+				if(c.getName().equals(name.toString())){
+					color = c.getType().getColor();
+				}
+			}
+			this.setBackground(color);
 			table.getValueAt(row, 0).toString();
 			table.getValueAt(0, column).toString();
 			String str = "\n " + table.getValueAt(row, 0).toString() + "\n " + table.getValueAt(0, column).toString()
