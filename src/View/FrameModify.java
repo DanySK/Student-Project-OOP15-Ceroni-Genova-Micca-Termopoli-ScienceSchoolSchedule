@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,10 @@ import Controller.ObjToSave;
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import Model.CoursesImpl;
+import Model.Person;
+import Model.PersonImpl;
 import Model.Professor;
+import Model.ProfessorImpl;
 import Model.RoomImpl;
 
 public class FrameModify {
@@ -112,11 +116,32 @@ public class FrameModify {
 					}
 				}
 
-				JOptionPane.showConfirmDialog(null,
+				int f = JOptionPane.showConfirmDialog(null,
 						"STAI SOSTITUENDO IL PROFESSORE:  " + comboProf.getSelectedItem() + (" \n")
 								+ "CON IL PROFESSORE: " + nameProf.getText() + ("  ") + surnameProf.getText()
 								+ "\nPER I CORSI:\n" + temp.toString() + "\n\nVuoi continuare?",
 						"Attenzione", JOptionPane.YES_NO_CANCEL_OPTION);
+
+				if (f == JOptionPane.YES_OPTION) {
+
+					List<Professor> temp1 = objToSave.getListProfessor();
+
+					for (Professor p : objToSave.getListProfessor()) {
+						String prof = comboProf.getSelectedItem().toString();
+
+						if (prof.equals(p.getPerson().toString())) {
+							p.getPerson().setName(nameProf.getText());
+							p.getPerson().setSurname(surnameProf.getText());
+
+						}
+
+						controller.save(objToSave);
+
+					}
+					frameProf.setVisible(false);
+
+					
+				}
 
 			});
 		});
@@ -147,13 +172,12 @@ public class FrameModify {
 					temp.add(new RoomImpl(insRoom.getText()));
 					objToSave.setListRoom(temp);
 					controller.save(objToSave);
-					
+
 					frameRoom.setVisible(false);
 
 					int f = JOptionPane.showConfirmDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia!"
-							+ "\n Vuoi chiudere adesso il programma?", null,
-							JOptionPane.YES_NO_OPTION);
-					if (f == JOptionPane.YES_OPTION){
+							+ "\n Vuoi chiudere adesso il programma?", null, JOptionPane.YES_NO_OPTION);
+					if (f == JOptionPane.YES_OPTION) {
 						System.exit(0);
 					}
 				}
