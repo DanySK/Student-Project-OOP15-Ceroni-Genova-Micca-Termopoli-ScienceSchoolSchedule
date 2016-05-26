@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.HashSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ViewBy.MyListenerView;
 import Controller.ExportToXls;
+import Controller.ObjToSave;
+import Controller.ObjToSaveInterface;
+import Controller.SaveController;
+import Controller.SaveControllerInterface;
+import ViewBy.MyListenerView;
 
 public class Buttons {
 
@@ -23,11 +28,13 @@ public class Buttons {
 	private final JButton insertNew;
 	private final JButton saveInExel;
 	private final JButton resetTable;
+	private final JButton exit;
 	private FrameInsert frame;
 	private FrameModify frame1;
 	private ComboBoxesViews comboBoxes = new ComboBoxesViews();
 	private ExportToXls xls = new ExportToXls();
 	private MyListenerView listenerViewGen = new MyListenerView();
+	private SaveControllerInterface saveCntr = new SaveController();
 
 	public Buttons(MainGUI mainGUI) {
 
@@ -38,6 +45,7 @@ public class Buttons {
 		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
 		this.saveInExel = new JButton("ESPORTA IN EXCEL");
 		this.resetTable = new JButton("RESETTA LA TABELLA");
+		this.exit = new JButton("<<<<ESCI>>>>");
 
 		this.insert.addActionListener(l -> {
 			frame = new FrameInsert(mainGUI);
@@ -54,12 +62,27 @@ public class Buttons {
 		});
 		
 		this.resetTable.addActionListener(l -> {
-			
+			int reset = JOptionPane.showConfirmDialog(null,
+					"Stai per resettare tutta la tabella! "
+					+"\nPrima di prosegure assicurati di aver salvato il file in Excel!"
+					+"\nVoui continuare comunque?","Attenzione!", JOptionPane.YES_NO_OPTION);
+			if(reset == JOptionPane.YES_OPTION){
+				ObjToSave obj = this.saveCntr.getObjToSave();
+				obj.setListReservation(new HashSet<>());
+				this.saveCntr.save(obj);
+				int mess = JOptionPane.showConfirmDialog(null,
+						"Tutti i dati cancellati!" 
+						+"\nRivavvia il programma per aggiornare la tabella."
+						+"\nVoui prosseguire?","Attenzione!", JOptionPane.YES_NO_OPTION);
+				if(mess == JOptionPane.YES_OPTION){
+					System.exit(0);
+				}
+			}
 		});
 		
 		this.saveInExel.addActionListener(l -> {
 			
-			final JFrame frameSave= new JFrame("ESPORTA IN EXEL");
+			final JFrame frameSave= new JFrame("ESPORTA IN EXCEL");
 			frameSave.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			frameSave.setVisible(true);
 			frameSave.setSize(400, 150);
@@ -96,7 +119,18 @@ public class Buttons {
 			frameSave.add(panelSave);
 			frameSave.setVisible(true);
 		});
+		
+		this.exit.addActionListener(l -> {
+			int mess = JOptionPane.showConfirmDialog(null,
+					"Voui chiudere il programma?","USCITA", JOptionPane.YES_NO_OPTION);
+			if(mess == JOptionPane.YES_OPTION){
+				System.exit(0);
+			}
+		});
 
+	}
+	public JButton getExit(){
+		return exit;
 	}
 
 	public JButton getInsert() {

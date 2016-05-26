@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -25,7 +26,7 @@ public class MainGUI {
 		this.frame.setSize(width, height);
 		this.frame.add(panelButton.getPanelButton(), BorderLayout.WEST);
 		this.frame.add(panelTable.getPanelTable());
-		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.frame.setResizable(false);
 		this.frame.setVisible(true);
 		this.frame.repaint();

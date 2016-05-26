@@ -76,6 +76,8 @@ public class PanelButton {
         this.panelButton.add(buttons.getSaveInExel(), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getResetTable(), cnst);
+        this.incrementCnstY();
+        this.panelButton.add(buttons.getExit(), cnst);
 
         this.comboBoxes.FillCombobox(this.comboBoxes.getcCorses());
 
