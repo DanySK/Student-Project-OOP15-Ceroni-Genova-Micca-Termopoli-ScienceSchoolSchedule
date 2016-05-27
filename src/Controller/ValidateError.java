@@ -3,21 +3,20 @@ package Controller;
 import Model.ErrorException;
 
 public class ValidateError {
-    private ControllerWorkers contWorkers = new ControllerWorkers();
-    private SaveController controllerSave = new SaveController(); 
+    private SaveController controllerSave = new SaveController();
     private Reservation cont;
-    
+
     public boolean validateErrore(Reservation cont) throws ErrorException {
         this.cont = cont;
         Boolean check = true;
-        if(!check()){           // stessa cella non inseribile
+        if (!check()) { // stessa cella non inseribile
             check = false;
             throw new ErrorException("Posizione già occupata!"); //
         }
         return check;
 
     }
-    
+
     private boolean check() {
         boolean check = true;
         for (Reservation res : controllerSave.getObjToSave().getListReservation()) {
@@ -31,7 +30,5 @@ public class ValidateError {
         return check;
 
     }
-    
-   
 
 }
