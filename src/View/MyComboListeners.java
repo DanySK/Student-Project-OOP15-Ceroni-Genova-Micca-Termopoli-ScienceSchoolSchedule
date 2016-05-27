@@ -1,14 +1,15 @@
 package View;
+
 import ViewBy.*;
 
 public class MyComboListeners {
-	
+
 	private MyListenerDays listenerDays = new MyListenerDays();
 	private MyListenerRoom listenerRoom = new MyListenerRoom();
 	private MyListenerHour listenerHour = new MyListenerHour();
 	private MyListenerProf listenerProf = new MyListenerProf();
 	private MyListenerCourse listenerCourse = new MyListenerCourse();
-	
+
 	public MyListenerRoom getListenerRoom() {
 		return listenerRoom;
 	}
@@ -25,7 +26,7 @@ public class MyComboListeners {
 		return listenerCourse;
 	}
 
-	public MyListenerDays getListenerDays(){
+	public MyListenerDays getListenerDays() {
 		return this.listenerDays;
 	}
 

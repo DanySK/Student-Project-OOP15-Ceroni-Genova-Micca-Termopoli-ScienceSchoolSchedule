@@ -28,6 +28,8 @@ public class ViewByRoom extends AbstractViewBy {
 		this.table = new JTable(defaultTable);
 		this.scroll = new JScrollPane(table);
 		this.table.setDefaultRenderer(Object.class, new MyTableRenderer());
+		this.table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		this.resizeColumnWidth(table);
 		this.table.setTableHeader(null);
 		this.table.setFillsViewportHeight(true);
 		this.panel.add(scroll, BorderLayout.CENTER);

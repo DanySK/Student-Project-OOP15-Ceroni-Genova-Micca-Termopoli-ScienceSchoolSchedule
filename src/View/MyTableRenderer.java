@@ -15,7 +15,7 @@ public class MyTableRenderer extends JTextArea implements TableCellRenderer {
 	/**
 	 * 
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
 	protected ControllerGui contr;
 	protected SaveControllerInterface cont = new SaveController();
@@ -31,8 +31,6 @@ public class MyTableRenderer extends JTextArea implements TableCellRenderer {
 		// TODO Auto-generated method stub
 
 		this.setText((String) value);
-		//this.setHorizontalAlignment(CENTER);
-		//this.setHorizontalAlignment(CENTER);
 
 		if (row == 0 || column == 0 || ((row % (contr.getCont().getObjToSave().getListRoom().size() + 1) == 0))) {
 			setBackground(new Color(171, 205, 239));

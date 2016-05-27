@@ -21,7 +21,7 @@ public class PanelButton {
     public PanelButton(MainGUI mainGUI) {
         Buttons buttons = new Buttons(mainGUI);
         this.panelButton = new JPanel(new GridBagLayout());
-        this.panelButton.setBorder(new TitledBorder("BUON DIVERTIMENTO CON SSS :===D"));
+        this.panelButton.setBorder(new TitledBorder("SSS"));
         this.panelButton.setBackground(new Color(171, 205, 239));
 
         this.cnst.gridy = 1;
@@ -76,6 +76,8 @@ public class PanelButton {
         this.panelButton.add(buttons.getSaveInExel(), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getResetTable(), cnst);
+        this.incrementCnstY();
+        this.panelButton.add(buttons.getCancel(), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getExit(), cnst);
 

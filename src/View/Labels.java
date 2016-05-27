@@ -3,7 +3,7 @@ package View;
 import javax.swing.JLabel;
 
 public class Labels {
-	
+
 	private final JLabel views;
 	private final JLabel lDays;
 	private final JLabel lRooms;

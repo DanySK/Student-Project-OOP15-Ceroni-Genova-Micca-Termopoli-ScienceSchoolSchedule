@@ -4,18 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class MainGUI {
 
 	private JFrame frame = new JFrame("Science School Schedule");
 	private PanelButton panelButton = new PanelButton(this);
 	private PanelTable panelTable = new PanelTable();
-	private ComboBoxesViews combo = new ComboBoxesViews();
 
 	public MainGUI() {
 

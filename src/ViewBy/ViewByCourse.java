@@ -34,7 +34,6 @@ public class ViewByCourse extends AbstractViewBy {
 		this.table = new JTable(defaultTable);
 		this.scroll = new JScrollPane(table);
 		this.table.setDefaultRenderer(Object.class, new MyViewsRenderer(name));
-		this.table.setTableHeader(null);
 		this.table.setFillsViewportHeight(true);
 		this.panel.add(scroll, BorderLayout.CENTER);
 		this.add(panel, BorderLayout.CENTER);
