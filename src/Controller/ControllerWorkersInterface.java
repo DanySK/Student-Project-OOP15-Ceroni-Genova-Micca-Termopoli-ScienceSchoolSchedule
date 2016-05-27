@@ -28,4 +28,5 @@ public interface ControllerWorkersInterface {
     public List<Professor> getProfessorFromFile();
 
     public void removeRes(Reservation cont) throws WarningException;
+    public void save();
 }

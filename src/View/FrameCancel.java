@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,77 +16,76 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-
 import Controller.ControllerWorkers;
 import Controller.Reservation;
 
 public class FrameCancel {
-	
-	private ControllerWorkers cntr = new ControllerWorkers();
 
-	public FrameCancel() {
-		final JFrame frame = new JFrame("Seleziona dato per cancellare");
-		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		final int width = (int) screenSize.getWidth()/2;
-		final int height = (int) screenSize.getHeight();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setSize(width, height);
-		frame.setResizable(false);
-		frame.setVisible(true);
-		
-		final JPanel panelR = new JPanel(new BorderLayout());
-		final JPanel panelRadio = new JPanel(new GridBagLayout());
-		GridBagConstraints cnst = new GridBagConstraints();
-		cnst.gridy = 1;
+    private ControllerWorkers cntr = new ControllerWorkers();
+
+    public FrameCancel() {
+        final JFrame frame = new JFrame("Seleziona dato per cancellare");
+        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        final int width = (int) screenSize.getWidth() / 2;
+        final int height = (int) screenSize.getHeight();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(width, height);
+        frame.setResizable(false);
+        frame.setVisible(true);
+
+        final JPanel panelR = new JPanel(new BorderLayout());
+        final JPanel panelRadio = new JPanel(new GridBagLayout());
+        GridBagConstraints cnst = new GridBagConstraints();
+        cnst.gridy = 1;
         cnst.fill = GridBagConstraints.BOTH;
-        
-		List<JRadioButton> radioBut = new ArrayList<>();
-		try {
-			for (Reservation r : cntr.getListReservation()) {
-				radioBut.add(new JRadioButton(r.toString()));
-			}
-		} catch (Exception e) {
-		}
-		
-		for(JRadioButton but : radioBut){
-			cnst.gridy++;
-			panelRadio.add(but, cnst);
-		}
-		
-		panelRadio.setAutoscrolls(true);
-		final JScrollPane scroll = new JScrollPane(panelRadio);
-		final JPanel panelCancel = new JPanel(new FlowLayout());
-		final JButton delete = new JButton("Cancella");
-		
-		// listener delete
-		delete.addActionListener(l -> {
-			
-			try {
-				int b = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler cancellare i dati selezionati?",
-						"Cancelazione", JOptionPane.YES_NO_OPTION);
-				if(b == JOptionPane.YES_OPTION){
-					for(JRadioButton but : radioBut){
-						if(but.isSelected()){		
-							System.out.println(but.getText());
-							for (Reservation res : cntr.getListReservation()) {
-								if(res.toString().equals(but.getText())){
-									System.out.println(but.getText());
-									cntr.removeRes(res);
-								}
-							}
-						}
-					}
-					frame.setVisible(false);
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		});
-		
-		panelCancel.add(delete);
-		panelR.add(scroll);
-		frame.add(panelR);
-		frame.add(panelCancel, BorderLayout.SOUTH);
-	}
+
+        List<JRadioButton> radioBut = new ArrayList<>();
+        try {
+            for (Reservation r : cntr.getListReservation()) {
+                radioBut.add(new JRadioButton(r.toString()));
+            }
+        } catch (Exception e) {
+        }
+
+        for (JRadioButton but : radioBut) {
+            cnst.gridy++;
+            panelRadio.add(but, cnst);
+        }
+
+        panelRadio.setAutoscrolls(true);
+        final JScrollPane scroll = new JScrollPane(panelRadio);
+        final JPanel panelCancel = new JPanel(new FlowLayout());
+        final JButton delete = new JButton("Cancella");
+
+        // listener delete
+        delete.addActionListener(l -> {
+
+            try {
+                int b = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler cancellare i dati selezionati?",
+                        "Cancelazione", JOptionPane.YES_NO_OPTION);
+                if (b == JOptionPane.YES_OPTION) {
+                    for (JRadioButton but : radioBut) {
+                        if (but.isSelected()) {
+                            System.out.println(but.getText());
+                            for (Reservation res : cntr.getListReservation()) {
+                                if (res.toString().equals(but.getText())) {
+                                    System.out.println(but.getText());
+                                    cntr.removeRes(res);
+                                }
+                            }
+                        }
+                    }
+                    frame.setVisible(false);
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        });
+
+        panelCancel.add(delete);
+        panelR.add(scroll);
+        frame.add(panelR);
+        frame.add(panelCancel, BorderLayout.SOUTH);
+    }
 
 }
