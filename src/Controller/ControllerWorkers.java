@@ -24,11 +24,20 @@ public class ControllerWorkers implements ControllerWorkersInterface {
     public void removeRes(Reservation cont) throws WarningException {
         
         if( !this.listReservation.isEmpty()){
-           this.listReservation.remove(cont); 
+            if(this.listReservation.contains(cont)){
+                this.listReservation.remove(cont); 
+            }
+            else{
+                throw new WarningException("non trova corrispondenza");
+                
+            }
+          
+        }else{
+            throw new WarningException("lista vuota");
+            
         }
             
-        throw new WarningException("Non è stata trovata nessuna corrisponden");
-        
+      
     }
     
     public void save(){
