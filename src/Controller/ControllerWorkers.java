@@ -21,15 +21,16 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     }
     
-    public boolean removeRes(Reservation cont) throws WarningException {
+    public void removeRes(Reservation cont) throws WarningException {
         
-        if( this.listReservation.contains(cont)){
+        if( !this.listReservation.isEmpty()){
            this.listReservation.remove(cont);
            controller.getObjToSave().setListReservation(this.listReservation);
-           return true;
+           ObjToSave obj = controller.getObjToSave();
+           controller.save(obj);
         }
             
-        throw new WarningException("Non è stata trovata nessuna corrispondenza");
+        throw new WarningException("Non è stata trovata nessuna corrisponden");
         
     }
 

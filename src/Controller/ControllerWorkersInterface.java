@@ -27,5 +27,5 @@ public interface ControllerWorkersInterface {
 
     public List<Professor> getProfessorFromFile();
 
-    public boolean removeRes(Reservation cont) throws WarningException;
+    public void removeRes(Reservation cont) throws WarningException;
 }
