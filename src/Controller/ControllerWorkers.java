@@ -25,6 +25,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         
         if( this.listReservation.contains(cont)){
            this.listReservation.remove(cont);
+           controller.getObjToSave().setListReservation(this.listReservation);
            return true;
         }
             
