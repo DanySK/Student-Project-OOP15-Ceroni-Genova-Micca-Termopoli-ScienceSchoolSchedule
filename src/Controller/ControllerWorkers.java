@@ -40,8 +40,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
       
     }
     
-    public void save(){
-        controller.getObjToSave().setListReservation(this.listReservation);
+    public void save(List<Reservation> listReservation){
+        controller.getObjToSave().setListReservation(listReservation);
         ObjToSave obj = controller.getObjToSave();
         controller.save(obj);
     }
