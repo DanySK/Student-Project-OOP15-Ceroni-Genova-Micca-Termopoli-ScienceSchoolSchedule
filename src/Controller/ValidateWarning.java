@@ -10,7 +10,7 @@ import Model.ErrorException;
 import Model.Type;
 import Model.WarningException;
 
-public class ValidateWarning {
+public class ValidateWarning implements ValidateWarningInterface {
 
     private ControllerWorkers contWorkers = new ControllerWorkers();
     private Reservation cont;

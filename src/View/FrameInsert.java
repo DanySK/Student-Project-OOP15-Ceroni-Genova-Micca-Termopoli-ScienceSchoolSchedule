@@ -92,12 +92,13 @@ public class FrameInsert {
 										.toString(), this.combo.getcRooms().getSelectedItem().toString());
 						try {
 							cntr.addRes(res);
+							controller.getObjToSave().setListReservation(cntr.getListReservation());
+	                                                controller.save(controller.getObjToSave());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						controller.getObjToSave().setListReservation(cntr.getListReservation());
-						controller.save(controller.getObjToSave());
+						
 
 						Integer row = c.getRow(res);
 						Integer colum = c.getColum(res);

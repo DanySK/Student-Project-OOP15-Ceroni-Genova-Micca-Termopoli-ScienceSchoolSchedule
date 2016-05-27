@@ -6,10 +6,8 @@ import java.util.List;
 import Model.Courses;
 import Model.Days;
 import Model.ErrorException;
-import Model.Hours;
 import Model.Person;
 import Model.Professor;
-import Model.Room;
 import Model.WarningException;
 
 public class ControllerWorkers implements ControllerWorkersInterface {
@@ -22,8 +20,22 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         this.listReservation.add(cont);
 
     }
+    
+    public boolean removeRes(Reservation cont) throws WarningException {
+        
+        if( this.listReservation.contains(cont)){
+           this.listReservation.remove(cont);
+           return true;
+        }
+            
+        throw new WarningException("Non è stata trovata nessuna corrispondenza");
+        
+    }
 
-    public List<Reservation> getListReservation() {
+    public List<Reservation> getListReservation()throws ErrorException{
+        if(this.listReservation.isEmpty()){
+            throw new ErrorException("Nessun dato da cancellare. \n Inserire dei dati prima di cancellarli. IDIOTA ");
+        }
         return this.listReservation;
     }
 
@@ -43,7 +55,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByDay;
     }
 
-    public List<Reservation> getByClass(Room c) {
+   /* public List<Reservation> getByClass(Room c) {
         List<Reservation> listByRoom = new ArrayList<>();
 
         for (Reservation res : listReservation) {
@@ -52,7 +64,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
             }
         }
         return listByRoom;
-    }
+    }*/
 
     public List<Reservation> getByCourses(Courses course) {
         List<Reservation> listByCourses = new ArrayList<>();
@@ -76,7 +88,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByProf;
     }
 
-    public List<Reservation> getByHour(Hours h) {
+  /*  public List<Reservation> getByHour(Hours h) {
         List<Reservation> listByHours = new ArrayList<>();
 
         for (Reservation res : listReservation) {
@@ -85,7 +97,7 @@ public class ControllerWorkers implements ControllerWorkersInterface {
             }
         }
         return listByHours;
-    }
+    }*/
 
     public List<Courses> getCoursesFromFile() {
         List<Courses> temp = new ArrayList<>();
