@@ -1,6 +1,8 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.table.DefaultTableModel;
@@ -19,16 +21,16 @@ import Model.RoomImpl;
 public class ControllerGui {
 
     private final SaveControllerInterface cont = new SaveController();
-    private Set<Reservation> setReservation = cont.getObjToSave().getListReservation();
+    private List<Reservation> listReservation = cont.getObjToSave().getListReservation();
     private DefaultTableModel table = new TableGUI();
-    
+
     private void drawTable() {
         drawDefaultTable();
-        for (Reservation res : this.setReservation) {
-            this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(),this.getRow(res),
+        for (Reservation res : this.listReservation) {
+            this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
                     this.getColum(res));
             this.table.fireTableCellUpdated(this.getRow(res), this.getColum(res));
-            //this.table.newDataAvailable(event);
+            // this.table.newDataAvailable(event);
         }
         this.table.fireTableDataChanged();
     }
@@ -50,7 +52,7 @@ public class ControllerGui {
     }
 
     public DefaultTableModel getTable() {
-        if (this.setReservation.isEmpty()) {
+        if (this.listReservation.isEmpty()) {
             drawDefaultTable();
         } else {
 
@@ -126,17 +128,13 @@ public class ControllerGui {
 
         return new Reservation(person, cours, day, h, room);
     }
-    
-    public SaveControllerInterface getCont(){
-    	return this.cont;
+
+    public SaveControllerInterface getCont() {
+        return this.cont;
     }
     
-    public Set<Reservation> getSetReservation(){
-    	return new HashSet<Reservation>(this.setReservation);
-    }
-    
-    public ControllerGui getControllerGui(){
-    	return this;
+    public ControllerGui getControllerGui() {
+        return this;
     }
 
 }

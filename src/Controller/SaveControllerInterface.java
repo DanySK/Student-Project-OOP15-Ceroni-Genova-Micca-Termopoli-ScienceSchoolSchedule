@@ -2,14 +2,10 @@ package Controller;
 
 public interface SaveControllerInterface {
 
-    void save(ObjToSave obj);
+    public void reset();
 
-    void openFile();
-    void createNewEmptyList();
+    public void save(ObjToSave obj);
 
-
-    void reset();
-
-    ObjToSave getObjToSave();
+    public ObjToSave getObjToSave();
 
 }

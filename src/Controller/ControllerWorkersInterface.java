@@ -1,7 +1,6 @@
 package Controller;
 
 import java.util.List;
-import java.util.Set;
 
 import Model.Courses;
 import Model.Days;
@@ -16,15 +15,15 @@ public interface ControllerWorkersInterface {
 
     public void addRes(Reservation cont) throws WarningException, ErrorException;
 
-    public Set<Reservation> getListReservation();
+    public List<Reservation> getListReservation();
 
-    public Set<Reservation> getByDay(Days d);
+    public List<Reservation> getByDay(Days d);
 
-    public Set<Reservation> getByClass(Room c);
+    public List<Reservation> getByClass(Room c);
 
-    public Set<Reservation> getByProfessor(Person p);
+    public List<Reservation> getByProfessor(Person p);
 
-    public Set<Reservation> getByHour(Hours h);
+    public List<Reservation> getByHour(Hours h);
 
     public List<Courses> getCoursesFromFile();
 

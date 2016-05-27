@@ -26,7 +26,7 @@ public class MainGUI {
 		this.frame.setSize(width, height);
 		this.frame.add(panelButton.getPanelButton(), BorderLayout.WEST);
 		this.frame.add(panelTable.getPanelTable());
-		this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.frame.setResizable(false);
 		this.frame.setVisible(true);
 		this.frame.repaint();

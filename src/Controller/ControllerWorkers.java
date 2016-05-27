@@ -1,9 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import Model.Courses;
 import Model.Days;
@@ -17,7 +15,7 @@ import Model.WarningException;
 public class ControllerWorkers implements ControllerWorkersInterface {
 
     private SaveControllerInterface controller = new SaveController();
-    private Set<Reservation> listReservation = controller.getObjToSave().getListReservation();
+    private List<Reservation> listReservation = controller.getObjToSave().getListReservation();
 
     public void addRes(Reservation cont) throws WarningException, ErrorException {
 
@@ -25,12 +23,18 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     }
 
-    public Set<Reservation> getListReservation() {
+    public List<Reservation> getListReservation() {
         return this.listReservation;
     }
 
-    public Set<Reservation> getByDay(Days d) {
-        Set<Reservation> listByDay = new HashSet<>();
+    public Reservation undo() {
+
+        return null;
+
+    }
+
+    public List<Reservation> getByDay(Days d) {
+        List<Reservation> listByDay = new ArrayList<>();
         for (Reservation res : listReservation) {
             if (res.getDay().getString().equals(d.getString())) {
                 listByDay.add(res);
@@ -39,8 +43,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByDay;
     }
 
-    public Set<Reservation> getByClass(Room c) {
-        Set<Reservation> listByRoom = new HashSet<>();
+    public List<Reservation> getByClass(Room c) {
+        List<Reservation> listByRoom = new ArrayList<>();
 
         for (Reservation res : listReservation) {
             if (res.getRoom().equals(c)) {
@@ -50,8 +54,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByRoom;
     }
 
-    public Set<Reservation> getByCourses(Courses course) {
-        Set<Reservation> listByCourses = new HashSet<>();
+    public List<Reservation> getByCourses(Courses course) {
+        List<Reservation> listByCourses = new ArrayList<>();
         for (Reservation res : listReservation) {
             if (res.getCourse().getName().equals(course.getName())) {
                 listByCourses.add(res);
@@ -60,8 +64,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByCourses;
     }
 
-    public Set<Reservation> getByProfessor(Person p) {
-        Set<Reservation> listByProf = new HashSet<>();
+    public List<Reservation> getByProfessor(Person p) {
+        List<Reservation> listByProf = new ArrayList<>();
 
         for (Reservation res : listReservation) {
             if (res.getPerson().toString().equals(p.toString())) {
@@ -72,8 +76,8 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByProf;
     }
 
-    public Set<Reservation> getByHour(Hours h) {
-        Set<Reservation> listByHours = new HashSet<>();
+    public List<Reservation> getByHour(Hours h) {
+        List<Reservation> listByHours = new ArrayList<>();
 
         for (Reservation res : listReservation) {
             if (res.getHour().equals(h)) {
