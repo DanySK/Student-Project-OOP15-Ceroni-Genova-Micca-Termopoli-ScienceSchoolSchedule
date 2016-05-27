@@ -68,7 +68,7 @@ public class Buttons {
                     "Attenzione!", JOptionPane.YES_NO_OPTION);
             if (reset == JOptionPane.YES_OPTION) {
                 ObjToSave obj = this.saveCntr.getObjToSave();
-                obj.setListReservation(new ArrayList<>());
+                obj.setListReservation(new HashSet<>());
                 this.saveCntr.save(obj);
                 int mess = JOptionPane.showConfirmDialog(null, "Tutti i dati cancellati!"
                         + "\nRivavvia il programma per aggiornare la tabella." + "\nVoui prosseguire?", "Attenzione!",
