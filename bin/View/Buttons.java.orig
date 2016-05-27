@@ -3,7 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import Controller.ExportToXls;
 import Controller.ObjToSave;
+import Controller.ObjToSaveInterface;
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import ViewBy.MyListenerView;
@@ -70,7 +71,7 @@ public class Buttons {
 					+"\nVuoi continuare comunque?","Attenzione!", JOptionPane.YES_NO_OPTION);
 			if(reset == JOptionPane.YES_OPTION){
 				ObjToSave obj = this.saveCntr.getObjToSave();
-				obj.setListReservation(new ArrayList<>());
+				obj.setListReservation(new HashSet<>());
 				this.saveCntr.save(obj);
 				int mess = JOptionPane.showConfirmDialog(null,
 						"Tutti i dati cancellati!" 

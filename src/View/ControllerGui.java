@@ -1,8 +1,6 @@
 package View;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.swing.table.DefaultTableModel;
@@ -21,16 +19,16 @@ import Model.RoomImpl;
 public class ControllerGui {
 
     private final SaveControllerInterface cont = new SaveController();
-    private List<Reservation> listReservation = cont.getObjToSave().getListReservation();
+    private Set<Reservation> setReservation = (Set<Reservation>) cont.getObjToSave().getListReservation();
     private DefaultTableModel table = new TableGUI();
-
+    
     private void drawTable() {
         drawDefaultTable();
-        for (Reservation res : this.listReservation) {
-            this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
+        for (Reservation res : this.setReservation) {
+            this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(),this.getRow(res),
                     this.getColum(res));
             this.table.fireTableCellUpdated(this.getRow(res), this.getColum(res));
-            // this.table.newDataAvailable(event);
+            //this.table.newDataAvailable(event);
         }
         this.table.fireTableDataChanged();
     }
@@ -52,7 +50,7 @@ public class ControllerGui {
     }
 
     public DefaultTableModel getTable() {
-        if (this.listReservation.isEmpty()) {
+        if (this.setReservation.isEmpty()) {
             drawDefaultTable();
         } else {
 
@@ -128,13 +126,13 @@ public class ControllerGui {
 
         return new Reservation(person, cours, day, h, room);
     }
-
-    public SaveControllerInterface getCont() {
-        return this.cont;
+    
+    public SaveControllerInterface getCont(){
+    	return this.cont;
     }
     
-    public ControllerGui getControllerGui() {
-        return this;
+    public ControllerGui getControllerGui(){
+    	return this;
     }
 
 }
