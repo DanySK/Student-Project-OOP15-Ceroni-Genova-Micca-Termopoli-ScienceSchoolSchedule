@@ -14,7 +14,7 @@ public class Labels {
 
 	public Labels() {
 		// TODO Auto-generated constructor stub
-		this.views = new JLabel("SELEZIONA VISTA: ");
+		this.views = new JLabel("Vista per: ");
 		this.lDays = new JLabel("Giorno: ");
 		this.lRooms = new JLabel("Aula: ");
 		this.lHours = new JLabel("Orario: ");

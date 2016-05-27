@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -36,6 +37,8 @@ public class PanelButton {
         buttons.getGeneralView().addActionListener(l->{
         	buttons.getInsert().setEnabled(true);
         });
+        this.incrementCnstY();
+        this.panelButton.add(new JLabel(" "), cnst);
         this.setCnstXZero();
         this.incrementCnstY();
         this.panelButton.add(this.labels.getViews(), cnst);
@@ -65,13 +68,9 @@ public class PanelButton {
         this.setCnstXOne();
         this.panelButton.add(this.comboBoxes.getcCorses(), cnst);
         this.incrementCnstY();
-        this.panelButton.add(buttons.getUndo(), cnst);
-        this.incrementCnstY();
-        this.panelButton.add(buttons.getRedo(), cnst);
+        this.panelButton.add(new JLabel(" "), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getInsertNew(), cnst);
-        this.incrementCnstY();
-        this.panelButton.add(panelLegend.getPanelLegend(), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getSaveInExel(), cnst);
         this.incrementCnstY();
@@ -80,6 +79,8 @@ public class PanelButton {
         this.panelButton.add(buttons.getCancel(), cnst);
         this.incrementCnstY();
         this.panelButton.add(buttons.getExit(), cnst);
+        this.incrementCnstY();
+        this.panelButton.add(panelLegend.getPanelLegend(), cnst);
 
         this.comboBoxes.FillCombobox(this.comboBoxes.getcCorses());
 
