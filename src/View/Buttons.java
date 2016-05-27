@@ -65,15 +65,15 @@ public class Buttons {
 			int reset = JOptionPane.showConfirmDialog(null,
 					"Stai per resettare tutta la tabella! "
 					+"\nPrima di prosegure assicurati di aver salvato il file in Excel!"
-					+"\nVoui continuare comunque?","Attenzione!", JOptionPane.YES_NO_OPTION);
+					+"\nVuoi continuare comunque?","Attenzione!", JOptionPane.YES_NO_OPTION);
 			if(reset == JOptionPane.YES_OPTION){
 				ObjToSave obj = this.saveCntr.getObjToSave();
 				obj.setListReservation(new HashSet<>());
 				this.saveCntr.save(obj);
 				int mess = JOptionPane.showConfirmDialog(null,
 						"Tutti i dati cancellati!" 
-						+"\nRivavvia il programma per aggiornare la tabella."
-						+"\nVoui prosseguire?","Attenzione!", JOptionPane.YES_NO_OPTION);
+						+"\nRiavvia il programma per aggiornare la tabella."
+						+"\nVuoi proseguire?","Attenzione!", JOptionPane.YES_NO_OPTION);
 				if(mess == JOptionPane.YES_OPTION){
 					System.exit(0);
 				}
@@ -122,7 +122,7 @@ public class Buttons {
 		
 		this.exit.addActionListener(l -> {
 			int mess = JOptionPane.showConfirmDialog(null,
-					"Voui chiudere il programma?","USCITA", JOptionPane.YES_NO_OPTION);
+					"Vuoi chiudere il programma?","USCITA", JOptionPane.YES_NO_OPTION);
 			if(mess == JOptionPane.YES_OPTION){
 				System.exit(0);
 			}
