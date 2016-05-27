@@ -3,8 +3,6 @@ package Controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import Model.Professor;
 import Model.RoomImpl;
@@ -14,9 +12,9 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
     private static final long serialVersionUID = 1L;
     private List<RoomImpl> listRoom = new ArrayList<>();
     private List<Professor> listProfessor = new ArrayList<>();
-    private Set<Reservation> listReservation = new TreeSet<>();
+    private List<Reservation> listReservation = new ArrayList<>();
 
-    public ObjToSave(List<RoomImpl> listRoom, List<Professor> listProfessor, Set<Reservation> listReservation) {
+    public ObjToSave(List<RoomImpl> listRoom, List<Professor> listProfessor, List<Reservation> listReservation) {
         this.listReservation = listReservation;
         this.listProfessor = listProfessor;
         this.listRoom = listRoom;
@@ -47,11 +45,11 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
         this.listProfessor = listProfessor;
     }
 
-    public Set<Reservation> getListReservation() {
+    public List<Reservation> getListReservation() {
         return listReservation;
     }
 
-    public void setListReservation(Set<Reservation> listReservation) {
+    public void setListReservation(List<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
 

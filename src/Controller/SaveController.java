@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import Model.CoursesImpl;
 import Model.ListCourses;
@@ -24,7 +22,7 @@ public class SaveController implements SaveControllerInterface {
 
     private final String path = System.getProperty("user.home") + System.getProperty("file.separator")
             + "SiencesSchoolSchedul.dat";
-    ObjToSave obj = new ObjToSave(new ArrayList<>(), new ArrayList<>(), new HashSet<>());
+    ObjToSave obj = new ObjToSave(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
     public void save(ObjToSave obj) {
         try {
@@ -42,7 +40,7 @@ public class SaveController implements SaveControllerInterface {
 
     }
 
-    public void openFile() {
+    private void openFile()  {
         if (new File(this.path).exists()) {
             try {
                 FileInputStream istream = new FileInputStream(path);
@@ -56,7 +54,6 @@ public class SaveController implements SaveControllerInterface {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-
             }
         } else {
             createNewEmptyList();
@@ -71,7 +68,7 @@ public class SaveController implements SaveControllerInterface {
 
     }
 
-    public void createNewEmptyList() {
+    private void createNewEmptyList() {
 
         List<Professor> tempProf = new ArrayList<>();
         List<RoomImpl> tempRoom = new ArrayList<>();
