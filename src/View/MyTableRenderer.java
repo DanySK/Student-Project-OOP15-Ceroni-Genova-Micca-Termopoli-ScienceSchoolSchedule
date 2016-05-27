@@ -3,14 +3,14 @@ package View;
 import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.TableCellRenderer;
 
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
 
-public class MyTableRenderer extends JLabel implements TableCellRenderer {
+public class MyTableRenderer extends JTextArea implements TableCellRenderer {
 
 	/**
 	 * 
@@ -31,8 +31,8 @@ public class MyTableRenderer extends JLabel implements TableCellRenderer {
 		// TODO Auto-generated method stub
 
 		this.setText((String) value);
-		this.setHorizontalAlignment(CENTER);
-		this.setHorizontalAlignment(CENTER);
+		//this.setHorizontalAlignment(CENTER);
+		//this.setHorizontalAlignment(CENTER);
 
 		if (row == 0 || column == 0 || ((row % (contr.getCont().getObjToSave().getListRoom().size() + 1) == 0))) {
 			setBackground(new Color(171, 205, 239));

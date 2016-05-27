@@ -26,8 +26,8 @@ public class MyViewsRenderer extends MyTableRenderer {
 		// TODO Auto-generated method stub
 
 		this.setText((String) value);
-		this.setHorizontalAlignment(CENTER);
-		this.setHorizontalAlignment(CENTER);
+		//this.setHorizontalAlignment(CENTER);
+		//this.setHorizontalAlignment(CENTER);
 
 		if (row == 0 || column == 0 || ((row % (this.contr.getCont().getObjToSave().getListRoom().size() + 1) == 0))) {
 			setBackground(new Color(171, 205, 239));

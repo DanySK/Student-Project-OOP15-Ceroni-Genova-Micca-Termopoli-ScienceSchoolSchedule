@@ -1,7 +1,6 @@
 package View;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +18,7 @@ import Model.RoomImpl;
 public class ControllerGui {
 
     private final SaveControllerInterface cont = new SaveController();
-    private Set<Reservation> setReservation = (Set<Reservation>) cont.getObjToSave().getListReservation();
+    private List<Reservation> setReservation = cont.getObjToSave().getListReservation();
     private DefaultTableModel table = new TableGUI();
     
     private void drawTable() {
