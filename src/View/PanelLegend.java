@@ -22,10 +22,10 @@ public class PanelLegend {
 		this.panelLegend.setBorder(new TitledBorder("LEGENDA"));
 		for (final Type t : Type.values()) {
 			c.gridx = 0;
-			final JLabel rect = new JLabel("   ");
-			rect.setOpaque(true);
-			rect.setBackground(t.getColor());
-			this.panelLegend.add(rect, c);
+			final JLabel color = new JLabel("   ");
+			color.setOpaque(true);
+			color.setBackground(t.getColor());
+			this.panelLegend.add(color, c);
 			c.gridx++;
 			this.panelLegend.add(new JLabel(t.getCharacter()), c);
 			c.gridy++;
