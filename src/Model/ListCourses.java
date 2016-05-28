@@ -1,5 +1,10 @@
 package Model;
 
+/**
+ * This class implements a list of all the courses of the faculty, 
+ * formed by the type of the course and the name
+ */
+
 public enum ListCourses {
     
     //First Year 

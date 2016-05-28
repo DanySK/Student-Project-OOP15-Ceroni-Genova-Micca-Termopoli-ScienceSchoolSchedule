@@ -7,6 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This class implements a list of all the years of various types of engineering and science, 
+ * then added the colors to not confuse them 
+ */
+
 public enum Type {
 
     FIRST_YEAR("1LT : 1° Anno Laurea Triennale", Color.CYAN), 

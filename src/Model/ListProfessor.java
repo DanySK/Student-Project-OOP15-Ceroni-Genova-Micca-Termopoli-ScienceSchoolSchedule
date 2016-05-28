@@ -3,9 +3,13 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements a list of all the professors of the faculty,
+ * formed by the name, surname and from the courses taught by them
+ */
+
 public enum ListProfessor {
     
-    //Prof e Tutor Triennale e Magistrale
     ALBANO("Albano", "Paolo", ListCourses.ANALISI_MATEMATICA),
     BEVILACQUA("Bevilacqua", "Alessandro", ListCourses.TECNICHE_AVANZATE_PER_L_ANALISI_DELLE_IMMAGINI_E_VISIONE),
     BOSCHETTI("Boschetti", "Marco Antonio", ListCourses.PROJECT_MANAGEMENT),
@@ -61,20 +65,20 @@ public enum ListProfessor {
      private ListCourses courses1 = null;
      private ListCourses courses2 = null;
      
-     private ListProfessor(String surname, String name, ListCourses courses){
+     private ListProfessor(String surname, String name, ListCourses courses){   //Professor teaching one course 
          this.surname = surname;
          this.name = name;
          this.courses = courses;
      }
      
-     private ListProfessor(String surname, String name, ListCourses courses, ListCourses courses1){
+     private ListProfessor(String surname, String name, ListCourses courses, ListCourses courses1){     //Professor teaching more courses 
          this.surname = surname;
          this.name = name;
          this.courses = courses;
          this.courses1 = courses1; 
      }
      
-     private ListProfessor(String surname, String name, ListCourses courses, ListCourses courses1, ListCourses courses2){
+     private ListProfessor(String surname, String name, ListCourses courses, ListCourses courses1, ListCourses courses2){       //Professor teaching more courses 
          this.surname = surname;
          this.name = name;
          this.courses = courses;
@@ -90,7 +94,7 @@ public enum ListProfessor {
          return this.surname;
      }
      
-     public String toStringCourses() {
+     public String toStringCourses() {  
          return this.courses1==null
                  ? ""+this.courses.getValue() 
                  : this.courses2==null 

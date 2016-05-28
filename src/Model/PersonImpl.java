@@ -2,6 +2,10 @@ package Model;
 
 import java.io.Serializable;
 
+/**
+ * This class implements the class Person, passing the name e surname 
+ */
+
 public class PersonImpl implements Person,Serializable {
 
     /**

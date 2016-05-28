@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * This class implements a list of the various teaching hours during the day
+ */
+
 public enum Hours {
    
    PERIOD1("09:00-10:00"),

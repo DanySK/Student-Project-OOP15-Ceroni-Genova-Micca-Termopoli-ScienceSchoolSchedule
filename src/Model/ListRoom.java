@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * This class implements a list of all the rooms used by the faculty
+ */
+
 public enum ListRoom {
     MAGNA("Aula Magna Vicolo Carbonari"),
     MAGNA_PSICO("Aula Magna Psicologia"),

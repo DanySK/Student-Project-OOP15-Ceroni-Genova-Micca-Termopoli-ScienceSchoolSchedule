@@ -2,6 +2,10 @@ package Model;
 
 import java.io.Serializable;
 
+/**
+ * This class implements the courses, composed of name and type
+ */
+
 public class CoursesImpl implements Courses, Serializable {
     /**
      * 

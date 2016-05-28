@@ -2,11 +2,11 @@ package Model;
 
 public interface Courses {
     
-    public String getName();
+    public String getName();    //Return a name   
 
-    public void setName(String name);
+    public void setName(String name);   //Setting a name 
 
-    public Type getType();
+    public Type getType();      //Return a type      
 
-    public void setType(Type type);
+    public void setType(Type type);     //Setting a type
 }

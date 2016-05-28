@@ -2,6 +2,11 @@ package Model;
 
 import java.io.Serializable;
 
+/**
+ * This class implements the class Room, passing the name
+ */
+
+
 public class RoomImpl implements Room,Serializable {
     
     /**

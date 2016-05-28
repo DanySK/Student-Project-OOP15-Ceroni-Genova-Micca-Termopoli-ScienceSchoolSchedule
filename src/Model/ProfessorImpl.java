@@ -3,6 +3,10 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements the class Professor, passing the name, the surname and the courses kept by him 
+ */
+
 public class ProfessorImpl extends PersonImpl implements Professor {
 
     /**
