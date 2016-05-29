@@ -27,7 +27,7 @@ public class Buttons {
     private final JButton resetTable;
     private final JButton cancel;
     private final JButton exit;
-    private ExportToXls xls = new ExportToXls();
+
     private MyListenerView listenerViewGen = new MyListenerView();
     private SaveControllerInterface saveCntr = new SaveController();
 
@@ -71,7 +71,7 @@ public class Buttons {
         });
 
         this.saveInExel.addActionListener(l -> {
-
+            ExportToXls xls = new ExportToXls();
             final JFrame frameSave = new JFrame("ESPORTA IN EXCEL");
             frameSave.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frameSave.setVisible(true);
@@ -110,7 +110,7 @@ public class Buttons {
             frameSave.setVisible(true);
         });
 
-        this.cancel.addActionListener(new MyListenerCancel(mainGUI ));
+        this.cancel.addActionListener(new MyListenerCancel(mainGUI));
 
         this.exit.addActionListener(l -> {
             int mess = JOptionPane.showConfirmDialog(null, "Vuoi chiudere il programma?", "USCITA",
