@@ -65,7 +65,7 @@ public class ViewByProf extends AbstractViewBy {
 		}
 
 		for (Reservation res : this.cntrWork.getByProfessor(prof.getPerson())) {
-			table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.contr.getRow(res),
+			table.setValueAt(res, this.contr.getRow(res),
 					this.contr.getColum(res));
 			table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
 		}

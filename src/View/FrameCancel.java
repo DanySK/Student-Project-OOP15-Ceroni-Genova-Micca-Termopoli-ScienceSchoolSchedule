@@ -17,13 +17,17 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import Controller.ControllerWorkers;
+import Controller.ObjToSave;
 import Controller.Reservation;
+import Controller.SaveController;
+import Controller.SaveControllerInterface;
 import Model.WarningException;
 
 public class FrameCancel {
 
     private ControllerGui cntGui = new ControllerGui();
-    private ControllerWorkers cntr = new ControllerWorkers();
+    private final ControllerWorkers cntr = new ControllerWorkers();
+    private SaveControllerInterface saveCntr = new SaveController();
 
     public FrameCancel(MainGUI mainGUI) throws WarningException {
         final JFrame frame = new JFrame("Seleziona dato per cancellare");
@@ -42,12 +46,9 @@ public class FrameCancel {
         cnst.fill = GridBagConstraints.BOTH;
 
         List<JRadioButton> radioBut = new ArrayList<>();
-        try {
-            for (Reservation r : cntr.getListReservation()) {
-                radioBut.add(new JRadioButton(r.toString()));
-            }
-        } catch (Exception e) {
-            throw new WarningException(e.getMessage());
+
+        for (Reservation r : cntr.getListReservation()) {
+            radioBut.add(new JRadioButton(r.toString()));
         }
 
         for (JRadioButton but : radioBut) {
@@ -63,40 +64,42 @@ public class FrameCancel {
         // listener delete
         delete.addActionListener(l -> {
 
-            boolean isSelected = false;
+            int countSel = 0;
             for (JRadioButton jRadioButton : radioBut) {
                 if (jRadioButton.isSelected()) {
-                    isSelected = true;
+                    countSel++;
                 }
             }
-            if (isSelected) {
+            if (countSel > 0) {
                 int b = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler cancellare i dati selezionati?",
                         "Cancelazione", JOptionPane.YES_NO_OPTION);
                 if (b == JOptionPane.YES_OPTION) {
+                    if (cntr.getListReservation().size() == countSel) {
+                        ObjToSave obj = this.saveCntr.getObjToSave();
+                        obj.setListReservation(new ArrayList<>());
+                        this.saveCntr.save(obj);
+                    } else {
+                        for (JRadioButton but : radioBut) {
+                            if (but.isSelected()) {
 
-                    for (JRadioButton but : radioBut) {
-                        if (but.isSelected()) {
-
-                            try {
+                                List<Reservation> temp = new ArrayList<>();
                                 for (Reservation res : cntr.getListReservation()) {
-                                    Reservation tmp = res;
-
-                                    if (tmp.toString().equals(but.getText())) {
-                                        // System.out.println(but.getText());
-                                        cntr.removeRes(tmp);
-                                        mainGUI.removeRes(cntGui.getRow(tmp), cntGui.getColum(tmp));
+                                    if (res.toString().equals(but.getText())) {
+                                        temp.add(res);
+                                        mainGUI.removeRes(cntGui.getRow(res), cntGui.getColum(res));
                                     }
-
                                 }
-                                cntr.save();
-                            } catch (Exception e) {
-                                System.out.println("Ciao ciao sono sotto");
-                                e.printStackTrace();
+                                try {
+                                    cntr.removeAll(temp);
+                                    cntr.save();
+                                } catch (Exception e) {
+                                    System.out.println("Ciao ciao sono sopra" + e.getMessage());
+                                    e.printStackTrace();
+                                }
 
                             }
                         }
                     }
-
                     frame.setVisible(false);
                 }
             } else {

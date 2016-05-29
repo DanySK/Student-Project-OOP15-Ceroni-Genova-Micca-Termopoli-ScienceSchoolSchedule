@@ -21,11 +21,11 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     }
 
-    public void removeRes(Reservation cont) throws WarningException {
+    public void removeAll(List<Reservation> cont) throws WarningException {
 
         if (!this.listReservation.isEmpty()) {
 
-            this.listReservation.remove(cont);
+            this.listReservation.removeAll(cont);
 
         } else {
             throw new WarningException("lista vuota");
@@ -33,19 +33,24 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         }
 
     }
-
+    public void isEmpty() throws ErrorException{
+        if(this.listReservation.isEmpty()){
+            throw new ErrorException("Nessun dato da caricare, controlla di aver inserito almeno una prenotazione");
+        }     
+    }
     public void save() {
         controller.getObjToSave().setListReservation(this.listReservation);
         ObjToSave obj = controller.getObjToSave();
         controller.save(obj);
     }
 
-    public List<Reservation> getListReservation() throws ErrorException {
-        if (this.listReservation.isEmpty()) {
-            throw new ErrorException("Nessun dato da caricare, controlla di aver inserito almeno una prenotazione");
-        }
+    public List<Reservation> getListReservation(){
+       
+       
+       
         return this.listReservation;
     }
+    
 
     public Reservation undo() {
 

@@ -10,7 +10,6 @@ import java.util.TreeMap;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
@@ -75,14 +74,16 @@ public class ExportToXls implements ExportToXlsxInterface {
                 sheet.autoSizeColumn(cellnum);
                 Cell cell = row.createCell(cellnum);
 
-                if (cellnum == 0 || rownum == 0
-                        || ((rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0))) { // per
-                                                                                                          // colorare
-                                                                                                          // diversamente
-
+                if ( rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0  ) { // per   // colorare    // diversamente
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(IndexedColors.BLUE_GREY.getIndex());
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(3,192,60)));
+
+                    cell.setCellStyle(defaul);
+                } else if (cellnum == 0 ) {
+                    cell.setCellValue(str);
+                    defaul = this.setBorderDefault(defaul);
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(255,77,0)));
 
                     cell.setCellStyle(defaul);
                 } else {

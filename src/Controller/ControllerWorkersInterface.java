@@ -12,7 +12,7 @@ public interface ControllerWorkersInterface {
 
     public void addRes(Reservation cont) throws WarningException, ErrorException;
 
-    public List<Reservation> getListReservation() throws  ErrorException;
+    public List<Reservation> getListReservation();
 
     public List<Reservation> getByDay(Days d);
 
@@ -27,6 +27,7 @@ public interface ControllerWorkersInterface {
 
     public List<Professor> getProfessorFromFile();
 
-    public void removeRes(Reservation cont) throws WarningException;
+    public void removeAll(List<Reservation> cont) throws WarningException;
     public void save();
+    public void isEmpty() throws ErrorException;
 }

@@ -5,20 +5,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-public class MyListenerCancel implements ActionListener{
-    MainGUI mainGUI ;
-	public MyListenerCancel(MainGUI mainGUI) {
+import Controller.ControllerWorkers;
+
+public class MyListenerCancel implements ActionListener {
+    private ControllerWorkers cntr = new ControllerWorkers();
+    MainGUI mainGUI;
+
+    public MyListenerCancel(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
     }
 
     @Override
-	public void actionPerformed(ActionEvent e) {
-		
-		//JButton button = (JButton) e.getSource();
-		try {
-			new FrameCancel(mainGUI);
-		} catch (Exception e2) {
-			JOptionPane.showMessageDialog(null, e2.getMessage());
-		}
-	}
+    public void actionPerformed(ActionEvent e) {
+
+        try {
+            cntr.isEmpty();
+            new FrameCancel(mainGUI);
+        } catch (Exception e2) {
+            JOptionPane.showMessageDialog(null, e2.getMessage());
+        }
+    }
 }
