@@ -42,7 +42,7 @@ public class ExportToXls implements ExportToXlsxInterface {
                     new File(System.getProperty("user.home") + System.getProperty("file.separator") + title + ".xls"));
             workbook.write(out);
             out.close();
-            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
+            System.out.println(title + ".xlsx written successfully on disk.");
         } catch (Exception e) {
             System.out.println("chiudere il file prima di proseguire");
             e.printStackTrace();
@@ -76,9 +76,9 @@ public class ExportToXls implements ExportToXlsxInterface {
                 Cell cell = row.createCell(cellnum);
 
                 if (cellnum == 0 || rownum == 0
-                        || (rownum % this.controller.getObjToSave().getListRoom().size() + 1) == 0) { // per
-                                                                                                      // colorare
-                                                                                                      // diversamente
+                        || ((rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0))) { // per
+                                                                                                          // colorare
+                                                                                                          // diversamente
 
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);

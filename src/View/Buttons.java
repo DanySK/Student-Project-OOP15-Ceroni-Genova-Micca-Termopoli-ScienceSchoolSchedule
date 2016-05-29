@@ -20,134 +20,134 @@ import ViewBy.MyListenerView;
 
 public class Buttons {
 
-	private final JButton insert;
-	private final JButton generalView;
-	private final JButton insertNew;
-	private final JButton saveInExel;
-	private final JButton resetTable;
-	private final JButton cancel;
-	private final JButton exit;
-	private ExportToXls xls = new ExportToXls();
-	private MyListenerView listenerViewGen = new MyListenerView();
-	private SaveControllerInterface saveCntr = new SaveController();
+    private final JButton insert;
+    private final JButton generalView;
+    private final JButton insertNew;
+    private final JButton saveInExel;
+    private final JButton resetTable;
+    private final JButton cancel;
+    private final JButton exit;
+    private ExportToXls xls = new ExportToXls();
+    private MyListenerView listenerViewGen = new MyListenerView();
+    private SaveControllerInterface saveCntr = new SaveController();
 
-	public Buttons(MainGUI mainGUI) {
+    public Buttons(MainGUI mainGUI) {
 
-		this.insert = new JButton("INSERISCI");
-		this.generalView = new JButton("VISTA GENERALE");
-		this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
-		this.saveInExel = new JButton("ESPORTA IN EXCEL");
-		this.resetTable = new JButton("RESETTA LA TABELLA");
-		this.cancel = new JButton("CANCELLA");
-		this.exit = new JButton("<<<<<<<<  ESCI  >>>>>>>>");
+        this.insert = new JButton("INSERISCI");
+        this.generalView = new JButton("VISTA GENERALE");
+        this.insertNew = new JButton("AGGIUNGI NUOVO DATO");
+        this.saveInExel = new JButton("ESPORTA IN EXCEL");
+        this.resetTable = new JButton("RESETTA LA TABELLA");
+        this.cancel = new JButton("CANCELLA");
+        this.exit = new JButton("<<<<<<<<  ESCI  >>>>>>>>");
 
-		this.insert.addActionListener(l -> {
-			new FrameInsert(mainGUI);
-		});
+        this.insert.addActionListener(l -> {
+            new FrameInsert(mainGUI);
+        });
 
-		this.generalView.addActionListener(this.listenerViewGen);
+        this.generalView.addActionListener(this.listenerViewGen);
 
-		this.insertNew.addActionListener(l -> {
-			new FrameModify();
-		});
+        this.insertNew.addActionListener(l -> {
+            new FrameModify();
+        });
 
-		this.resetTable.addActionListener(l -> {
-			int reset = JOptionPane.showConfirmDialog(null, "Stai per resettare tutta la tabella! "
-					+ "\nPrima di prosegure assicurati di aver salvato il file in Excel!"
-					+ "\nVuoi continuare comunque?", "Attenzione!", JOptionPane.YES_NO_OPTION);
-			if (reset == JOptionPane.YES_OPTION) {
-				ObjToSave obj = this.saveCntr.getObjToSave();
-				obj.setListReservation(new ArrayList<>());
-				this.saveCntr.save(obj);
-				int mess = JOptionPane.showConfirmDialog(null, "Tutti i dati cancellati!"
-						+ "\nRiavvia il programma per aggiornare la tabella." + "\nVuoi proseguire?", "Attenzione!",
-						JOptionPane.YES_NO_OPTION);
-				if (mess == JOptionPane.YES_OPTION) {
-					System.exit(0);
-				}
-			}
-		});
+        this.resetTable.addActionListener(l -> {
+            int reset = JOptionPane.showConfirmDialog(null,
+                    "Stai per resettare tutta la tabella! "
+                            + "\nPrima di prosegure assicurati di aver salvato il file in Excel!"
+                            + "\nVuoi continuare comunque?",
+                    "Attenzione!", JOptionPane.YES_NO_OPTION);
+            if (reset == JOptionPane.YES_OPTION) {
+                ObjToSave obj = this.saveCntr.getObjToSave();
+                obj.setListReservation(new ArrayList<>());
+                this.saveCntr.save(obj);
+                int mess = JOptionPane.showConfirmDialog(null, "Tutti i dati cancellati!"
+                        + "\nRiavvia il programma per aggiornare la tabella." + "\nVuoi proseguire?", "Attenzione!",
+                        JOptionPane.YES_NO_OPTION);
+                if (mess == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+            }
+        });
 
-		this.saveInExel
-				.addActionListener(l -> {
+        this.saveInExel.addActionListener(l -> {
 
-					final JFrame frameSave = new JFrame("ESPORTA IN EXCEL");
-					frameSave.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					frameSave.setVisible(true);
-					frameSave.setSize(400, 150);
-					frameSave.setResizable(false);
-					final JPanel panelSave = new JPanel(new GridBagLayout());
-					final JLabel text = new JLabel("Inserisci nome file:  ");
-					final JTextField exelTitle = new JTextField(15);
-					exelTitle.setToolTipText("ESEMPIO: 1° semestre 15-16");
-					JPanel panelBut = new JPanel();
-					final JButton save = new JButton("Salva");
+            final JFrame frameSave = new JFrame("ESPORTA IN EXCEL");
+            frameSave.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frameSave.setVisible(true);
+            frameSave.setSize(400, 150);
+            frameSave.setResizable(false);
+            final JPanel panelSave = new JPanel(new GridBagLayout());
+            final JLabel text = new JLabel("Inserisci nome file:  ");
+            final JTextField exelTitle = new JTextField(15);
+            exelTitle.setToolTipText("ESEMPIO: 1° semestre 15-16");
+            JPanel panelBut = new JPanel();
+            final JButton save = new JButton("Salva");
 
-					final GridBagConstraints cost = new GridBagConstraints();
-					cost.gridx = 0;
-					cost.gridy = 1;
-					cost.fill = GridBagConstraints.BOTH;
-					panelSave.add(text, cost);
-					cost.gridx = 1;
-					panelSave.add(exelTitle, cost);
-					panelBut.add(save);
+            final GridBagConstraints cost = new GridBagConstraints();
+            cost.gridx = 0;
+            cost.gridy = 1;
+            cost.fill = GridBagConstraints.BOTH;
+            panelSave.add(text, cost);
+            cost.gridx = 1;
+            panelSave.add(exelTitle, cost);
+            panelBut.add(save);
 
-					save.addActionListener(e -> {
-						String s = exelTitle.getText();
-						JOptionPane.showMessageDialog(
-								null,
-								"Il file è stato salvato nel percorso:  "
-										+ (System.getProperty("user.home") + System.getProperty("file.separator") + s + ".xls"),
-								null, JOptionPane.INFORMATION_MESSAGE);
+            save.addActionListener(e -> {
+                String s = exelTitle.getText();
+                JOptionPane.showMessageDialog(null,
+                        "Il file è stato salvato nel percorso:  "
+                                + (System.getProperty("user.home") + System.getProperty("file.separator") + s + ".xls"),
+                        null, JOptionPane.INFORMATION_MESSAGE);
 
-						xls.save(s);
-						frameSave.setVisible(false);
+                xls.save(s);
+                frameSave.setVisible(false);
 
-					});
+            });
 
-					frameSave.add(panelBut, BorderLayout.SOUTH);
-					frameSave.add(panelSave);
-					frameSave.setVisible(true);
-				});
+            frameSave.add(panelBut, BorderLayout.SOUTH);
+            frameSave.add(panelSave);
+            frameSave.setVisible(true);
+        });
 
-		this.cancel.addActionListener(new MyListenerCancel());
+        this.cancel.addActionListener(new MyListenerCancel(mainGUI ));
 
-		this.exit.addActionListener(l -> {
-			int mess = JOptionPane.showConfirmDialog(null, "Vuoi chiudere il programma?", "USCITA",
-					JOptionPane.YES_NO_OPTION);
-			if (mess == JOptionPane.YES_OPTION) {
-				System.exit(0);
-			}
-		});
+        this.exit.addActionListener(l -> {
+            int mess = JOptionPane.showConfirmDialog(null, "Vuoi chiudere il programma?", "USCITA",
+                    JOptionPane.YES_NO_OPTION);
+            if (mess == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        });
 
-	}
+    }
 
-	public JButton getExit() {
-		return exit;
-	}
+    public JButton getExit() {
+        return exit;
+    }
 
-	public JButton getCancel() {
-		return cancel;
-	}
+    public JButton getCancel() {
+        return cancel;
+    }
 
-	public JButton getInsert() {
-		return insert;
-	}
+    public JButton getInsert() {
+        return insert;
+    }
 
-	public JButton getSaveInExel() {
-		return saveInExel;
-	}
+    public JButton getSaveInExel() {
+        return saveInExel;
+    }
 
-	public JButton getResetTable() {
-		return resetTable;
-	}
+    public JButton getResetTable() {
+        return resetTable;
+    }
 
-	public JButton getGeneralView() {
-		return generalView;
-	}
+    public JButton getGeneralView() {
+        return generalView;
+    }
 
-	public JButton getInsertNew() {
-		return insertNew;
-	}
+    public JButton getInsertNew() {
+        return insertNew;
+    }
 
 }

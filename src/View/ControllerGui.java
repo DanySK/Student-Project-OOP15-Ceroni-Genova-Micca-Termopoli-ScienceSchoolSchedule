@@ -24,8 +24,9 @@ public class ControllerGui {
 	private void drawTable() {
 		drawDefaultTable();
 		for (Reservation res : this.setReservation) {
-			this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
-					this.getColum(res));
+		    this.table.setValueAt(res, this.getRow(res), this.getColum(res));
+			/*this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
+					this.getColum(res));*/
 			this.table.fireTableCellUpdated(this.getRow(res), this.getColum(res));
 			// this.table.newDataAvailable(event);
 		}
@@ -49,12 +50,12 @@ public class ControllerGui {
 	}
 
 	public DefaultTableModel getTable() {
-		if (this.setReservation.isEmpty()) {
+		/*if (this.setReservation.isEmpty()) {
 			drawDefaultTable();
-		} else {
+		} else {*/
 
 			drawTable();
-		}
+		//}
 
 		return this.table;
 

@@ -20,35 +20,29 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         this.listReservation.add(cont);
 
     }
-    
+
     public void removeRes(Reservation cont) throws WarningException {
-        
-        if( !this.listReservation.isEmpty()){
-            if(this.listReservation.contains(cont)){
-                this.listReservation.remove(cont); 
-            }
-            else{
-                throw new WarningException("non trova corrispondenza");
-                
-            }
-          
-        }else{
+
+        if (!this.listReservation.isEmpty()) {
+
+            this.listReservation.remove(cont);
+
+        } else {
             throw new WarningException("lista vuota");
-            
+
         }
-            
-      
+
     }
-    
-    public void save(List<Reservation> listReservation){
-        controller.getObjToSave().setListReservation(listReservation);
+
+    public void save() {
+        controller.getObjToSave().setListReservation(this.listReservation);
         ObjToSave obj = controller.getObjToSave();
         controller.save(obj);
     }
 
-    public List<Reservation> getListReservation()throws ErrorException{
-        if(this.listReservation.isEmpty()){
-            throw new ErrorException("Nessun dato da cancellare. \n Inserire dei dati prima di cancellarli. IDIOTA ");
+    public List<Reservation> getListReservation() throws ErrorException {
+        if (this.listReservation.isEmpty()) {
+            throw new ErrorException("Nessun dato da caricare, controlla di aver inserito almeno una prenotazione");
         }
         return this.listReservation;
     }
@@ -69,16 +63,13 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByDay;
     }
 
-   /* public List<Reservation> getByClass(Room c) {
-        List<Reservation> listByRoom = new ArrayList<>();
-
-        for (Reservation res : listReservation) {
-            if (res.getRoom().equals(c)) {
-                listByRoom.add(res);
-            }
-        }
-        return listByRoom;
-    }*/
+    /*
+     * public List<Reservation> getByClass(Room c) { List<Reservation>
+     * listByRoom = new ArrayList<>();
+     * 
+     * for (Reservation res : listReservation) { if (res.getRoom().equals(c)) {
+     * listByRoom.add(res); } } return listByRoom; }
+     */
 
     public List<Reservation> getByCourses(Courses course) {
         List<Reservation> listByCourses = new ArrayList<>();
@@ -102,16 +93,13 @@ public class ControllerWorkers implements ControllerWorkersInterface {
         return listByProf;
     }
 
-  /*  public List<Reservation> getByHour(Hours h) {
-        List<Reservation> listByHours = new ArrayList<>();
-
-        for (Reservation res : listReservation) {
-            if (res.getHour().equals(h)) {
-                listByHours.add(res);
-            }
-        }
-        return listByHours;
-    }*/
+    /*
+     * public List<Reservation> getByHour(Hours h) { List<Reservation>
+     * listByHours = new ArrayList<>();
+     * 
+     * for (Reservation res : listReservation) { if (res.getHour().equals(h)) {
+     * listByHours.add(res); } } return listByHours; }
+     */
 
     public List<Courses> getCoursesFromFile() {
         List<Courses> temp = new ArrayList<>();
