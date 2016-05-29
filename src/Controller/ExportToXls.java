@@ -77,13 +77,13 @@ public class ExportToXls implements ExportToXlsxInterface {
                 if ( rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0  ) { // per   // colorare    // diversamente
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(3,192,60)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(0,204,204)));
 
                     cell.setCellStyle(defaul);
                 } else if (cellnum == 0 ) {
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(255,77,0)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(207,181,59)));
 
                     cell.setCellStyle(defaul);
                 } else {

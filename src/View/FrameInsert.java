@@ -82,7 +82,7 @@ public class FrameInsert {
                 Integer row = c.getRow(res);
                 Integer colum = c.getColum(res);
                 mainGUI.update(res, row, colum);
-                this.frameInsert.setVisible(false);
+                this.frameInsert.dispose();;
             } catch (Exception e) {
                 if (e instanceof WarningException) {
                     int i = JOptionPane.showConfirmDialog(null, e.getMessage(), "Warning", JOptionPane.YES_NO_OPTION);
@@ -104,7 +104,7 @@ public class FrameInsert {
                         Integer row = c.getRow(res);
                         Integer colum = c.getColum(res);
                         mainGUI.update(res, row, colum);
-                        this.frameInsert.setVisible(false);
+                        this.frameInsert.dispose();
                     }
 
                 } else if (e instanceof ErrorException) {

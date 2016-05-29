@@ -100,7 +100,7 @@ public class FrameCancel {
                             }
                         }
                     }
-                    frame.setVisible(false);
+                    frame.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Non hai selezionato nessun dato!");
