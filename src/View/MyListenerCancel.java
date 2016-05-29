@@ -7,8 +7,7 @@ import javax.swing.JOptionPane;
 
 import Controller.ControllerWorkers;
 
-public class MyListenerCancel implements ActionListener {
-    private ControllerWorkers cntr = new ControllerWorkers();
+public class MyListenerCancel implements ActionListener { 
     MainGUI mainGUI;
 
     public MyListenerCancel(MainGUI mainGUI) {
@@ -18,6 +17,7 @@ public class MyListenerCancel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    	ControllerWorkers cntr = new ControllerWorkers();
         try {
             cntr.isEmpty();
             new FrameCancel(mainGUI);

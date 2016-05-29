@@ -74,11 +74,17 @@ public class FrameCancel {
                 int b = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler cancellare i dati selezionati?",
                         "Cancelazione", JOptionPane.YES_NO_OPTION);
                 if (b == JOptionPane.YES_OPTION) {
-                    if (cntr.getListReservation().size() == countSel) {
-                        ObjToSave obj = this.saveCntr.getObjToSave();
-                        obj.setListReservation(new ArrayList<>());
-                        this.saveCntr.save(obj);
-                    } else {
+                  // if (cntr.getListReservation().size() == countSel) {
+                   //     ObjToSave obj = this.saveCntr.getObjToSave();
+                   //     obj.setListReservation(new ArrayList<>());
+                   //     this.saveCntr.save(obj);
+                       // int mess = JOptionPane.showConfirmDialog(null, "Tutti i dati cancellati!"
+                       //         + "\nRiavvia il programma per aggiornare la tabella." + "\nVuoi proseguire?", "Attenzione!",
+                       //         JOptionPane.YES_NO_OPTION);
+                       // if (mess == JOptionPane.YES_OPTION) {
+                       //     System.exit(0);
+                       // }
+                  //  } else {
                         for (JRadioButton but : radioBut) {
                             if (but.isSelected()) {
 
@@ -99,7 +105,7 @@ public class FrameCancel {
 
                             }
                         }
-                    }
+                   // }
                     frame.dispose();
                 }
             } else {

@@ -47,8 +47,7 @@ public class MyTableRenderer extends JTextArea implements TableCellRenderer {
                 this.setBackground(res.getCourse().getType().getColor());
                 table.getValueAt(row, 0).toString();
                 table.getValueAt(0, column).toString();
-                String str = "\n " + table.getValueAt(row, 0).toString() + "\n "
-                        + table.getValueAt(0, column).toString() + "\n " + this.getText();
+                String str = res.toString();
                 this.setToolTipText(str);
             }else {
                 Color c = Color.white;
