@@ -78,13 +78,13 @@ private boolean checkCDLSecondYear() throws WarningException, ErrorException {
     if(listType.contains(Type.SECOND_YEAR)){
         throw new ErrorException(
                 "Nella stessa fascia oraria è già presente un corso del secondo anno, quindi non può essere sovrapposto");
-    }else if(!listType.contains(cont.getCourse().getType())){
-        return true;
-    }if (listType.contains(Type.SECOND_YEAR_ENG) && cont.getCourse().getType().equals(Type.SECOND_YEAR_SCI)) {
+    }else if (listType.contains(Type.SECOND_YEAR_ENG) && cont.getCourse().getType().equals(Type.SECOND_YEAR_SCI)) {
         return true;
     } else if (listType.contains(Type.SECOND_YEAR_SCI) && cont.getCourse().getType().equals(Type.SECOND_YEAR_ENG)) {
         return true; 
-    } else{
+    } else if(!listType.contains(cont.getCourse().getType())){
+        return true;
+    }else{
         throw new ErrorException(
                 "Nella stessa fascia oraria è già presente un corso del secondo anno, quindi non può essere sovrapposto");
     }
@@ -105,7 +105,11 @@ private boolean checkCDLThirdYear() throws WarningException, ErrorException {
             listType.add(res.getCourse().getType());
         }
     }
-    if (listType.contains(Type.THIRD_YEAR_ENG) && cont.getCourse().getType().equals(Type.THIRD_YEAR_SCI)) {
+     if(listType.contains(Type.THIRD_YEAR)){
+         throw new ErrorException(
+                 "Nella stessa fascia oraria è già presente un corso del terzo anno, quindi non può essere sovrapposto");
+     
+    }else if (listType.contains(Type.THIRD_YEAR_ENG) && cont.getCourse().getType().equals(Type.THIRD_YEAR_SCI)) {
         return true;
     } else if (listType.contains(Type.THIRD_YEAR_SCI) && cont.getCourse().getType().equals(Type.THIRD_YEAR_ENG)) {
         return true;
