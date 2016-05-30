@@ -8,15 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.TableModel;
 
 import Controller.ControllerWorkers;
 import Controller.ControllerWorkersInterface;
+import Controller.MyValidate;
+import Controller.MyValidateInterface;
 import Controller.Reservation;
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
-import Controller.ValidateError;
-import Controller.ValidateWarning;
 import Model.ErrorException;
 import Model.WarningException;
 
@@ -73,10 +72,9 @@ public class FrameInsert {
 						.getcCorses().getSelectedItem().toString(), this.combo.getcDays().getSelectedItem().toString(),
 						this.combo.getcHours().getSelectedItem().toString(), this.combo.getcRooms().getSelectedItem()
 								.toString());
-				ValidateError error = new ValidateError();
-				error.validateErrore(res);
-				ValidateWarning warning = new ValidateWarning();
-				warning.validateWARNING(res);
+				MyValidateInterface validate = new MyValidate();
+				validate.validation(res);
+				
 				cntr.addRes(res);
 				controller.getObjToSave().setListReservation(cntr.getListReservation());
 				controller.save(controller.getObjToSave());
