@@ -4,7 +4,6 @@ import Model.ErrorException;
 
 /**
  * @author Massimiliano Micca
- * modify Francesco Ceroni
  *
  */
 public class ValidateError implements ValidateErrorInterface {

@@ -37,6 +37,7 @@ public class FrameInsert {
 	private ControllerWorkersInterface cntr = new ControllerWorkers();
 	private SaveControllerInterface controller = new SaveController();
 	private ControllerGui c = new ControllerGui();
+	private MyValidateInterface validate = new MyValidate();
 
 	public FrameInsert(MainGUI mainGUI) {
 
@@ -72,7 +73,7 @@ public class FrameInsert {
 						.getcCorses().getSelectedItem().toString(), this.combo.getcDays().getSelectedItem().toString(),
 						this.combo.getcHours().getSelectedItem().toString(), this.combo.getcRooms().getSelectedItem()
 								.toString());
-				MyValidateInterface validate = new MyValidate();
+				
 				validate.validation(res);
 				
 				cntr.addRes(res);
@@ -83,28 +84,28 @@ public class FrameInsert {
 				Integer colum = c.getColum(res);
 				mainGUI.update(res, row, colum);
 				this.frameInsert.dispose();
-				;
+				
 			} catch (Exception e) {
 				if (e instanceof WarningException) {
 					int i = JOptionPane.showConfirmDialog(null, e.getMessage(), "Warning", JOptionPane.YES_NO_OPTION);
 					if (i == JOptionPane.YES_OPTION) {
+						try {
 						Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
 								this.combo.getcCorses().getSelectedItem().toString(), this.combo.getcDays()
 										.getSelectedItem().toString(), this.combo.getcHours().getSelectedItem()
 										.toString(), this.combo.getcRooms().getSelectedItem().toString());
-						try {
+						
 							cntr.addRes(res);
 							controller.getObjToSave().setListReservation(cntr.getListReservation());
 							controller.save(controller.getObjToSave());
+							Integer row = c.getRow(res);
+							Integer colum = c.getColum(res);
+							mainGUI.update(res, row, colum);
+							this.frameInsert.dispose();
 						} catch (Exception e1) {
 
 							e1.printStackTrace();
 						}
-
-						Integer row = c.getRow(res);
-						Integer colum = c.getColum(res);
-						mainGUI.update(res, row, colum);
-						this.frameInsert.dispose();
 					}
 
 				} else if (e instanceof ErrorException) {

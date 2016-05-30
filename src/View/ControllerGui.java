@@ -9,6 +9,7 @@ import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import Model.CoursesImpl;
 import Model.Days;
+import Model.ErrorException;
 import Model.Hours;
 import Model.PersonImpl;
 import Model.Professor;
@@ -128,9 +129,10 @@ public class ControllerGui {
      * @param ora
      * @param stanza
      * @return new Reservation
+     * @throws ErrorException 
      */
 
-    public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza) {
+    public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza) throws ErrorException {
         PersonImpl person = null;
         CoursesImpl cours = null;
         for (Professor p : cont.getObjToSave().getListProfessor()) {
@@ -164,7 +166,7 @@ public class ControllerGui {
                 room = r;
             }
         }
-
+        
         return new Reservation(person, cours, day, h, room);
     }
 
