@@ -2,6 +2,13 @@ package View;
 
 import javax.swing.JLabel;
 
+/**
+ * This class contains all instances of JLabels that are uses in PanleButton()
+ * and FrameInsert()
+ * 
+ * @author Anna Termopoli
+ *
+ */
 public class Labels {
 
 	private final JLabel views;
@@ -13,7 +20,7 @@ public class Labels {
 	private final JLabel lExams;
 
 	public Labels() {
-		// TODO Auto-generated constructor stub
+
 		this.views = new JLabel("Vista per: ");
 		this.lDays = new JLabel("Giorno: ");
 		this.lRooms = new JLabel("Aula: ");

@@ -16,11 +16,17 @@ import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import View.ControllerGui;
 
+/**
+ * This abstract class provides the general structure that is use for create the
+ * different views.
+ * 
+ * @author Galya Genova
+ * 
+ *         Modify by Anna Termopoli
+ *
+ */
 public abstract class AbstractViewBy extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected int columns;
@@ -33,7 +39,7 @@ public abstract class AbstractViewBy extends JFrame {
 	protected SaveControllerInterface cont = new SaveController();
 
 	public AbstractViewBy(final Object name) {
-		// TODO Auto-generated constructor stub
+
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		final int width = (int) screenSize.getWidth();
 		final int height = (int) screenSize.getHeight();
@@ -43,10 +49,25 @@ public abstract class AbstractViewBy extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
+	/**
+	 * This method allow to fill the table in personalize mode for every table
+	 * it is implement by classes ViewByCourse, ViewByDay, ViewByHour,
+	 * ViewByProf, ViewByRoom and ViewGeneral.
+	 * 
+	 * @param table
+	 * @param day
+	 * @return table
+	 */
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object day) {
 		return table;
 	};
 
+	/**
+	 * allow to resize the columns of the tables
+	 * some of the views call this method.
+	 * 
+	 * @param table
+	 */
 	protected void resizeColumnWidth(JTable table) {
 
 		for (int column = 0; column < table.getColumnCount(); column++) {

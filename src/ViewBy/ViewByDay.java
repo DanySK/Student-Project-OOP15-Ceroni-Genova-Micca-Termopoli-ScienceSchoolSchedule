@@ -10,6 +10,12 @@ import javax.swing.table.DefaultTableModel;
 import Model.Hours;
 import View.MyTableRenderer;
 
+/**
+ * This frame provides to show the table by specific day of the week
+ * 
+ * @author Galya Genova
+ *
+ */
 public class ViewByDay extends AbstractViewBy {
 
 	/**
@@ -41,13 +47,11 @@ public class ViewByDay extends AbstractViewBy {
 
 		for (int r = 0; r < contr.getTable().getRowCount(); r++) {
 			if (contr.getTable().getValueAt(r, 0).toString().equals(day)) {
-				// System.out.println(contr.getTable().getValueAt(r,
-				// 0).toString());
+
 				for (int c = 0; c < contr.getTable().getColumnCount(); c++) {
 					for (int row = r; row < contr.getTable().getRowCount()
 							&& row < r + this.cont.getObjToSave().getListRoom().size() + 1; row++) {
-						// System.out.println(contr.getTable().getValueAt(row,
-						// c));
+
 						Object obj = contr.getTable().getValueAt(row, c);
 						table.setValueAt(obj, row - r, c);
 					}

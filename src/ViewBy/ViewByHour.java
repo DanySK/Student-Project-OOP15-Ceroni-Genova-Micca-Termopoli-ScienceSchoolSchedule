@@ -11,6 +11,12 @@ import Model.Days;
 import Model.Room;
 import View.MyTableRenderer;
 
+/**
+ * This frame provides to show the table by specific hour
+ * 
+ * @author Galya Genova
+ *
+ */
 public class ViewByHour extends AbstractViewBy {
 
 	/**
@@ -19,7 +25,7 @@ public class ViewByHour extends AbstractViewBy {
 	private static final long serialVersionUID = 1L;
 
 	public ViewByHour(final Object name) {
-		// TODO Auto-generated constructor stub
+
 		super(name);
 		this.columns = 2;
 		this.rows = Days.values().length + (Days.values().length * this.cont.getObjToSave().getListRoom().size());
@@ -48,12 +54,10 @@ public class ViewByHour extends AbstractViewBy {
 
 		for (int c = 0; c < contr.getTable().getColumnCount(); c++) {
 			if (contr.getTable().getValueAt(0, c).toString().equals(hour)) {
-				// System.out.println(contr.getTable().getValueAt(c,
-				// 0).toString());
+
 				for (int r = 0; r < contr.getTable().getRowCount(); r++) {
 					if (r != 0 && c != 0) {
-						// System.out.println(contr.getTable().getValueAt(r,
-						// c));
+
 						Object obj = contr.getTable().getValueAt(r, c);
 						table.setValueAt(obj, r, 1);
 					}

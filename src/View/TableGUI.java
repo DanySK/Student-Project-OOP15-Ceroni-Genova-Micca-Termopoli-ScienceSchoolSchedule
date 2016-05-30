@@ -11,11 +11,16 @@ import Controller.SaveControllerInterface;
 import Model.Days;
 import Model.Hours;
 
+/**
+ * This class implements DefaultTableModel and overrides the methods. This is
+ * the principal table that is added in PanelTable.
+ * 
+ * @author Galya Genova
+ *
+ *         Modify by Massimilano Micca
+ */
 public class TableGUI extends DefaultTableModel {
 
-	/**
-     * 
-     */
 	private static final long serialVersionUID = -782099090803983602L;
 
 	private SaveControllerInterface cont = new SaveController();
@@ -28,36 +33,62 @@ public class TableGUI extends DefaultTableModel {
 
 	}
 
+	/**
+	 * @return the number of rows
+	 */
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
+
 		return row;
 	}
 
+	/**
+	 * @return the number of columns that are static
+	 */
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
+
 		return COLUMNS;
 	}
 
+	/**
+	 * override the getValute
+	 * 
+	 * @param rowIndex
+	 * @param columnIndex
+	 * @return the specific value
+	 */
 	@Override
-	// DA CONTROLLARE
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
+
 		return this.dataTable.get(new Dimension(rowIndex, columnIndex));
 	}
 
+	/**
+	 * set the value in specific cell
+	 * 
+	 * @param data
+	 * @param row
+	 * @param col
+	 */
 	public void setValueAt(Object data, int row, int col) {
 		Dimension coord = new Dimension(row, col);
 		this.dataTable.put(coord, data);
 		fireTableCellUpdated(row, col);
 	}
 
+	/**
+	 * update the table information with method fireTableDataChaged()
+	 */
 	public void update() {
 		fireTableDataChanged();
 	}
 
-	// DA CONTROLLARE
+	/**
+	 * set cells to be not editable
+	 * 
+	 * @return false
+	 */
 	public boolean isCellEditable(final int row, final int col) {
 		return false;
 	}

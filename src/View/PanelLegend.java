@@ -9,12 +9,19 @@ import javax.swing.border.TitledBorder;
 
 import Model.Type;
 
+/**
+ * This panel contains the legend whit the color and Type of any course. The
+ * panel is addes in the PanelButto class
+ * 
+ * @author Anna Termopoli
+ *
+ */
 public class PanelLegend {
 
 	private final JPanel panelLegend;
 
 	public PanelLegend() {
-		// TODO Auto-generated constructor stub
+
 		final GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		c.gridy = 0;

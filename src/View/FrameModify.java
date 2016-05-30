@@ -21,6 +21,13 @@ import Model.CoursesImpl;
 import Model.Professor;
 import Model.RoomImpl;
 
+/**
+ * This frame allow to modify the name of specific professor and add new
+ * classroom
+ * 
+ * @author Anna Termopoli
+ *
+ */
 public class FrameModify {
 
 	private final static String EMPTYSTR = " ";
@@ -109,7 +116,7 @@ public class FrameModify {
 						JOptionPane.YES_NO_CANCEL_OPTION);
 
 				if (f == JOptionPane.YES_OPTION) {
-					//List<Professor> temp1 = objToSave.getListProfessor();
+
 					for (Professor p : objToSave.getListProfessor()) {
 						String prof = comboProf.getSelectedItem().toString();
 

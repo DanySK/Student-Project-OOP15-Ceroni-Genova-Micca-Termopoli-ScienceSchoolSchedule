@@ -11,11 +11,14 @@ import Model.Days;
 import Model.Hours;
 import View.MyTableRenderer;
 
+/**
+ * This frame provides to show the table by specific room
+ * 
+ * @author Galya Genova
+ *
+ */
 public class ViewByRoom extends AbstractViewBy {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ViewByRoom(final Object name) {
@@ -55,8 +58,6 @@ public class ViewByRoom extends AbstractViewBy {
 			if (contr.getTable().getValueAt(r, 0).toString().equals(room)) {
 				for (int c = 0; c < contr.getTable().getColumnCount(); c++) {
 					if (r != 0 && c != 0) {
-						// System.out.println(contr.getTable().getValueAt(r,
-						// c));
 						Object obj = contr.getTable().getValueAt(r, c);
 						table.setValueAt(obj, row, c);
 					}

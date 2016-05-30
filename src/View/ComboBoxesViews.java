@@ -14,6 +14,15 @@ import Model.Hours;
 import Model.Professor;
 import Model.Room;
 
+/**
+ * The class ComboBoxViews contains instances of JComboBox that are called in
+ * PanelButton() and FrameInsert()
+ * 
+ * @author Anna Termopoli
+ * 
+ *         Modify by Galya Genova
+ *
+ */
 public class ComboBoxesViews {
 
 	private SaveControllerInterface controller = new SaveController();
@@ -27,7 +36,7 @@ public class ComboBoxesViews {
 	private final static String EMPTYSTR = " ";
 
 	public ComboBoxesViews() {
-		// TODO Auto-generated constructor stub
+
 		this.cDays = new JComboBox<String>();
 		this.cRooms = new JComboBox<String>();
 		this.cHours = new JComboBox<String>();
@@ -60,6 +69,14 @@ public class ComboBoxesViews {
 
 	}
 
+	/**
+	 * this method implements listener for the comboBoxes that contains the name
+	 * of professors and the name of courses it is called in class FrameInsert()
+	 * 
+	 * @param comboProf
+	 * @param comboCorses
+	 */
+
 	public void LisenerCombo(JComboBox<String> comboProf, JComboBox<String> comboCorses) {
 		comboProf.addActionListener(l -> {
 
@@ -82,6 +99,12 @@ public class ComboBoxesViews {
 		});
 	}
 
+	/**
+	 * the method fill the all the comboBoxes in PanelButton()
+	 * 
+	 * @param comboCorses
+	 */
+
 	public void FillCombobox(JComboBox<String> comboCorses) {
 
 		comboCorses.addItem(EMPTYSTR);
@@ -94,6 +117,11 @@ public class ComboBoxesViews {
 		}
 	}
 
+	/**
+	 * Returns the set whit all of the comboBoxes
+	 * 
+	 * @return Set<JComboBox<String>>
+	 */
 	public Set<JComboBox<String>> getSetCombo() {
 		return this.setCombo;
 	}

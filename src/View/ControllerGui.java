@@ -15,24 +15,40 @@ import Model.Professor;
 import Model.Room;
 import Model.RoomImpl;
 
+/**
+ * This class is the principal one that fills the cells of the main table by
+ * default and dynamic. Also returns the main table, allow to find the number of
+ * specific row or column
+ * 
+ * 
+ * @author Massimiliano Micca
+ * 
+ *         Modify by Anna Termopoli, Galya Genova
+ *
+ */
 public class ControllerGui {
 
 	private final SaveControllerInterface cont = new SaveController();
 	private List<Reservation> setReservation = cont.getObjToSave().getListReservation();
 	private DefaultTableModel table = new TableGUI();
 
+	/**
+	 * this method draw all table
+	 * 
+	 */
 	private void drawTable() {
 		drawDefaultTable();
 		for (Reservation res : this.setReservation) {
-		    this.table.setValueAt(res, this.getRow(res), this.getColum(res));
-			/*this.table.setValueAt(res.getCourse().getName() + " \n" + res.getPerson().getSurname(), this.getRow(res),
-					this.getColum(res));*/
+			this.table.setValueAt(res, this.getRow(res), this.getColum(res));
 			this.table.fireTableCellUpdated(this.getRow(res), this.getColum(res));
-			// this.table.newDataAvailable(event);
 		}
 		this.table.fireTableDataChanged();
 	}
 
+	/**
+	 * this method draw the main table by default
+	 * 
+	 */
 	private void drawDefaultTable() {
 		int i = 0;
 		for (Days days : Days.values()) {
@@ -49,17 +65,25 @@ public class ControllerGui {
 		}
 	}
 
+	/**
+	 * for the main table
+	 * 
+	 * @return DefaultTableModel
+	 */
 	public DefaultTableModel getTable() {
-		/*if (this.setReservation.isEmpty()) {
-			drawDefaultTable();
-		} else {*/
 
-			drawTable();
-		//}
+		drawTable();
 
 		return this.table;
 
 	}
+
+	/**
+	 * for specific Reservation , returns his row
+	 * 
+	 * @param res
+	 * @return row
+	 */
 
 	public Integer getRow(Reservation res) {
 		int row = 0;
@@ -78,6 +102,12 @@ public class ControllerGui {
 		return row;
 	}
 
+	/**
+	 * for specific Reservation returns his column
+	 * 
+	 * @param res
+	 * @return column
+	 */
 	public Integer getColum(Reservation res) {
 		int colum = 0;
 		drawDefaultTable();
@@ -88,6 +118,17 @@ public class ControllerGui {
 		}
 		return colum;
 	}
+
+	/**
+	 * this method convert the object from Reservation to String
+	 * 
+	 * @param prof
+	 * @param corso
+	 * @param giorno
+	 * @param ora
+	 * @param stanza
+	 * @return new Reservation
+	 */
 
 	public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza) {
 		PersonImpl person = null;
@@ -129,10 +170,6 @@ public class ControllerGui {
 
 	public SaveControllerInterface getCont() {
 		return this.cont;
-	}
-
-	public ControllerGui getControllerGui() {
-		return this;
 	}
 
 }

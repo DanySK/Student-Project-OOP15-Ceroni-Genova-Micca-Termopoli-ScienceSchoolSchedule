@@ -13,7 +13,16 @@ import Model.Courses;
 import Model.Days;
 import Model.Hours;
 import Model.Room;
+import View.MyTableRenderer;
 
+/**
+ * This frame provides to show the table by specific course
+ * 
+ * @author Galya Genova
+ * 
+ *         Modify by Massimiliano Micca
+ *
+ */
 public class ViewByCourse extends AbstractViewBy {
 
 	/**
@@ -23,7 +32,7 @@ public class ViewByCourse extends AbstractViewBy {
 	private ControllerWorkers cntrWork = new ControllerWorkers();
 
 	public ViewByCourse(final Object name) {
-		// TODO Auto-generated constructor stub
+
 		super(name);
 
 		this.columns = Hours.values().length + 1;
@@ -33,13 +42,13 @@ public class ViewByCourse extends AbstractViewBy {
 		this.panel = new JPanel(new BorderLayout());
 		this.table = new JTable(defaultTable);
 		this.scroll = new JScrollPane(table);
-		this.table.setDefaultRenderer(Object.class, new MyViewsRenderer(name));
+		this.table.setDefaultRenderer(Object.class, new MyTableRenderer());
 		this.table.setTableHeader(null);
 		this.table.setFillsViewportHeight(true);
 		this.panel.add(scroll, BorderLayout.CENTER);
 		this.add(panel, BorderLayout.CENTER);
 	}
-
+	
 	protected DefaultTableModel fillCells(DefaultTableModel table, Object course) {
 
 		int i = 0;
@@ -62,8 +71,7 @@ public class ViewByCourse extends AbstractViewBy {
 		}
 
 		for (Reservation res : this.cntrWork.getByCourses(courses)) {
-			table.setValueAt(res, this.contr.getRow(res),
-					this.contr.getColum(res));
+			table.setValueAt(res, this.contr.getRow(res), this.contr.getColum(res));
 			table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
 		}
 

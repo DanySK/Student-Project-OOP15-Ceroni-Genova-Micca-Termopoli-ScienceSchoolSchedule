@@ -2,6 +2,13 @@ package View;
 
 import ViewBy.*;
 
+/**
+ * The class MyComboListeners contains the instances of listeners that are
+ * created in the package ViewBy and allow to see all different Views
+ * 
+ * @author Galya Genova
+ *
+ */
 public class MyComboListeners {
 
 	private MyListenerDays listenerDays = new MyListenerDays();

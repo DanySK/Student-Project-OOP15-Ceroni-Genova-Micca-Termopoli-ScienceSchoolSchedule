@@ -15,6 +15,14 @@ import Model.Professor;
 import Model.Room;
 import View.MyTableRenderer;
 
+/**
+ * This frame provides to show the table by specific professor
+ * 
+ * @author Galya Genova
+ * 
+ *         Modify by Massimiliano Micca
+ *
+ */
 public class ViewByProf extends AbstractViewBy {
 
 	/**
@@ -24,7 +32,6 @@ public class ViewByProf extends AbstractViewBy {
 	private ControllerWorkers cntrWork = new ControllerWorkers();
 
 	public ViewByProf(final Object name) {
-		// TODO Auto-generated constructor stub
 		super(name);
 
 		this.columns = Hours.values().length + 1;
@@ -65,8 +72,7 @@ public class ViewByProf extends AbstractViewBy {
 		}
 
 		for (Reservation res : this.cntrWork.getByProfessor(prof.getPerson())) {
-			table.setValueAt(res, this.contr.getRow(res),
-					this.contr.getColum(res));
+			table.setValueAt(res, this.contr.getRow(res), this.contr.getColum(res));
 			table.fireTableCellUpdated(this.contr.getRow(res), this.contr.getColum(res));
 		}
 
