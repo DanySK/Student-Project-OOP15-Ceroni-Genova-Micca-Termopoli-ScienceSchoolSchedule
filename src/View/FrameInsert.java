@@ -68,6 +68,9 @@ public class FrameInsert {
         final JButton apply = new JButton("Applica");
         apply.addActionListener(l -> {
             try {
+                if(this.combo.getcProfessor().getSelectedItem().toString().equals(" ")){
+                    throw new ErrorException("Selezionare tutti i campi ! ");
+                }
                 Reservation res = c.matchString(this.combo.getcProfessor().getSelectedItem().toString(),
                         this.combo.getcCorses().getSelectedItem().toString(),
                         this.combo.getcDays().getSelectedItem().toString(),

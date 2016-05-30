@@ -129,10 +129,11 @@ public class ControllerGui {
      * @param ora
      * @param stanza
      * @return new Reservation
-     * @throws ErrorException 
+     * @throws ErrorException
      */
 
-    public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza) throws ErrorException {
+    public Reservation matchString(String prof, String corso, String giorno, String ora, String stanza)
+            throws ErrorException {
         PersonImpl person = null;
         CoursesImpl cours = null;
         for (Professor p : cont.getObjToSave().getListProfessor()) {
@@ -166,7 +167,10 @@ public class ControllerGui {
                 room = r;
             }
         }
-        
+
+        if (prof.equals(" ") || giorno.equals(" ") || ora.equals(" ") || stanza.equals(" ")) {
+            throw new ErrorException("Selezionare tutti i campi!");
+        }
         return new Reservation(person, cours, day, h, room);
     }
 
