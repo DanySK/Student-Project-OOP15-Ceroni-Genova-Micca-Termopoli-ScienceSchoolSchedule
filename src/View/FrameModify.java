@@ -133,7 +133,7 @@ public class FrameModify {
 		});
 		room.addActionListener(l -> {
 
-			this.frameModify.setVisible(false);
+			this.frameModify.dispose();
 			final JFrame frameRoom = new JFrame();
 			frameRoom.setVisible(true);
 			frameRoom.setTitle("Inserimento nuovo professore");
@@ -171,7 +171,7 @@ public class FrameModify {
 						temp.add(new RoomImpl(insRoom.getText()));
 						objToSave.setListRoom(temp);
 						controller.save(objToSave);
-						frameRoom.setVisible(false);
+						frameRoom.dispose();
 						int f = JOptionPane.showConfirmDialog(null, "Riavvia per visualizzare l'aula sull'interfaccia!"
 								+ "\n Vuoi chiudere adesso il programma?", null, JOptionPane.YES_NO_OPTION);
 						if (f == JOptionPane.YES_OPTION) {
