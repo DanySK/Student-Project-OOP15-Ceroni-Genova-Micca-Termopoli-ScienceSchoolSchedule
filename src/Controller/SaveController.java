@@ -56,7 +56,6 @@ public class SaveController implements SaveControllerInterface {
                 try {
                     this.obj = (ObjToSave) p.readObject();
                     p.close();
-                    System.out.println("howtodoinjava_demo.dat read successfully on disk.");
                 } catch (ClassNotFoundException | IOException e) {
                     e.printStackTrace();
                 }

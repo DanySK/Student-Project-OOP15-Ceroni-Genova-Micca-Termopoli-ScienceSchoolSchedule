@@ -47,7 +47,7 @@ public class ValidateCDL implements ValidateCDLInterface {
             if (cont.getHour().getValue().equals(res.getHour().getValue())) {
                 if (res.getPerson().toString().equals(cont.getPerson().toString())){
                     throw new ErrorException(
-                            "Un corso del primo anno è già inserito in questo periodo" + "\n" + "Inserirne un altro?"); //
+                            "Il titolare del corso è gia impegnato in questa fascia oraria."); //
                 }
             }
         }

@@ -20,9 +20,11 @@ public class ControllerWorkers implements ControllerWorkersInterface {
 
     private SaveControllerInterface controller = new SaveController();
     private List<Reservation> listReservation = controller.getObjToSave().getListReservation();
+    
 
-    public void addRes(Reservation cont) throws ErrorException {
-
+    public void addRes(Reservation cont) throws ErrorException, WarningException {
+        MyValidate validate = new MyValidate();
+        validate.validation(cont);
         this.listReservation.add(cont);
 
     }

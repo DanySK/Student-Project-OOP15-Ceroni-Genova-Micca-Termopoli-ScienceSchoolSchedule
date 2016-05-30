@@ -19,8 +19,9 @@ public interface ControllerWorkersInterface {
      * this method is used for add a reservation in a list
      * @param cont this is reservation to add
      * @throws ErrorException 
+     * @throws WarningException 
      */
-    public void addRes(Reservation cont) throws ErrorException;
+    public void addRes(Reservation cont) throws ErrorException, WarningException;
 
     /**
      * @return return a list reservation
