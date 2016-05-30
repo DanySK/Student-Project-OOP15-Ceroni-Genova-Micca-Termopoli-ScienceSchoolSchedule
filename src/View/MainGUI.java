@@ -17,7 +17,7 @@ import Controller.Reservation;
  *         Modify by Galya Genova, Massimiliano Micca
  * 
  */
-public class MainGUI implements IMainGUI {
+public class MainGUI implements MainGUIInterface {
 
 	private JFrame frame = new JFrame("Science School Schedule");
 	private PanelButton panelButton = new PanelButton(this);

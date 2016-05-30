@@ -11,7 +11,7 @@ import Controller.Reservation;
  * 
  */
 
-public interface IMainGUI {
+public interface MainGUIInterface {
 	
 		/**
 		 * This method refresh the main table,
