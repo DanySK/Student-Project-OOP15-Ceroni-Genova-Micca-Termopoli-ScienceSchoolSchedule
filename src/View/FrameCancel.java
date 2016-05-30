@@ -33,7 +33,7 @@ public class FrameCancel {
         final JFrame frame = new JFrame("Seleziona dato per cancellare");
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         final int width = (int) screenSize.getWidth() / 2;
-        final int height = (int) screenSize.getHeight() - 20;
+        final int height = (int) screenSize.getHeight() - 60;
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(width, height);
         frame.setResizable(false);
