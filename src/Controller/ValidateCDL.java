@@ -17,7 +17,8 @@ public class ValidateCDL implements ValidateCDLInterface {
 
     public void validate(Reservation res) throws WarningException, ErrorException {
         this.cont = res;
-
+        
+        checkProf();
         if (cont.getCourse().getType().equals(Type.FIRST_YEAR)) {
             // check first year course
             checkCDLFirstYear();
@@ -39,6 +40,18 @@ public class ValidateCDL implements ValidateCDLInterface {
         }
     }
 
+    
+    private void checkProf() throws ErrorException{
+        
+        for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
+            if (cont.getHour().getValue().equals(res.getHour().getValue())) {
+                if (res.getPerson().toString().equals(cont.getPerson().toString())){
+                    throw new ErrorException(
+                            "Un corso del primo anno è già inserito in questo periodo" + "\n" + "Inserirne un altro?"); //
+                }
+            }
+        }
+    }
     /**
      * this method check if in the same time slot are a equal type of course
      * 
