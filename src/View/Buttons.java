@@ -37,7 +37,7 @@ public class Buttons {
 
 		this.insert = new JButton("INSERISCI");
 		this.generalView = new JButton("VISTA GENERALE");
-		this.insertNew = new JButton("MODIFICA NOME PROF/AGGIUNGI AULA");
+		this.insertNew = new JButton("MODIFICA NOME PROF / AGGIUNGI AULA");
 		this.saveInExel = new JButton("ESPORTA IN EXCEL");
 		this.resetTable = new JButton("RESETTA LA TABELLA");
 		this.cancel = new JButton("CANCELLA");
