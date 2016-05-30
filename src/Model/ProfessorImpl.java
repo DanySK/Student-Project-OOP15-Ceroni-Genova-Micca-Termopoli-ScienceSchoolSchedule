@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * This class implements the class Professor, passing the name, the surname and the courses kept by him 
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class ProfessorImpl extends PersonImpl implements Professor {
@@ -44,19 +47,20 @@ public class ProfessorImpl extends PersonImpl implements Professor {
         this.courses.add(c);
     }
 
-    private List<String> toStringCorsi() {
+    /**
+     * @return Courses
+     */
+    
+    private List<String> toStringCourses() {
         List<String> tmp = new ArrayList<>();
         for (Courses courses2 : courses) {
             tmp.add(courses2.getName());
         }
         return tmp;
-
     }
 
     public String toString() {
-
-        return "name : " + this.prof.getName() + " cognome: " + this.prof.getSurname() + " Lista cosi: "
-                + this.toStringCorsi();
-
+       return "name : " + this.prof.getName() + " cognome: " + this.prof.getSurname() + " Lista corsi: "
+                + this.toStringCourses();
     }
 }

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 /**
  * This class implements the class Room, passing the name
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 

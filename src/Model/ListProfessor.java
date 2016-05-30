@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * This class implements a list of all the professors of the faculty,
  * formed by the name, surname and from the courses taught by them
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public enum ListProfessor {

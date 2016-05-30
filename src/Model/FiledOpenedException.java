@@ -3,6 +3,9 @@ package Model;
 /**
  * This class implements the exception belonging to the opening of the wrong
  * file
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class FiledOpenedException extends Exception {

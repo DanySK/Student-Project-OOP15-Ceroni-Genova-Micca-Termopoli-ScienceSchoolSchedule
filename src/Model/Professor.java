@@ -2,6 +2,12 @@ package Model;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Francesco Ceroni
+ *
+ */
+
 public interface Professor{
 
     public Person getPerson();

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 /**
  * This class implements the courses, composed of name and type
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class CoursesImpl implements Courses, Serializable {

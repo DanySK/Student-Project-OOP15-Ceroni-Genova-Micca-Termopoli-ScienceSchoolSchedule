@@ -2,6 +2,9 @@ package Model;
 
 /**
  * This class implements a list of all the rooms used by the faculty
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public enum ListRoom {

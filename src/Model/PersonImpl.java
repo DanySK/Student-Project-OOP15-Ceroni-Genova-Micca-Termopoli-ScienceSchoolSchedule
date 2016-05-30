@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 /**
  * This class implements the class Person, passing the name e surname 
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class PersonImpl implements Person,Serializable {

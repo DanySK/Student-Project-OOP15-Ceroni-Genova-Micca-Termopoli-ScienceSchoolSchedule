@@ -2,6 +2,9 @@ package Model;
 
 /**
  * This class implements a list of the various teaching hours during the day
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public enum Hours {

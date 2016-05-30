@@ -2,6 +2,9 @@ package Model;
 
 /**
  * This class implements the list of days of the week
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public enum Days {

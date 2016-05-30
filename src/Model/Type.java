@@ -2,14 +2,14 @@ package Model;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * This class implements a list of all the years of various types of engineering and science, 
  * then added the colors to not confuse them 
+ * 
+ * @author Francesco Ceroni 
+ * 
  */
 
 public enum Type {
@@ -42,6 +42,10 @@ public enum Type {
         return color;
     }
 
+    /**
+     * @return second year
+     */
+    
     public static List<Type> getSecondYears(){
         List<Type> second = new ArrayList<>();
         second.add(Type.SECOND_YEAR);
@@ -49,6 +53,13 @@ public enum Type {
         second.add(Type.SECOND_YEAR_SCI);
         return second;
     }
+    
+    
+    
+    /**
+     * @return third year
+     */
+    
     public static List<Type> getThirdYears(){
         List<Type> third = new ArrayList<>();
         third.add(Type.THIRD_YEAR);
@@ -58,14 +69,14 @@ public enum Type {
         return third;
     }
     
+    /**
+     * @return fifth year
+     */
+    
     public static List<Type> getFifthYears(){
         List<Type> fifth = new ArrayList<>();
         fifth.add(Type.FIFTH_YEAR);
         fifth.add(Type.FIFTH_YEAR_OPT);
         return fifth;
     }
-    public static Set<Type> getSubjectTypeValues() {
-        return new HashSet<>(Arrays.asList(Type.values()));
-    }
-
 }

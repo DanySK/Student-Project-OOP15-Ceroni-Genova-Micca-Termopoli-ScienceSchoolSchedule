@@ -1,5 +1,12 @@
 package Model;
 
+/**
+ * 
+ * @author Francesco Ceroni
+ *
+ */
+
+
 public interface Person {
         
     public String getName();

@@ -2,6 +2,9 @@ package Model;
 
 /**
  * This class implements the errors belonging to the exceptions
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class ErrorException extends Exception {

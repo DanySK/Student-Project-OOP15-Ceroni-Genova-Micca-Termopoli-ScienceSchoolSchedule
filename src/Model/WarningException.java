@@ -2,6 +2,9 @@ package Model;
 
 /**
  * This class implements the warning belonging to the exceptions
+ * 
+ * @author Francesco Ceroni
+ * 
  */
 
 public class WarningException extends Exception {
