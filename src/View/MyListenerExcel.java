@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controller.ExportToXls;
-import Model.FiledOpenedException;
 
 /**
  * This Class implements ActionListener and override the actionPerformed method.

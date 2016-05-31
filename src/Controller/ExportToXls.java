@@ -96,13 +96,13 @@ public class ExportToXls implements ExportToXlsxInterface {
                     // this if is for set a color in a row day
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(0, 204, 204)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(171,205,239)));
                     cell.setCellStyle(defaul);
                 } else if (cellnum == 0) {
                     // this if is for set a color in a first column
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(207, 181, 59)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(171,205,239)));
                     cell.setCellStyle(defaul);
                 } else {
                     // this if is for set a color in a cell
