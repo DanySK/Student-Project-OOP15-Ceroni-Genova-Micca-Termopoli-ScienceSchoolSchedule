@@ -10,9 +10,10 @@ import Model.WarningException;
 public interface ValidateWarningInterface {
     /**
      * this method is used for check the hours in a day and the day in a week.
+     * 
      * @param cont
      * @throws WarningException
      * @throws ErrorException
      */
-    public void validateWARNING(Reservation cont) throws WarningException, ErrorException;
+    void validateWARNING(Reservation cont) throws WarningException, ErrorException;
 }

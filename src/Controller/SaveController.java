@@ -45,10 +45,9 @@ public class SaveController implements SaveControllerInterface {
     }
 
     /**
-     * read a Object from file.
-     * if the file not exsist make a new file.
+     * read a Object from file. if the file not exsist make a new file.
      */
-    private void openFile()  {
+    private void openFile() {
         if (new File(this.path).exists()) {
             try {
                 FileInputStream istream = new FileInputStream(path);
@@ -76,7 +75,7 @@ public class SaveController implements SaveControllerInterface {
     }
 
     /**
-     *this method create a new default file, if it's never set
+     * this method create a new default file, if it's never set
      */
     private void createNewEmptyList() {
 

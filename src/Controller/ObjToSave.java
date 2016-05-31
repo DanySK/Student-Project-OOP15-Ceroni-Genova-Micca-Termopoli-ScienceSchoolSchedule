@@ -8,10 +8,10 @@ import Model.Professor;
 import Model.RoomImpl;
 
 /**
- * @author Massimiliano Micca
- * I have build this class for save the data in a file;
- * It saves a multiple data (List<RoomImpl>,List<Professor> ,List<Reservation> ) 
- * Make an object composed to tree fields ( List<>) whit getters and setters.
+ * @author Massimiliano Micca I have build this class for save the data in a
+ *         file; It saves a multiple data (List<RoomImpl>,List<Professor> ,List
+ *         <Reservation> ) Make an object composed to tree fields ( List<>) whit
+ *         getters and setters.
  */
 public class ObjToSave implements ObjToSaveInterface, Serializable {
 
@@ -22,6 +22,7 @@ public class ObjToSave implements ObjToSaveInterface, Serializable {
 
     /**
      * builder
+     * 
      * @param listRoom
      * @param listProfessor
      * @param listReservation

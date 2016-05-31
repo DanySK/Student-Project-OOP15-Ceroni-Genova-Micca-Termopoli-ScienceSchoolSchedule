@@ -8,21 +8,22 @@ package Controller;
 public interface SaveControllerInterface {
 
     /**
-     * this method is for restore the default data
-     * never used.
+     * this method is for restore the default data never used.
      */
-    public void reset();
+    void reset();
 
     /**
      * save a ObjToSave in a file
+     * 
      * @param obj
      */
-    public void save(ObjToSave obj);
+    void save(ObjToSave obj);
 
     /**
      * get ObjToSave from file
+     * 
      * @return
      */
-    public ObjToSave getObjToSave();
+    ObjToSave getObjToSave();
 
 }

@@ -37,7 +37,7 @@ public class ValidateWarning implements ValidateWarningInterface {
 
     /**
      * this method check if professor work more of 4 day in a week. if more 4
-     * day throw  a warning error
+     * day throw a warning error
      * 
      * @throws WarningException
      */
@@ -63,7 +63,7 @@ public class ValidateWarning implements ValidateWarningInterface {
 
     /**
      * this method check if students work more of 4 day in a week. if more 4 day
-     *             throw a warning error
+     * throw a warning error
      * 
      * @throws WarningException
      */

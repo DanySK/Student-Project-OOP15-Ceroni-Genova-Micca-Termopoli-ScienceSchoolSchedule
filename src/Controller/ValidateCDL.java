@@ -17,7 +17,7 @@ public class ValidateCDL implements ValidateCDLInterface {
 
     public void validate(Reservation res) throws WarningException, ErrorException {
         this.cont = res;
-        
+
         checkProf();
         if (cont.getCourse().getType().equals(Type.FIRST_YEAR)) {
             // check first year course
@@ -40,18 +40,17 @@ public class ValidateCDL implements ValidateCDLInterface {
         }
     }
 
-    
-    private void checkProf() throws ErrorException{
-        
+    private void checkProf() throws ErrorException {
+
         for (Reservation res : this.contWorkers.getByDay(cont.getDay())) {
             if (cont.getHour().getValue().equals(res.getHour().getValue())) {
-                if (res.getPerson().toString().equals(cont.getPerson().toString())){
-                    throw new ErrorException(
-                            "Il titolare del corso è gia impegnato in questa fascia oraria."); //
+                if (res.getPerson().toString().equals(cont.getPerson().toString())) {
+                    throw new ErrorException("Il titolare del corso è gia impegnato in questa fascia oraria."); //
                 }
             }
         }
     }
+
     /**
      * this method check if in the same time slot are a equal type of course
      * 
@@ -203,7 +202,7 @@ public class ValidateCDL implements ValidateCDLInterface {
                         && !res.getRoom().getNameRoom().equals(cont.getRoom().getNameRoom())
                         && !res.getPerson().toString().equals(cont.getPerson().toString())) {
                     throw new WarningException(
-                            "Un corso del quinto anno è già inserito in questo periodo" + "\n" + "Inserirne un altro?"); 
+                            "Un corso del quinto anno è già inserito in questo periodo" + "\n" + "Inserirne un altro?");
                 }
                 listType.add(res.getCourse().getType());
 

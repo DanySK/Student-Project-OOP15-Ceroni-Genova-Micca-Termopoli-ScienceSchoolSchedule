@@ -23,6 +23,7 @@ public class ValidateError implements ValidateErrorInterface {
 
     /**
      * as up method
+     * 
      * @return
      */
     private boolean check() {

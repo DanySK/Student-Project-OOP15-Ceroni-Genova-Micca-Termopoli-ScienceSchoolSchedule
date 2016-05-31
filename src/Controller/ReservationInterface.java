@@ -12,20 +12,20 @@ import Model.RoomImpl;
  */
 public interface ReservationInterface {
 
-    public void setPerson(PersonImpl prof);
+    void setPerson(PersonImpl prof);
 
-    public void setCourse(CoursesImpl course);
+    void setCourse(CoursesImpl course);
 
-    public void setHour(Hours hour);
+    void setHour(Hours hour);
 
-    public void setRoom(RoomImpl room);
+    void setRoom(RoomImpl room);
 
-    public PersonImpl getPerson();
+    PersonImpl getPerson();
 
-    public CoursesImpl getCourse();
+    CoursesImpl getCourse();
 
-    public Hours getHour();
+    Hours getHour();
 
-    public RoomImpl getRoom();
+    RoomImpl getRoom();
 
 }

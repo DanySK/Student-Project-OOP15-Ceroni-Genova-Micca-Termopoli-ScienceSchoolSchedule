@@ -39,7 +39,8 @@ public class ExportToXls implements ExportToXlsxInterface {
 
     /**
      * this method is used for export the data in file excel
-     * @param workbook 
+     * 
+     * @param workbook
      */
     private void write(XSSFWorkbook workbook) {
         try {
@@ -58,9 +59,11 @@ public class ExportToXls implements ExportToXlsxInterface {
     }
 
     /**
-     * this method puts a values in cells 
-     * @param sheet is a sheet of excel
-     * @param workbook 
+     * this method puts a values in cells
+     * 
+     * @param sheet
+     *            is a sheet of excel
+     * @param workbook
      * @return
      */
     private XSSFWorkbook create(XSSFSheet sheet, XSSFWorkbook workbook) {
@@ -88,20 +91,20 @@ public class ExportToXls implements ExportToXlsxInterface {
                 sheet.autoSizeColumn(cellnum);
                 Cell cell = row.createCell(cellnum);
 
-                if ( rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0  ) { 
+                if (rownum % (this.controller.getObjToSave().getListRoom().size() + 1) == 0) {
                     // this if is for set a color in a row day
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(0,204,204)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(0, 204, 204)));
                     cell.setCellStyle(defaul);
-                } else if (cellnum == 0 ) {
+                } else if (cellnum == 0) {
                     // this if is for set a color in a first column
                     cell.setCellValue(str);
                     defaul = this.setBorderDefault(defaul);
-                    defaul.setFillForegroundColor(new XSSFColor(new Color(207,181,59)));
+                    defaul.setFillForegroundColor(new XSSFColor(new Color(207, 181, 59)));
                     cell.setCellStyle(defaul);
                 } else {
-                    // this if is for set a color in a cell 
+                    // this if is for set a color in a cell
                     XSSFCellStyle style = workbook.createCellStyle();
                     cell.setCellValue(str);
                     style = this.setBorder(style);
@@ -116,8 +119,10 @@ public class ExportToXls implements ExportToXlsxInterface {
         return workbook;
 
     }
+
     /**
-     *  this method used for set a style in a cell 
+     * this method used for set a style in a cell
+     * 
      * @param style
      * @return
      */
@@ -131,7 +136,8 @@ public class ExportToXls implements ExportToXlsxInterface {
     }
 
     /**
-     *  this method used for set a style in a cell 
+     * this method used for set a style in a cell
+     * 
      * @param style
      * @return
      */
@@ -146,9 +152,10 @@ public class ExportToXls implements ExportToXlsxInterface {
     }
 
     /**
-     * this method puts all reservation in a map that is used to create the Excel file
-     *  
-     * @return 
+     * this method puts all reservation in a map that is used to create the
+     * Excel file
+     * 
+     * @return
      */
     private Map<Integer, ArrayList<String>> makeMap() {
         Map<Integer, ArrayList<String>> temp = new HashMap<>();
@@ -160,12 +167,12 @@ public class ExportToXls implements ExportToXlsxInterface {
 
             hoursArray.add(d.getString());
             for (Hours col : Hours.values()) {
-              
+
                 hoursArray.add(col.getValue());
             }
             temp.put(i++, hoursArray); // put the first line in a tab
 
-            for (RoomImpl room : controller.getObjToSave().getListRoom()) { 
+            for (RoomImpl room : controller.getObjToSave().getListRoom()) {
 
                 ArrayList<String> array = new ArrayList<>();
                 for (@SuppressWarnings("unused")

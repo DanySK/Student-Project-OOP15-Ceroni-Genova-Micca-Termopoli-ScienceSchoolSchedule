@@ -8,7 +8,7 @@ import Model.RoomImpl;
 /**
  * @author Massimiliano Micca
  *
- *this class is used to make a obj 
+ *         this class is used to make a obj
  */
 public interface ObjToSaveInterface {
 
@@ -17,45 +17,50 @@ public interface ObjToSaveInterface {
      * 
      * @return
      */
-    public List<RoomImpl> getListRoom();
+    List<RoomImpl> getListRoom();
 
     /**
      * used for set a list of room in a obj
+     * 
      * @param listRoom
      */
-    public void setListRoom(List<RoomImpl> listRoom);
+    void setListRoom(List<RoomImpl> listRoom);
 
     /**
      * used for take a list of professor from obj
+     * 
      * @return
      */
-    public List<Professor> getListProfessor();
+    List<Professor> getListProfessor();
 
     /**
      * used for set a list of professor in a obj
+     * 
      * @param listProfessor
      */
-    public void setListProfessor(List<Professor> listProfessor);
+    void setListProfessor(List<Professor> listProfessor);
 
     /**
      * used for get a list of reservation in a obj
+     * 
      * @return
      */
-    public List<Reservation> getListReservation();
+    List<Reservation> getListReservation();
 
     /**
      * used for set a list of reservation in a obj
+     * 
      * @param listReservation
      */
-    public void setListReservation(List<Reservation> listReservation);
+    void setListReservation(List<Reservation> listReservation);
 
     /**
      * this method is never used but need to clear all list in default value
      */
-    public void clear();
+    void clear();
 
     /**
      * @return
      */
-    public boolean exist();
+    boolean exist();
 }

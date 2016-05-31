@@ -11,16 +11,14 @@ import Model.Professor;
 import Model.WarningException;
 
 /**
- * @author Massimiliano Micca
- * This class is used to implement the main methods for working with files.
- *  It is used by Gui.
+ * @author Massimiliano Micca This class is used to implement the main methods
+ *         for working with files. It is used by Gui.
  *
  */
 public class ControllerWorkers implements ControllerWorkersInterface {
 
     private SaveControllerInterface controller = new SaveController();
     private List<Reservation> listReservation = controller.getObjToSave().getListReservation();
-    
 
     public void addRes(Reservation cont) throws ErrorException, WarningException {
         MyValidate validate = new MyValidate();
