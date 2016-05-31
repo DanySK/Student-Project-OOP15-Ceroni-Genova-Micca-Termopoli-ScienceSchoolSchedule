@@ -18,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Model.Courses;
 import Model.Days;
+import Model.ErrorException;
 import Model.FiledOpenedException;
 import Model.Hours;
 import Model.RoomImpl;
@@ -191,7 +192,10 @@ public class ExportToXls implements ExportToXlsxInterface {
         return temp;
     }
 
-    public void save(String period) throws FiledOpenedException {
+    public void save(String period) throws FiledOpenedException, ErrorException {
+        if(period.equals(null) || period.equals("")){
+            throw new ErrorException("Inserire un nome valido");
+        }
         this.title = period;
         this.data = this.makeMap();
 

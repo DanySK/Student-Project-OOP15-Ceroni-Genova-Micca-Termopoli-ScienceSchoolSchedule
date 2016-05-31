@@ -61,7 +61,7 @@ public class MyListenerExcel implements ActionListener {
                                 + System.getProperty("file.separator") + s + ".xlsx"),
                         null, JOptionPane.INFORMATION_MESSAGE);
 
-            } catch (FiledOpenedException e1) {
+            } catch (Exception e1) {
                 JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.OK_OPTION);
             }
             frameSave.dispose();
