@@ -97,7 +97,7 @@ public class FrameInsert {
                                     this.combo.getcHours().getSelectedItem().toString(),
                                     this.combo.getcRooms().getSelectedItem().toString());
 
-                            cntr.addRes(res);
+                            cntr.getListReservation().add(res);
                             controller.getObjToSave().setListReservation(cntr.getListReservation());
                             controller.save(controller.getObjToSave());
                             Integer row = c.getRow(res);
