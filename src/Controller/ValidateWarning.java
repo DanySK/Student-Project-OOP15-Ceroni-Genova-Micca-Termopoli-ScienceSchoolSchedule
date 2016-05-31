@@ -89,7 +89,6 @@ public class ValidateWarning implements ValidateWarningInterface {
 			if (isType) {
 				isType = false;
 				i++;
-				System.out.println(i);
 			}
 		}
 		if (i == 4) {

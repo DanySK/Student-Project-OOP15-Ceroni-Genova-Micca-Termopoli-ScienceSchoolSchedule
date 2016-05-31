@@ -18,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Model.Courses;
 import Model.Days;
+import Model.FiledOpenedException;
 import Model.Hours;
 import Model.RoomImpl;
 
@@ -41,8 +42,9 @@ public class ExportToXls implements ExportToXlsxInterface {
      * this method is used for export the data in file excel
      * 
      * @param workbook
+     * @throws FiledOpenedException 
      */
-    private void write(XSSFWorkbook workbook) {
+    private void write(XSSFWorkbook workbook) throws FiledOpenedException {
         try {
             // Write the workbook in file system
 
@@ -50,10 +52,8 @@ public class ExportToXls implements ExportToXlsxInterface {
                     new File(System.getProperty("user.home") + System.getProperty("file.separator") + title + ".xlsx"));
             workbook.write(out);
             out.close();
-            System.out.println(title + ".xlsx written successfully on disk.");
         } catch (Exception e) {
-            System.out.println("chiudere il file prima di proseguire");
-            e.printStackTrace();
+            throw new FiledOpenedException();
         }
 
     }
@@ -191,7 +191,7 @@ public class ExportToXls implements ExportToXlsxInterface {
         return temp;
     }
 
-    public void save(String period) {
+    public void save(String period) throws FiledOpenedException {
         this.title = period;
         this.data = this.makeMap();
 

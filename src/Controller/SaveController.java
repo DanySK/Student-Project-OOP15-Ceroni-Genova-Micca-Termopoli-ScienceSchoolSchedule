@@ -35,8 +35,6 @@ public class SaveController implements SaveControllerInterface {
             p.writeObject(obj);
             p.close();
 
-            System.out.println("howtodoinjava_demo.dat written successfully on disk.");
-
         } catch (Exception e) {
             System.out.println("Scrittura fallita " + e);
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.FiledOpenedException;
+
 /**
  * @author Massimiliano Micca
  *
@@ -12,9 +14,10 @@ public interface ExportToXlsxInterface {
      * @param period
      *            this string need to set a excel name end a name of file
      *            "period.xls"
+     * @throws FiledOpenedException 
      * 
      * 
      */
-    void save(String period);
+    void save(String period) throws FiledOpenedException;
 
 }
