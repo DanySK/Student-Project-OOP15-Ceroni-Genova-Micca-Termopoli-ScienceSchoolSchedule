@@ -36,7 +36,7 @@ public class PanelButton {
 	public PanelButton(MainGUI mainGUI) {
 		Buttons buttons = new Buttons(mainGUI);
 		this.panelButton = new JPanel(new GridBagLayout());
-		this.panelButton.setBorder(new TitledBorder("SSS"));
+		this.panelButton.setBorder(new TitledBorder(" Buon lavoro con SSS :) "));
 		this.panelButton.setBackground(new Color(171, 205, 239));
 
 		this.cnst.gridy = 1;

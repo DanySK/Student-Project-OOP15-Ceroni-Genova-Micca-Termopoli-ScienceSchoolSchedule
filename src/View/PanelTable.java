@@ -34,7 +34,7 @@ public class PanelTable {
 	public PanelTable() {
 
 		this.panelTable = new JPanel(new BorderLayout());
-		this.panelTable.setBorder(new TitledBorder("Per aggiornare la tabella riavvia il programma!"));
+		this.panelTable.setBorder(new TitledBorder(" Ricorda di lascare un ora libera per pausa pranzo :)"));
 		this.t = controller.getTable();
 		this.mainTable = new JTable(t);
 		this.scroll = new JScrollPane(mainTable);
