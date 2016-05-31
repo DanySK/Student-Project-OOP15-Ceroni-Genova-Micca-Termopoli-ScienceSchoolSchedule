@@ -35,7 +35,7 @@ public class FrameInsert {
     private Labels label = new Labels();
     private ControllerWorkersInterface cntr = new ControllerWorkers();
     private SaveControllerInterface controller = new SaveController();
-    private ControllerGui c = new ControllerGui();
+    private ControllerGuiImplements c = new ControllerGui();
   
 
     public FrameInsert(MainGUI mainGUI) {
