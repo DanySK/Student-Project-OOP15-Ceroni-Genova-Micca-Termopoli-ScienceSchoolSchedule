@@ -34,7 +34,7 @@ public class ControllerGui implements ControllerGuiImplements{
     private DefaultTableModel table = new TableGUI();
 
     /**
-     * this method draw all table
+     * this method draw all table, the first implement of this method is by Galya
      * 
      */
     private void drawTable() {

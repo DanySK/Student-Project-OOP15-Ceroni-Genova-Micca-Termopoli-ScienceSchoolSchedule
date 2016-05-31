@@ -12,7 +12,7 @@ import Model.WarningException;
  *
  */
 public class ValidateCDL implements ValidateCDLInterface {
-    private ControllerWorkers contWorkers = new ControllerWorkers();
+    private ControllerWorkersInterface contWorkers = new ControllerWorkers();
     private Reservation cont;
 
     public void validate(Reservation res) throws WarningException, ErrorException {

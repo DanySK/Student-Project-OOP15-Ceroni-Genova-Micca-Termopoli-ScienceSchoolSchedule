@@ -6,7 +6,7 @@ import Model.WarningException;
 
 public class ValidateWarning implements ValidateWarningInterface {
 
-    private ControllerWorkers contWorkers = new ControllerWorkers();
+    private ControllerWorkersInterface contWorkers = new ControllerWorkers();
     private Reservation cont;
 
     public void validateWARNING(Reservation cont) throws WarningException, ErrorException {

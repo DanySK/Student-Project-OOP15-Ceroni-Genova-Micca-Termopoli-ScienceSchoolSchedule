@@ -28,7 +28,7 @@ import Model.RoomImpl;
 public class ExportToXls implements ExportToXlsxInterface {
 
     private Map<Integer, ArrayList<String>> data = new TreeMap<>();
-    private ControllerWorkers contWork = new ControllerWorkers();
+    private ControllerWorkersInterface contWork = new ControllerWorkers();
     private String title;
     // Blank workbook
     XSSFWorkbook workbook = new XSSFWorkbook();
@@ -58,6 +58,7 @@ public class ExportToXls implements ExportToXlsxInterface {
     }
 
     /**
+     * this method puts a values in cells 
      * @param sheet is a sheet of excel
      * @param workbook 
      * @return

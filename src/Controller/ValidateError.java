@@ -7,7 +7,7 @@ import Model.ErrorException;
  *
  */
 public class ValidateError implements ValidateErrorInterface {
-    private SaveController controllerSave = new SaveController();
+    private SaveControllerInterface controllerSave = new SaveController();
     private Reservation cont;
 
     public boolean validateErrore(Reservation cont) throws ErrorException {
