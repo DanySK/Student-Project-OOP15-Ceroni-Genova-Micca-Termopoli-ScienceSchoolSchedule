@@ -98,8 +98,18 @@ public class FrameModify {
 			panelSave.add(save);
 			frameProf.add(profPanel);
 			frameProf.add(panelSave, BorderLayout.SOUTH);
+			
 
 			save.addActionListener(e -> {
+				boolean control1=true;
+				if(nameProf.getText().equals("") || surnameProf.getText().equals(" ")){
+					JOptionPane.showMessageDialog(null, "Inserisci un nuovo nome e cognome",
+							null, JOptionPane.ERROR_MESSAGE);
+					control1 = false;
+					
+				}
+				
+				if(control1==true){
 				List<String> temp = new ArrayList<>();
 				for (Professor prof : objToSave.getListProfessor()) {
 					if (prof.getPerson().toString().equals(comboProf.getSelectedItem())) {
@@ -135,8 +145,9 @@ public class FrameModify {
 					}
 
 				}
-
+				}
 			});
+		
 		});
 		room.addActionListener(l -> {
 
