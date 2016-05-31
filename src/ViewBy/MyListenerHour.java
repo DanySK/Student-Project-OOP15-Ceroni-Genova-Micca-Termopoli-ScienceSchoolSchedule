@@ -19,6 +19,7 @@ public class MyListenerHour implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		@SuppressWarnings("unchecked")
 		JComboBox<String> combo = (JComboBox<String>) e.getSource();
 		if (!combo.getSelectedItem().equals(EMPTYSTR)) {
 			new ViewByHour(combo.getSelectedItem().toString());

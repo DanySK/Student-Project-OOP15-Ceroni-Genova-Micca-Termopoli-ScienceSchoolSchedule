@@ -27,7 +27,7 @@ public class MyListenerExcel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton button = (JButton) e.getSource();
+		
 		ExportToXls xls = new ExportToXls();
 		final JFrame frameSave = new JFrame("ESPORTA IN EXCEL");
 		frameSave.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

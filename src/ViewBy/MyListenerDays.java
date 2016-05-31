@@ -19,6 +19,7 @@ public class MyListenerDays implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		@SuppressWarnings("unchecked")
 		JComboBox<String> combo = (JComboBox<String>) e.getSource();
 		if (!combo.getSelectedItem().toString().equals(EMPTYSTR)) {
 			new ViewByDay(combo.getSelectedItem().toString());

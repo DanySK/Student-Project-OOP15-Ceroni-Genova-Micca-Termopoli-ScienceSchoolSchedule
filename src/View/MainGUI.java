@@ -27,7 +27,7 @@ public class MainGUI implements MainGUIInterface {
 
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		final int width = (int) screenSize.getWidth();
-		final int height = (int) screenSize.getHeight();
+		final int height = (int) screenSize.getHeight() - 50;
 
 		this.frame.setSize(width, height);
 		this.frame.add(panelButton.getPanelButton(), BorderLayout.WEST);
