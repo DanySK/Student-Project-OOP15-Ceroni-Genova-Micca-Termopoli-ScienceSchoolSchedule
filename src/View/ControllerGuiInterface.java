@@ -12,7 +12,7 @@ import Model.ErrorException;
  *         Modify by Galya Genova
  *
  */
-public interface ControllerGuiImplements {
+public interface ControllerGuiInterface {
 
 	/**
 	 * for the main table

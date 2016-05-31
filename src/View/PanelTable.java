@@ -29,7 +29,7 @@ public class PanelTable {
 	private JTable mainTable;
 	private JScrollPane scroll;
 	private DefaultTableModel t = new TableGUI();
-	private ControllerGuiImplements controller = new ControllerGui();
+	private ControllerGuiInterface controller = new ControllerGui();
 
 	public PanelTable() {
 

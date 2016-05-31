@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
 import Controller.SaveController;
 import Controller.SaveControllerInterface;
 import View.ControllerGui;
-import View.ControllerGuiImplements;
+import View.ControllerGuiInterface;
 
 /**
  * This abstract class provides the general structure that is use for create the
@@ -36,7 +36,7 @@ public abstract class AbstractViewBy extends JFrame {
 	protected DefaultTableModel defaultTable;
 	protected JTable table;
 	protected JScrollPane scroll;
-	protected ControllerGuiImplements contr = new ControllerGui();
+	protected ControllerGuiInterface contr = new ControllerGui();
 	protected SaveControllerInterface cont = new SaveController();
 
 	public AbstractViewBy(final Object name) {

@@ -27,7 +27,7 @@ import Model.RoomImpl;
  *         Modify by Anna Termopoli, Galya Genova
  *
  */
-public class ControllerGui implements ControllerGuiImplements{
+public class ControllerGui implements ControllerGuiInterface{
 
     private final SaveControllerInterface cont = new SaveController();
     private List<Reservation> setReservation = cont.getObjToSave().getListReservation();

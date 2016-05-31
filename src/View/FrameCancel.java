@@ -34,7 +34,7 @@ import Model.WarningException;
  */
 public class FrameCancel {
 
-	private ControllerGuiImplements cntGui = new ControllerGui();
+	private ControllerGuiInterface cntGui = new ControllerGui();
 	private final ControllerWorkers cntr = new ControllerWorkers();
 
 	public FrameCancel(MainGUI mainGUI) throws WarningException {

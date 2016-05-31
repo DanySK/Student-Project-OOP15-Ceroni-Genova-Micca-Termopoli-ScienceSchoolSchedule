@@ -5,6 +5,7 @@ import java.util.List;
 import Model.Courses;
 import Model.Days;
 import Model.ErrorException;
+import Model.PersonImpl;
 import Model.Professor;
 import Model.WarningException;
 
@@ -21,55 +22,59 @@ public interface ControllerWorkersInterface {
      * @throws ErrorException 
      * @throws WarningException 
      */
-    public void addRes(Reservation cont) throws ErrorException, WarningException;
+    void addRes(Reservation cont) throws ErrorException, WarningException;
 
     /**
      * @return return a list reservation
      */
-    public List<Reservation> getListReservation();
+    List<Reservation> getListReservation();
 
     /**
      * @param d is a day to take a reservation
      * @return a list of reservation in day d
      */
-    public List<Reservation> getByDay(Days d);
+    List<Reservation> getByDay(Days d);
 
     /**
      * @param course use to take the reservation that have that course
      * @return list of reservation
      */
-    public List<Reservation> getByCourses(Courses course);
+    List<Reservation> getByCourses(Courses course);
     
     // public List<Reservation> getByClass(Room c);
 
-    // public List<Reservation> getByProfessor(Person p);
+     /**
+     * @param p
+     * @return
+     */
+    List<Reservation> getByProfessor(PersonImpl p);
 
     // public List<Reservation> getByHour(Hours h);
 
     /**
      * @return a list of all Course  
      */
-    public List<Courses> getCoursesFromFile();
+    List<Courses> getCoursesFromFile();
 
     /**
      * @return a list of all professor 
      */
-    public List<Professor> getProfessorFromFile();
+    List<Professor> getProfessorFromFile();
 
     /**
      * @param cont list of all the reservation that you want to remove
      * @throws WarningException
      */
-    public void removeAll(List<Reservation> cont) throws WarningException;
+    void removeAll(List<Reservation> cont) throws WarningException;
     
     /**
      * this method is used to save in file
      */
-    public void save();
+    void save();
     
     /**
      * this method is used to check if list of reservation is empty
      * @throws ErrorException
      */
-    public void isEmpty() throws ErrorException;
+    void isEmpty() throws ErrorException;
 }

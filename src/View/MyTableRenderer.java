@@ -24,7 +24,7 @@ import Controller.SaveControllerInterface;
 public class MyTableRenderer extends JTextArea implements TableCellRenderer {
 
 	private static final long serialVersionUID = 1L;
-	protected ControllerGuiImplements contr;
+	protected ControllerGuiInterface contr;
 	protected SaveControllerInterface cont = new SaveController();
 
 	public MyTableRenderer() {
