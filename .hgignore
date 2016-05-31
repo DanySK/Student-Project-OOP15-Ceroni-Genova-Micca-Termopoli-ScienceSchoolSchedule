@@ -1,3 +1,5 @@
 
 syntax: regexp
 ^poi-3\.14 - Copia$
+syntax: regexp
+^poi-bin-3\.14$
