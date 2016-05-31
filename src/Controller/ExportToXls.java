@@ -47,7 +47,7 @@ public class ExportToXls implements ExportToXlsxInterface {
             // Write the workbook in file system
 
             FileOutputStream out = new FileOutputStream(
-                    new File(System.getProperty("user.home") + System.getProperty("file.separator") + title + ".xls"));
+                    new File(System.getProperty("user.home") + System.getProperty("file.separator") + title + ".xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(title + ".xlsx written successfully on disk.");
