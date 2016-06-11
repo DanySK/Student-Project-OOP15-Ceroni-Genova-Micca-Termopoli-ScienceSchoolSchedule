@@ -18,7 +18,7 @@ import Model.WarningException;
 public class ControllerWorkers implements ControllerWorkersInterface {
 
     private SaveControllerInterface controller = new SaveController();
-    private List<Reservation> listReservation = controller.getObjToSave().getListReservation();
+    private List<Reservation>  listReservation = controller.getObjToSave().getListReservation();
 
     public void addRes(Reservation cont) throws ErrorException, WarningException {
         MyValidate validate = new MyValidate();
